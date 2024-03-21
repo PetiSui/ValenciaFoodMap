@@ -10,6 +10,8 @@ import usePrefersColorScheme from "use-prefers-color-scheme";
 
 const LikeButton = ({ id }) => {
 
+  console.log(id);
+
   let likedEstablishments = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("likedEstablishments")) || [] : [];
 
   // console.log(likedEstablishments);
@@ -53,6 +55,7 @@ const LikeButton = ({ id }) => {
 
   const handleLiked = () => {
     // found ? likedEstablishments = likedEstablishments.filter(item => item != id) : likedEstablishments.push(id);
+    console.log(id);
     found ? set.delete(id) : set.add(id);
 
     // localStorage.setItem('likedEstablishments', JSON.stringify(likedEstablishments));

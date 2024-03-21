@@ -108,12 +108,12 @@ body {
   background: #cbcbcb66;
 }
 
-.app {
+.cards {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 2rem;
+  /* justify-content: space-between; */
 }
 
 

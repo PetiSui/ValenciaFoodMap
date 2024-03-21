@@ -3,7 +3,7 @@ import React from "react";
 const Tags = ({ tags }) => {
 
   if(!tags || tags.length === 0) return;
-  console.log(tags);
+  //console.log(tags);
 
   let categories = Array.from({ length: tags.length });
 

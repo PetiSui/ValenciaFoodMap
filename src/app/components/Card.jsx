@@ -10,9 +10,9 @@ import Tags from "./Tags";
 import "../styles/Card.css";
 
 function Card({ data }) {
-  console.log(data?.address);
+  //console.log(data?.address);
   let data2 = JSON.parse(data);
-  console.log(data2);
+  //console.log(data2._id);
   return (
     <>
       <div className="card">
@@ -23,8 +23,10 @@ function Card({ data }) {
         </Image>
         <p className="descripcion">{data2?.name}</p>
         <Tags tags={data2?.categories}></Tags>
-        <Street url={data2?.url} address={data2?.address}></Street>
-        <Telephone telephoneNumber={data2?.telephone}></Telephone>
+        <div className='flexible'>
+          <Street url={data2?.url} address={data2?.address}></Street>
+          <Telephone telephoneNumber={data2?.telephone}></Telephone>
+        </div>
         <ShareBar url={data2?.url} website={data2?.website} name={data2?.name} address={data2?.address} id={data2?.id}></ShareBar>
       </div>
     </>

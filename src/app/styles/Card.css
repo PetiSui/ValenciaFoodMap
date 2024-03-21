@@ -103,18 +103,25 @@ a:hover {
 
 .card {
   max-width: min(90vw, 300px); /* Remove when adding to grid template  */
-  position: relative;
+  /* position: relative; */
   background-color: var(--clr-card);
   border-radius: calc(10px + 0.8rem);
   padding: 0.8rem;
   border-top: 0.7rem solid var(--clr-primary);
   box-shadow: 0.4rem 0.5rem 0.85rem -0.3rem var(--clr-shadow);
+  display: flex;
+  flex-direction: column;
   aspect-ratio: 16 / 9;
 }
 
+.flexible{
+  margin-top: auto;
+  /* margin-bottom: auto; */
+}
+
 .image {
-  width: 100%;
-  min-height: 100%;
+  min-width: 100%;
+  /* min-height: 100%; */
   aspect-ratio: 16/9;
   /* border-image: fill 0 linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.113)); */
   border-radius: 10px 10px 0 0;
@@ -220,7 +227,7 @@ button {
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
-  /* margin-top: 1.2rem; */
+  /* margin-top: auto; */
 }
 
 .like {

@@ -15,29 +15,12 @@ export default async function App() {
 
   return (
     <>
-      <div className="app">
+      <div className="cards">
         {Object.entries(data.data).map((card: any, index: Number) => (
-          <div key={crypto.randomUUID()}>
-            {/* <p>========== {JSON.stringify(card[0])} ========</p>
-            <p>{JSON.stringify(card[1])} </p> */}
-            <Card data={JSON.stringify(card[1])}></Card>
-            {/* <p>========== A ========</p> */}
-            <br />
-          </div>
+          <Card data={JSON.stringify(card[1])}></Card>
         ))}
       </div>
-            <ToastContainer
-            // position="bottom-right"
-            // autoClose={5000}
-            // hideProgressBar={false}
-            // newestOnTop={false}
-            // closeOnClick
-            // rtl={false}
-            // pauseOnFocusLoss
-            // draggable
-            // pauseOnHover
-            // theme={colorScheme}
-            />
+      <ToastContainer />
     </>
   );
 }
