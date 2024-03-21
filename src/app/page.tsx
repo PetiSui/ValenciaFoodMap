@@ -12,15 +12,14 @@ export default async function App() {
   // console.log(Object.entries(data.data));
 
   return (
-    <>
-      <div>AA</div>
-      {Object.entries(data.data).map((card: any, index: any) => (
-        <>
+    <div>
+      {Object.entries(data.data).map((card: any, index: Number) => (
+        <div key={crypto.randomUUID()}>
           <p>========== {JSON.stringify(card[0])} ========</p>
           <p key={crypto.randomUUID()}>{JSON.stringify(card[1])}</p>
           <br />
-        </>
+        </div>
       ))}
-    </>
+    </div>
   );
 }
