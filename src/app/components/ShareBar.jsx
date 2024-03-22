@@ -5,7 +5,7 @@ import Share from "./Share";
 import Website from "./Website";
 
 const ShareBar = ({ url, website, name, address, id }) => {
-  
+
   return (
     <div className="buttons">
       <Website website={website}></Website>

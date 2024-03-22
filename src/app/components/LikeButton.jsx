@@ -1,6 +1,6 @@
 "use client";
 
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, use } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faEmptyHeart } from "@fortawesome/free-regular-svg-icons";
@@ -9,26 +9,33 @@ import "react-toastify/dist/ReactToastify.css";
 import usePrefersColorScheme from "use-prefers-color-scheme";
 
 const LikeButton = ({ id }) => {
-
-  console.log(id);
-
-  let likedEstablishments = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("likedEstablishments")) || [] : [];
-
-  // console.log(likedEstablishments);
-
-  let [likedPlaces, setLikedPlaces] = useState(likedEstablishments);
   let [clicked, setClicked] = useState(false);
+  let [liked, setLiked] = useState(false);
+
+  //console.log("RENDER", id);
+
+  useEffect(() => {
+    if (global?.localStorage?.getItem("likedEstablishments") === null) {
+      //localStorage entry does not exist yet
+      global?.localStorage?.setItem("likedEstablishments", "[]");
+      console.log("LOCALSTORAGE ENTRY DID NOT EXIST");
+    }
+
+    if (global?.localStorage?.getItem("likedEstablishments") !== null) {
+      let arr = JSON.parse(
+        global?.localStorage?.getItem("likedEstablishments")
+      );
+
+      console.log("ARRAY ANTES");
+      console.dir(arr);
+
+      let found = arr.includes(id);
+      found ? setLiked(true) : setLiked(false);
+    }
+  }, []);
 
   const prefersColorScheme = usePrefersColorScheme();
   const colorScheme = prefersColorScheme === "dark" ? "light" : "dark";
-  // console.log("Clicked " + clicked);
-
-  let set = new Set(likedEstablishments);
-  // console.log(set);
-
-  // let found = likedEstablishments.includes(id);
-  let found = set.has(id);
-  // console.log(found);
 
   const notifyLiked = () =>
     toast.success("Me gusta! 😄", {
@@ -54,21 +61,43 @@ const LikeButton = ({ id }) => {
     });
 
   const handleLiked = () => {
-    // found ? likedEstablishments = likedEstablishments.filter(item => item != id) : likedEstablishments.push(id);
-    console.log(id);
-    found ? set.delete(id) : set.add(id);
+    if (
+      global?.window !== undefined &&
+      global?.localStorage?.getItem("likedEstablishments") !== null
+    ) {
+      let arr = JSON.parse(
+        global?.localStorage?.getItem("likedEstablishments")
+      );
 
-    // localStorage.setItem('likedEstablishments', JSON.stringify(likedEstablishments));
-    likedEstablishments = JSON.stringify(Array.from(set));
-    localStorage.setItem("likedEstablishments", likedEstablishments);
-    setLikedPlaces(likedEstablishments);
+      // console.log("ARRAY ANTES");
+      // console.dir(arr);
 
-    found ? notifyDisliked() : notifyLiked();
+      let found = arr.includes(id);
+
+      // console.log("FOUND", found);
+
+      let likedEstablishments = found
+        ? [...arr].filter((item) => {
+            console.log(item);
+            return item != id;
+          })
+        : [...arr, id];
+
+      // console.log("ARRAY DESPUES", likedEstablishments);
+
+      let likedJSONEstablishments = JSON.stringify(likedEstablishments);
+      // console.log("PARSEADO", likedJSONEstablishments);
+      localStorage.setItem("likedEstablishments", likedJSONEstablishments);
+
+      found ? notifyDisliked() : notifyLiked();
+      found ? setLiked(false) : setLiked(true);
+    } else {
+      console.log("ERROR ONCLICK");
+    }
   };
 
   return (
     <>
-
       <button
         title="Me gusta"
         className="like_button"
@@ -78,7 +107,7 @@ const LikeButton = ({ id }) => {
         }}
         clicked={clicked.toString()}
       >
-        {found ? (
+        {liked ? (
           <FontAwesomeIcon
             icon={faHeart}
             className="like"

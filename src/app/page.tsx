@@ -11,13 +11,12 @@ export default async function App() {
   };
   const data = await getCards();
   // console.log(data);
-  // console.log(Object.entries(data.data));
 
   return (
     <>
       <div className="cards">
-        {Object.entries(data.data).map((card: any, index: Number) => (
-          <Card data={JSON.stringify(card[1])}></Card>
+        {Object.entries(data).map((card: any, index: Number) => (
+          <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>
         ))}
       </div>
       <ToastContainer />
