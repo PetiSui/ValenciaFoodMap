@@ -9,7 +9,7 @@ const Tags = ({ tags }) => {
   const [expanded, setExpanded] = useState(false);
 
   if (!tags || tags.length === 0) return;
-  console.log(tags);
+  // console.log(tags);
 
   let categories = Array.from({ length: tags.length });
 
@@ -28,15 +28,17 @@ const Tags = ({ tags }) => {
   }
 
   return (
-    <div className="tags">
-      {categories}
+    <div className="tags_container">
+      <div className="tags">
+        {categories}
+      </div>
       {tags.length > 2 ? (
         <FontAwesomeIcon
           icon={faChevronDown}
           size="xl"
           className={`tag_expand ${
             expanded ? "fa-rotate-180" : "fa-rotate-360"
-          } text-black`}
+          } `}
           onClick={() => setExpanded((prev) => !prev)}
         ></FontAwesomeIcon>
       ) : (

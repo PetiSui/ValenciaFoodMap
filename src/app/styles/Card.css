@@ -279,8 +279,14 @@ button {
   flex-wrap: wrap;
   gap: 0.6rem;
   align-items: center;
-  margin-top: 0.45rem;
-  position: relative;
+
+  flex: 1;
+}
+
+.tags_container{
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.8rem;
 }
 
 .tag {
@@ -300,9 +306,8 @@ button {
 }
 
 .tag_expand{
-  position: absolute;
-  right: 10px;
-  top: 0px;
+  color: var(--clr-dark);
+  margin-right: .2rem;
 }
 
 .almuerzos {
