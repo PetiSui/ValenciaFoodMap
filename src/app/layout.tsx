@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Footer from "./components/Footer";
 // Prevent fontawesome from dynamically adding its css since we are going to include it manually
 config.autoAddCss = false;
 
@@ -46,9 +47,10 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className="bg-texture">
+      <body className="flex flex-col">
         <Navbar></Navbar>
-        <div>{children}</div>
+        <div className="bg-texture flex-1">{children}</div>
+        <Footer></Footer>
       </body>
     </html>
   );

@@ -130,6 +130,7 @@
   --clr-body: rgba(17, 17, 17, 0.793);
   --clr-bg-texture: rgb(47, 47, 47);
   --clr-file-hover: rgb(97, 95, 95);
+  --clr-black: rgba(14, 14, 14, 0.855);
 }
 
 * {

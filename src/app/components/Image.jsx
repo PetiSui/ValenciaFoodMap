@@ -2,7 +2,7 @@ import React from 'react'
 
 const Image = ({ description, imageSourceUrl, children }) => {
     return (
-      <div className="relative">
+      <div className="image_container">
         <img className="image" src={imageSourceUrl} alt={description} loading='lazy'/>
         {children}
       </div>

@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 
 export default async function App() {
   const getCards = async () => {
-    const res = await fetch("http://localhost:3000/api/", {
+    const res = await fetch("http://localhost:3000/api/cards/", {
       headers: { "Content-Type": "application/json" },
     });
     return res.json();

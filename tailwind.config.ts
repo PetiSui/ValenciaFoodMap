@@ -20,6 +20,9 @@ const config: Config = {
         'xl': 'var(--ff-size-xl)',
         '2xl': 'var(--ff-size-2xl)',
       },
+      colors: {
+        'lightblack' : 'var(--clr-black)'
+      }
     },
   },
   plugins: [],

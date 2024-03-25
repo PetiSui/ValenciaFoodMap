@@ -25,7 +25,7 @@ export default function Navbar() {
       <h1>{path.split('/')[1]}</h1>
        <h1>{width}</h1> */}
       
-      <nav className="flex min-h-4 self-start justify-between items-center bg-black w-full sticky top-0 z-50 lg:px-24 lg:py-6 sm:px-12 sm:py-3">
+      <nav className="flex min-h-4 self-start justify-between items-center bg-lightblack w-full sticky top-0 z-[9999] lg:px-24 lg:py-6 sm:px-12 sm:py-3 backdrop-blur">
         <Link href="/" className="logo text-[#FAFAFA] text-2xl flex justify-center gap-1 items-center">
           <Image
             src={logo}
