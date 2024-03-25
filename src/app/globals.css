@@ -3,47 +3,106 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Roboto';
-    font-weight: 400;
-    src: url('./fonts/roboto-regular-webfont.woff2') format('woff2'),
-         url('./fonts/roboto-regular-webfont.woff') format('woff');
+  font-family: "Roboto";
+  font-weight: 400;
+  src: url("./fonts/roboto-regular-webfont.woff2") format("woff2"),
+    url("./fonts/roboto-regular-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 300;
+  src: url("./fonts/roboto-light-webfont.woff2") format("woff2"),
+    url("./fonts/roboto-light-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 100;
+  src: url("./fonts/roboto-thin-webfont.woff") format("woff2"),
+    url("./fonts/roboto-thin-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 800;
+  src: url("./fonts/roboto-bold-webfont.woff2") format("woff2"),
+    url("./fonts/roboto-bold-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-style: italic;
+  src: url("./fonts/roboto-italic-webfont.woff2") format("woff2"),
+    url("./fonts/roboto-italic-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 600;
+  src: url("./fonts/roboto-medium-webfont.woff2") format("woff2"),
+    url("./fonts/roboto-medium-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "greycliff_cfbold";
+  src: url("./fonts/fontspring-demo-greycliffcf-bold-webfont.woff2") format("woff2"),
+    url("./fonts/fontspring-demo-greycliffcf-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "greycliff_cfextra_bold";
+  src: url("./fonts/fontspring-demo-greycliffcf-extrabold-webfont.woff2")
+      format("woff2"),
+    url("./fonts/fontspring-demo-greycliffcf-extrabold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* For browsers that support clamp  */
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
+  :root {
+		--ff-size-s: clamp(0.64rem, -0.01vi + 0.64rem, 0.63rem);
+		--ff-size-m: clamp(0.8rem, 0.08vi + 0.78rem, 0.84rem);
+		--ff-size-lg: clamp(1rem, 0.23vi + 0.94rem, 1.13rem);
+		--ff-size-xl: clamp(1.25rem, 0.45vi + 1.14rem, 1.5rem);
+		--ff-size-2xl: clamp(1.56rem, 0.79vi + 1.36rem, 2rem);
+		--ff-size-3xl: clamp(1.95rem, 1.29vi + 1.63rem, 2.66rem);
+		--ff-size-4xl: clamp(2.44rem, 2.02vi + 1.94rem, 3.55rem);
+		--ff-size-5xl: clamp(3.05rem, 3.06vi + 2.29rem, 4.73rem);
+		--ff-size-6xl: clamp(3.81rem, 4.54vi + 2.68rem, 6.31rem);
   }
-  
-  @font-face {
-    font-family: 'Roboto';
-    font-weight: 300;
-    src: url('./fonts/roboto-light-webfont.woff2') format('woff2'),
-         url('./fonts/roboto-light-webfont.woff') format('woff');
+}
+/* For browsers that don't support clamp */
+@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+  :root {
+		--ff-size-s: 0.64rem;
+		--ff-size-m: 0.8rem;
+		--ff-size-lg: 1rem;
+		--ff-size-xl: 1.25rem;
+		--ff-size-2xl: 1.56rem;
+		--ff-size-3xl: 1.95rem;
+		--ff-size-4xl: 2.44rem;
+		--ff-size-5xl: 3.05rem;
+		--ff-size-6xl: 3.81rem;
   }
-  
-  @font-face {
-    font-family: 'Roboto';
-    font-weight: 100;
-    src: url('./fonts/roboto-thin-webfont.woff') format('woff2'),
-         url('./fonts/roboto-thin-webfont.woff') format('woff');
+  @media screen and (min-width: 1280px) {
+    :root {
+			--ff-size-s: 0.63rem;
+			--ff-size-m: 0.84rem;
+			--ff-size-lg: 1.13rem;
+			--ff-size-xl: 1.5rem;
+			--ff-size-2xl: 2rem;
+			--ff-size-3xl: 2.66rem;
+			--ff-size-4xl: 3.55rem;
+			--ff-size-5xl: 4.73rem;
+			--ff-size-6xl: 6.31rem;
+    }
   }
-  
-  @font-face {
-    font-family: 'Roboto';
-    font-weight: 800;
-    src: url('./fonts/roboto-bold-webfont.woff2') format('woff2'),
-         url('./fonts/roboto-bold-webfont.woff') format('woff');
-  }
-  
-  @font-face {
-    font-family: 'Roboto';
-    font-weight: 400;
-    font-style: italic;
-    src: url('./fonts/roboto-italic-webfont.woff2') format('woff2'),
-         url('./fonts/roboto-italic-webfont.woff') format('woff');
-  }
-  
-  @font-face {
-    font-family: 'Roboto';
-    font-weight: 600;
-    src: url('./fonts/roboto-medium-webfont.woff2') format('woff2'),
-         url('./fonts/roboto-medium-webfont.woff') format('woff');
-  }
+}
 
 :root {
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
@@ -57,11 +116,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+/* 
   --ff-size-s: 0.85rem;
   --ff-size-m: 1.2rem;
   --ff-size-l: 1.35rem;
-  --ff-size-xl: 1.8rem;
+  --ff-size-xl: 1.8rem; */
 
   --fw-light: 300;
   --fw-normal: 400;
@@ -69,6 +128,7 @@
   --fw-bold: 800;
 
   --clr-body: rgba(17, 17, 17, 0.793);
+  --clr-bg-texture: rgb(47, 47, 47);
   --clr-file-hover: rgb(97, 95, 95);
 }
 
@@ -88,7 +148,7 @@ body {
   min-height: 100%;
   width: 100%;
   margin: 0;
-  padding: 2rem;
+  padding: 0;
   background-color: var(--clr-body);
   font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
@@ -116,10 +176,23 @@ body {
   /* justify-content: space-between; */
 }
 
+.logo{
+  font-family: "greycliff_cfbold" !important;
+  /* font-size: var(--ff-size-2xl); */
+  font-weight: 900;
+}
+
+.bg-texture{
+  background-color: var(--clr-bg-texture);
+  background-image: url("../../public/pattern.webp");
+  background-repeat: repeat;
+  background-blend-mode: exclusion;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #f1f1f1;
+    --clr-bg-texture: rgba(224, 224, 224, 0.871);
+    /* color: #213547;
+    background-color: #f1f1f1; */
   }
 }

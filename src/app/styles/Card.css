@@ -1,16 +1,6 @@
 :root {
-  /* --ff-size-s: 0.87rem;
-  --ff-size-m: 1.2rem;
-  --ff-size-l: 1.35rem;
-  --ff-size-xl: 1.8rem;
 
-  --fw-light: 200;
-  --fw-normal: 400;
-  --fw-bold: 600;
-
-  --ff: Roboto, system-ui; */
-
-  --clr-card: rgba(242, 242, 242, 0.963); /*rgb(230, 230, 230); */
+  --clr-card: rgb(231, 231, 231); /*rgb(230, 230, 230); */
   --clr-text: rgb(22, 22, 22);
   --clr-primary: rgb(72, 218, 218);
   --clr-heart: rgb(204, 51, 51);
@@ -43,11 +33,11 @@ h1 {
   font-family: var(--ff);
 }
 
-a {
+a.link {
   text-decoration: none;
   color: var(--clr-links);
   font-weight: var(--fw-medium);
-  font-size: var(--ff-size-s);
+  font-size: var(--ff-size-m);
   overflow: hidden;
   display: -webkit-box;
   width: 100%;
@@ -55,7 +45,7 @@ a {
   -webkit-box-orient: vertical;
 }
 
-a:hover {
+a.link:hover {
   color: var(--clr-links-hover);
   -webkit-line-clamp: 3;
 }
@@ -108,7 +98,7 @@ a:hover {
   border-radius: calc(10px + 0.8rem);
   padding: 0.8rem;
   border-top: 0.7rem solid var(--clr-primary);
-  box-shadow: 0.4rem 0.5rem 0.85rem -0.3rem var(--clr-shadow);
+  box-shadow: 0.3rem 0.3rem 0.85rem -0.4rem var(--clr-dark);
   display: flex;
   flex-direction: column;
   aspect-ratio: 16 / 9;
@@ -191,9 +181,8 @@ a:hover {
 .descripcion {
   text-wrap: balance;
   text-align: left;
-  font-size: clamp(var(--ff-size-m), 5vw, var(--ff-size-l));
+  font-size: var(--ff-size-xl);
   font-weight: var(--fw-bold);
-  font-family: var(--ff);
   color: var(--clr-text);
   margin-top: 0.35rem;
   line-height: 1.25;
@@ -291,11 +280,11 @@ button {
 
 .tag {
   color: var(--clr-black);
-  font-weight: var(--fw-bold);
+  font-weight: 700;
   text-transform: uppercase;
-  opacity: .98;
+  /* opacity: .9; */
   /* vertical-align: middle; */
-  font-size: calc(var(--ff-size-s) * 0.9);
+  font-size: calc(var(--ff-size-m) * 0.95);
   line-height: 3ch;
   padding-inline: 0.6rem;
   padding-block: 0.2rem;
@@ -308,6 +297,7 @@ button {
 .tag_expand{
   color: var(--clr-black);
   margin-right: .2rem;
+  margin-top: .1rem;
 }
 
 .almuerzos {

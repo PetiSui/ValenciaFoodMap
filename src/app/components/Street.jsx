@@ -24,7 +24,7 @@ const Street = ({ address, url }) => {
   return (
     <div ref={ref} className="street_details" title="Dirección">
       {StreetAddress}
-      <a href={url} target="_blank" className="address">
+      <a href={url} target="_blank" className="address link">
         {address}
       </a>
     </div>

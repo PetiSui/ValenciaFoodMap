@@ -7,7 +7,7 @@ const Telephone = ({ telephoneNumber }) => {
     return (
       <div className="phone_details" title="Teléfono de contacto">
         <FontAwesomeIcon icon={faPhone} className="phone"></FontAwesomeIcon>
-        <a href={`tel:${telephoneNumber}`} className="telephone_number">
+        <a href={`tel:${telephoneNumber}`} className="telephone_number link">
           {telephoneNumber}
         </a>
       </div>

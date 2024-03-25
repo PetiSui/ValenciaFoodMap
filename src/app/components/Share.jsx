@@ -2,7 +2,7 @@
 
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShare } from "@fortawesome/free-solid-svg-icons";
+import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 
 function share(link, name, address) {
   let shareData = {
@@ -28,7 +28,7 @@ const Share = ({ url, name, address }) => {
       }}
     >
       <FontAwesomeIcon
-        icon={faShare}
+        icon={faShareNodes}
         size="lg"
         className="share"
       ></FontAwesomeIcon>
