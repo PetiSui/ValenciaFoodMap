@@ -47,7 +47,8 @@
 
 @font-face {
   font-family: "greycliff_cfbold";
-  src: url("./fonts/fontspring-demo-greycliffcf-bold-webfont.woff2") format("woff2"),
+  src: url("./fonts/fontspring-demo-greycliffcf-bold-webfont.woff2")
+      format("woff2"),
     url("./fonts/fontspring-demo-greycliffcf-bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -57,7 +58,8 @@
   font-family: "greycliff_cfextra_bold";
   src: url("./fonts/fontspring-demo-greycliffcf-extrabold-webfont.woff2")
       format("woff2"),
-    url("./fonts/fontspring-demo-greycliffcf-extrabold-webfont.woff") format("woff");
+    url("./fonts/fontspring-demo-greycliffcf-extrabold-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -65,41 +67,41 @@
 /* For browsers that support clamp  */
 @supports (font-size: clamp(1rem, 1vi, 1rem)) {
   :root {
-		--ff-size-s: clamp(0.64rem, -0.01vi + 0.64rem, 0.63rem);
-		--ff-size-m: clamp(0.8rem, 0.08vi + 0.78rem, 0.84rem);
-		--ff-size-lg: clamp(1rem, 0.23vi + 0.94rem, 1.13rem);
-		--ff-size-xl: clamp(1.25rem, 0.45vi + 1.14rem, 1.5rem);
-		--ff-size-2xl: clamp(1.56rem, 0.79vi + 1.36rem, 2rem);
-		--ff-size-3xl: clamp(1.95rem, 1.29vi + 1.63rem, 2.66rem);
-		--ff-size-4xl: clamp(2.44rem, 2.02vi + 1.94rem, 3.55rem);
-		--ff-size-5xl: clamp(3.05rem, 3.06vi + 2.29rem, 4.73rem);
-		--ff-size-6xl: clamp(3.81rem, 4.54vi + 2.68rem, 6.31rem);
+    --ff-size-s: clamp(0.64rem, -0.01vi + 0.64rem, 0.63rem);
+    --ff-size-m: clamp(0.8rem, 0.08vi + 0.78rem, 0.84rem);
+    --ff-size-lg: clamp(1rem, 0.23vi + 0.94rem, 1.13rem);
+    --ff-size-xl: clamp(1.25rem, 0.45vi + 1.14rem, 1.5rem);
+    --ff-size-2xl: clamp(1.56rem, 0.79vi + 1.36rem, 2rem);
+    --ff-size-3xl: clamp(1.95rem, 1.29vi + 1.63rem, 2.66rem);
+    --ff-size-4xl: clamp(2.44rem, 2.02vi + 1.94rem, 3.55rem);
+    --ff-size-5xl: clamp(3.05rem, 3.06vi + 2.29rem, 4.73rem);
+    --ff-size-6xl: clamp(3.81rem, 4.54vi + 2.68rem, 6.31rem);
   }
 }
 /* For browsers that don't support clamp */
 @supports not (font-size: clamp(1rem, 1vi, 1rem)) {
   :root {
-		--ff-size-s: 0.64rem;
-		--ff-size-m: 0.8rem;
-		--ff-size-lg: 1rem;
-		--ff-size-xl: 1.25rem;
-		--ff-size-2xl: 1.56rem;
-		--ff-size-3xl: 1.95rem;
-		--ff-size-4xl: 2.44rem;
-		--ff-size-5xl: 3.05rem;
-		--ff-size-6xl: 3.81rem;
+    --ff-size-s: 0.64rem;
+    --ff-size-m: 0.8rem;
+    --ff-size-lg: 1rem;
+    --ff-size-xl: 1.25rem;
+    --ff-size-2xl: 1.56rem;
+    --ff-size-3xl: 1.95rem;
+    --ff-size-4xl: 2.44rem;
+    --ff-size-5xl: 3.05rem;
+    --ff-size-6xl: 3.81rem;
   }
   @media screen and (min-width: 1280px) {
     :root {
-			--ff-size-s: 0.63rem;
-			--ff-size-m: 0.84rem;
-			--ff-size-lg: 1.13rem;
-			--ff-size-xl: 1.5rem;
-			--ff-size-2xl: 2rem;
-			--ff-size-3xl: 2.66rem;
-			--ff-size-4xl: 3.55rem;
-			--ff-size-5xl: 4.73rem;
-			--ff-size-6xl: 6.31rem;
+      --ff-size-s: 0.63rem;
+      --ff-size-m: 0.84rem;
+      --ff-size-lg: 1.13rem;
+      --ff-size-xl: 1.5rem;
+      --ff-size-2xl: 2rem;
+      --ff-size-3xl: 2.66rem;
+      --ff-size-4xl: 3.55rem;
+      --ff-size-5xl: 4.73rem;
+      --ff-size-6xl: 6.31rem;
     }
   }
 }
@@ -116,7 +118,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-/* 
+  /* 
   --ff-size-s: 0.85rem;
   --ff-size-m: 1.2rem;
   --ff-size-l: 1.35rem;
@@ -156,6 +158,7 @@ body {
     sans-serif;
 }
 
+
 .pac-container {
   background-color: #4d4d4d;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -177,17 +180,26 @@ body {
   /* justify-content: space-between; */
 }
 
-.logo{
+.logo {
   font-family: "greycliff_cfbold" !important;
   /* font-size: var(--ff-size-2xl); */
   font-weight: 900;
 }
 
-.bg-texture{
+.bg-texture {
   background-color: var(--clr-bg-texture);
   background-image: url("../../public/pattern.webp");
   background-repeat: repeat;
   background-blend-mode: exclusion;
+}
+
+.glassmorphism {
+  /* From https://css.glass */
+  background: rgba(246, 246, 246, 0.249);
+  border-radius: 8px;
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 @media (prefers-color-scheme: light) {

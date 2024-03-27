@@ -14,15 +14,24 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontSize: {
-        's': 'var(--ff-size-s)',
-        'm': 'var(--ff-size-m)',
-        'l': 'var(--ff-size-l)',
-        'xl': 'var(--ff-size-xl)',
-        '2xl': 'var(--ff-size-2xl)',
+        s: "var(--ff-size-s)",
+        m: "var(--ff-size-m)",
+        l: "var(--ff-size-l)",
+        xl: "var(--ff-size-xl)",
+        "2xl": "var(--ff-size-2xl)",
+        "3xl": "var(--ff-size-3xl)",
+        "4xl": "var(--ff-size-4xl)",
+        "5xl": "var(--ff-size-5xl)",
       },
       colors: {
-        'lightblack' : 'var(--clr-black)'
-      }
+        lightblack: "var(--clr-black)",
+      },
+      screens: {
+        sm: "640px",
+        md: "960px",
+        lg: "1280px",
+        xl: "1600px",
+      },
     },
   },
   plugins: [],
