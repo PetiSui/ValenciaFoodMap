@@ -98,14 +98,14 @@ export default function Navbar() {
       <h1>{path.split('/')[1]}</h1>
        <h1>{width}</h1> */}
 
-      <nav className="flex min-h-4 self-start justify-between items-center bg-lightblack w-full sticky top-0 z-[9999] md:py-5 md:px-10 max-sm:py-3 max-sm:px-3 sm:py-3 sm:px-3 backdrop-blur">
+      <nav className="flex min-h-4 self-start justify-between items-center bg-lightblack w-full sticky top-0 z-[9999] lg:px-20 lg:py-6 max-sm:py-4 max-sm:px-6 sm:py-4 sm:px-6 backdrop-blur">
         <div className="flex justify-center items-center">
           <Link
             href="/"
             className="logo text-[#FAFAFA] text-2xl flex justify-center gap-1 items-center"
           >
             <Image src={logo} alt="Logo" className="" width={64}></Image>
-            <p className="text-balance leading-tight ">VALENCIA FOOD MAP</p>
+            {!open && <p className="text-balance leading-tight ">VALENCIA FOOD MAP</p>}
           </Link>
         </div>
 
