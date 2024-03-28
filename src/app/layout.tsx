@@ -10,7 +10,7 @@ config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: "Valencia Food Map",
-  description: "Encuentra los sitios más destacados",
+  description: "Encuentra los sitios para comer",
 };
 
 export default function RootLayout({
@@ -49,8 +49,7 @@ export default function RootLayout({
       </head>
       <body className="flex flex-col relative">
         <Navbar></Navbar>
-        <div className="w-full h-full grow bg-texture py-16">{children}</div>
-        {/* <div className="absolute w-[100%] h-[100%] bg-texture flex-1 z-[0]"></div> */}
+        <main className="w-full h-full grow bg-texture py-16">{children}</main>
         <Footer></Footer>
       </body>
     </html>

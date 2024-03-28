@@ -132,7 +132,8 @@
   --clr-body: rgba(17, 17, 17, 0.793);
   --clr-bg-texture: rgb(47, 47, 47);
   --clr-file-hover: rgb(97, 95, 95);
-  --clr-black: rgba(14, 14, 14, 0.855);
+  /* --clr-black: rgba(14, 14, 14, 0.855); */
+  --clr-black: rgb(16, 16, 16);
 }
 
 * {
@@ -189,8 +190,11 @@ body {
 .bg-texture {
   background-color: var(--clr-bg-texture);
   background-image: url("../../public/pattern.webp");
-  background-repeat: repeat;
+  /* background-repeat: repeat; */
   background-blend-mode: exclusion;
+  /* background-size: 30%; */
+  animation: pan 220s linear infinite;
+  will-change: background-position;
 }
 
 .glassmorphism {
@@ -202,10 +206,36 @@ body {
   -webkit-backdrop-filter: blur(3px);
 }
 
+@media (prefers-reduced-motion) {
+  /* styles to apply if a user's device settings are set to reduced motion */
+  .bg-texture {
+    animation: none;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     --clr-bg-texture: rgba(224, 224, 224, 0.871);
     /* color: #213547;
     background-color: #f1f1f1; */
+  }
+}
+
+@keyframes move-background {
+  0% {
+    background-position: 0% 0%;
+  }
+  
+  100% {
+    background-position: -100% 0%;
+  }
+}
+
+@keyframes pan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
   }
 }

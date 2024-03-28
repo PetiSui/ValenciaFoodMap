@@ -18,16 +18,13 @@ const LikeButton = ({ id }) => {
     if (global?.localStorage?.getItem("likedEstablishments") === null) {
       //localStorage entry does not exist yet
       global?.localStorage?.setItem("likedEstablishments", "[]");
-      console.log("LOCALSTORAGE ENTRY DID NOT EXIST");
+      //console.log("LOCALSTORAGE ENTRY DID NOT EXIST");
     }
 
     if (global?.localStorage?.getItem("likedEstablishments") !== null) {
       let arr = JSON.parse(
         global?.localStorage?.getItem("likedEstablishments")
       );
-
-      console.log("ARRAY ANTES");
-      console.dir(arr);
 
       let found = arr.includes(id);
       found ? setLiked(true) : setLiked(false);
