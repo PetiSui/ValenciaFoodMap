@@ -7,7 +7,7 @@ import { useHover } from "@uidotdev/usehooks";
 
 const Street = ({ address, url }) => {
   const [ref, hovering] = useHover();
-  if (!address || !url) return null;
+  if (!address || !url) return;
   const StreetAddress = hovering ? (
     <FontAwesomeIcon
       icon={faMapLocation}
