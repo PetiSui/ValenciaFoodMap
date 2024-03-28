@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
-import { ToastContainer } from "react-toastify";
 
 export default function App() {
   const [data, setData] = useState("");
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/cards/", {
+    fetch("/api/cards/", {
       method: "POST",
       headers: {
         Accept: "application/json",
