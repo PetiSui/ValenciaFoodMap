@@ -6,8 +6,8 @@ import { faMapLocation } from "@fortawesome/free-solid-svg-icons";
 import { useHover } from "@uidotdev/usehooks";
 
 const Street = ({ address, url }) => {
-  if (!address || !url) return null;
   const [ref, hovering] = useHover();
+  if (!address || !url) return null;
   const StreetAddress = hovering ? (
     <FontAwesomeIcon
       icon={faMapLocation}

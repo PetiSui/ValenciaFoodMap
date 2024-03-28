@@ -2,7 +2,6 @@ import React from 'react';
 import Telephone from "./Telephone";
 import Street from "./Street";
 import ShareBar from "./ShareBar";
-import ImageWithRating from "./ImageWithRating";
 import Image from "./Image";
 import Rating from "./Rating";
 import Pricing from "./Pricing";
@@ -16,7 +15,6 @@ function Card({ data }) {
   return (
 
       <div className="card" key={crypto.randomUUID()}>
-        {/* <ImageWithRating rating={data?.rating} description={data?.name} imageSourceUrl={imageSourceUrl}></ImageWithRating> */}
         <Image description={data2?.name} imageSourceUrl={data2?.photos}>
           <Rating starCount={data2?.rating}></Rating>
           <Pricing priceLevel={data2?.priceLevel}></Pricing>

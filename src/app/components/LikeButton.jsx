@@ -29,7 +29,7 @@ const LikeButton = ({ id }) => {
       let found = arr.includes(id);
       found ? setLiked(true) : setLiked(false);
     }
-  }, []);
+  }, [id]);
 
   const prefersColorScheme = usePrefersColorScheme();
   const colorScheme = prefersColorScheme === "dark" ? "light" : "dark";
