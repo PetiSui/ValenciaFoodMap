@@ -112,7 +112,7 @@ export default function Navbar() {
         <FontAwesomeIcon
           icon={open ? faXmark : faBars}
           size="2xl"
-          className="md:hidden max-sm:visible basis-12"
+          className="md:hidden basis-12"
           onClick={() => toggleMenu()}
         ></FontAwesomeIcon>
 
