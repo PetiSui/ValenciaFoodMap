@@ -8,7 +8,7 @@
   --clr-light-grey: rgb(178, 170, 170);
   --clr-white-hover: rgb(214, 213, 213);
   --clr-shadow: rgba(208, 208, 208, 0.375);
-  --clr-black: rgba(14, 14, 14, 0.855);
+  /* --clr-black: rgba(14, 14, 14, 0.855); */
   --clr-links: rgb(44, 138, 193);
   --clr-links-hover: rgb(32, 98, 136);
   --clr-euros: rgb(93, 178, 228);
@@ -98,9 +98,15 @@ a.link:hover {
   border-radius: calc(10px + 0.8rem);
   padding: 0.8rem;
   border-top: 0.7rem solid var(--clr-primary);
-  box-shadow: 0.3rem 0.3rem 0.85rem -0.4rem var(--clr-dark);
+  -webkit-box-shadow: 0.3rem 0.3rem 0.85rem -0.4rem var(--clr-dark);
+          box-shadow: 0.3rem 0.3rem 0.85rem -0.4rem var(--clr-dark);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   aspect-ratio: 16 / 9;
 }
 
@@ -115,11 +121,10 @@ a.link:hover {
   aspect-ratio: 16/9;
   /* border-image: fill 0 linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.113)); */
   border-radius: 10px 10px 0 0;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   background-color: rgba(155, 153, 153, 0.493);
   -webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -ms-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 
@@ -152,7 +157,6 @@ a.link:hover {
     hsla(0, 0%, 0%, 0.905),
     transparent
   );
-  z-index: 20;
 }
 
 .rating {
@@ -472,7 +476,7 @@ button {
     --clr-light-grey: rgb(162, 162, 162);
     --clr-shadow: rgba(0, 40, 80, 0.2);
     --clr-links: rgb(64, 165, 223);
-    --clr-dark: #141414;
+    /* --clr-dark: #141414; */
   }
 
   .descripcion {
