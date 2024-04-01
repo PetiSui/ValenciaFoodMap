@@ -117,7 +117,7 @@ a.link:hover {
 
 .image {
   min-width: 100%;
-  /* min-height: 100%; */
+  min-height: 100%;
   aspect-ratio: 16/9;
   /* border-image: fill 0 linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.113)); */
   border-radius: 10px 10px 0 0;
@@ -468,7 +468,7 @@ button {
 
 @media (prefers-color-scheme: light) {
   :root {
-    --clr-text: rgb(215, 215, 215);
+    /* --clr-text: rgb(215, 215, 215); */
     /* --clr-card: rgba(48, 48, 48, 0.948); */
     --clr-card: #F0F2F5;
     --clr-heart: rgb(237, 41, 15);
@@ -477,10 +477,6 @@ button {
     --clr-shadow: rgba(0, 40, 80, 0.2);
     --clr-links: rgb(64, 165, 223);
     /* --clr-dark: #141414; */
-  }
-
-  .descripcion {
-    color: var(--clr-dark);
   }
 
   .globe, .share, .phone, .map{
