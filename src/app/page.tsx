@@ -16,7 +16,7 @@ export default async function App() {
                Valencia
             </span>
           </h1>
-          <p className="flex-1 mt-2 text-gray-100 font-light text-xl">
+          <p className="flex-1 mt-2 text-gray-100 font-normal text-xl">
             Busca y explora los mejores establecimientos
           </p>
           <Link

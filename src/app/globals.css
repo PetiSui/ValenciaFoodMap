@@ -199,7 +199,7 @@ body {
 
 .glassmorphism {
   /* From https://css.glass */
-  background: rgba(246, 246, 246, 0.249);
+  background: rgba(246, 246, 246, 0.199);
   border-radius: 8px;
   /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   backdrop-filter: blur(3px);

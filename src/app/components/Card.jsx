@@ -2,7 +2,7 @@ import React from 'react';
 import Telephone from "./Telephone";
 import Street from "./Street";
 import ShareBar from "./ShareBar";
-import Image from "./Image";
+import CardImage from "./CardImage";
 import Rating from "./Rating";
 import Pricing from "./Pricing";
 import Tags from "./Tags";
@@ -15,10 +15,10 @@ function Card({ data }) {
   return (
 
       <div className="card" key={crypto.randomUUID()}>
-        <Image description={data2?.name} imageSourceUrl={data2?.photos}>
+        <CardImage description={data2?.name} imageSourceUrl={data2?.photos}>
           <Rating starCount={data2?.rating}></Rating>
           <Pricing priceLevel={data2?.priceLevel}></Pricing>
-        </Image>
+        </CardImage>
         <p className="descripcion">{data2?.name}</p>
         <Tags tags={data2?.categories}></Tags>
         <div className='flexible' key={crypto.randomUUID()}>

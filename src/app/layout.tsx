@@ -47,7 +47,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className="flex flex-col relative">
+      <body suppressHydrationWarning={true} className="flex flex-col relative">
         <Navbar></Navbar>
         <main className="w-full h-full grow bg-texture py-16">{children}</main>
         <Footer></Footer>
