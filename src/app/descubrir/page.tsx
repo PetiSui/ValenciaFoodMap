@@ -1,4 +1,5 @@
 import Card from "../components/Card";
+import Filters from "../components/Filters";
 import { ToastContainer } from "react-toastify";
 var cache = require("memory-cache");
 
@@ -31,6 +32,7 @@ export default async function App() {
 
   return (
     <>
+      <Filters></Filters>
       <div className="cards p-10">
         {Object.entries(data).map((card: any, index: Number) => (
           <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>

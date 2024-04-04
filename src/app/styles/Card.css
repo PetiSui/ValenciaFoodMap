@@ -1,5 +1,4 @@
 :root {
-
   --clr-card: rgb(231, 231, 231); /*rgb(230, 230, 230); */
   --clr-text: rgb(22, 22, 22);
   --clr-primary: rgb(72, 218, 218);
@@ -99,30 +98,30 @@ a.link:hover {
   padding: 0.8rem;
   border-top: 0.7rem solid var(--clr-primary);
   -webkit-box-shadow: 0.3rem 0.3rem 0.85rem -0.4rem var(--clr-dark);
-          box-shadow: 0.3rem 0.3rem 0.85rem -0.4rem var(--clr-dark);
+  box-shadow: 0.3rem 0.3rem 0.85rem -0.4rem var(--clr-dark);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   aspect-ratio: 16 / 9;
 }
 
-.flexible{
+.flexible {
   margin-top: auto;
   /* margin-bottom: auto; */
 }
 
 .image {
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  /* min-height: 100%; */
   aspect-ratio: 16/9;
   /* border-image: fill 0 linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.113)); */
   border-radius: 10px 10px 0 0;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   background-color: rgba(155, 153, 153, 0.493);
   -webkit-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
@@ -141,8 +140,7 @@ a.link:hover {
 
 .image_container {
   position: relative;
-  overflow: hidden;
-  padding: 0;
+  /* overflow: hidden; */
 }
 
 .image_container::after {
@@ -233,7 +231,7 @@ button {
   padding: 0.7rem;
   border-radius: 50%;
   filter: drop-shadow(-1px 0px 3px rgba(124, 124, 124, 0.307));
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 .like_button:hover {
@@ -277,7 +275,7 @@ button {
   flex: 1;
 }
 
-.tags_container{
+.tags_container {
   display: flex;
   flex-direction: row;
   margin-top: 0.8rem;
@@ -299,10 +297,10 @@ button {
   box-shadow: 0px 0px 21px -7px rgba(18, 18, 18, 0.552);
 }
 
-.tag_expand{
+.tag_expand {
   color: var(--clr-black);
-  margin-right: .2rem;
-  margin-top: .1rem;
+  margin-right: 0.2rem;
+  margin-top: 0.1rem;
 }
 
 .almuerzos {
@@ -470,7 +468,7 @@ button {
   :root {
     /* --clr-text: rgb(215, 215, 215); */
     /* --clr-card: rgba(48, 48, 48, 0.948); */
-    --clr-card: #F0F2F5;
+    --clr-card: #f0f2f5;
     --clr-heart: rgb(237, 41, 15);
     --clr-dark-grey: rgb(80, 78, 78);
     --clr-light-grey: rgb(162, 162, 162);
@@ -479,15 +477,19 @@ button {
     /* --clr-dark: #141414; */
   }
 
-  .globe, .share, .phone, .map{
+  .globe,
+  .share,
+  .phone,
+  .map {
     color: var(--clr-dark-grey);
   }
 
-  .like_button{
-    background-color: #FAFAFA;
+  .like_button {
+    background-color: #fafafa;
   }
 
-  label, span{
+  label,
+  span {
     color: var(--clr-dark);
   }
 }
