@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
+import ContentLoader from "react-content-loader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faFaceSadTear } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export default function App() {
   const [data, setData] = useState("");
@@ -25,12 +29,65 @@ export default function App() {
       });
   }, []);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No favorites</p>;
+  if (isLoading) {
+    const items = Array.from({ length: 10 }).map((_, index) => (
+      <ContentLoader
+        speed={2}
+        width={300}
+        height={440}
+        viewBox="0 0 300 460"
+        color="black"
+        className="glassmorphism"
+        backgroundColor="#171717"
+        foregroundColor="#FAFAFA"
+        animate={true}
+        key={crypto.randomUUID()}
+      >
+        <rect x="15" y="25" rx="0" ry="0" width="270" height="150" />
+        <rect x="15" y="200" rx="2" ry="2" width="270" height="30" />
+        <rect x="15" y="250" rx="2" ry="2" width="80" height="20" />
+        <rect x="100" y="250" rx="2" ry="2" width="80" height="20" />
+        <rect x="185" y="250" rx="2" ry="2" width="80" height="20" />
+        <rect x="15" y="340" rx="2" ry="2" width="270" height="10" />
+        <rect x="15" y="370" rx="2" ry="2" width="270" height="10" />
+        <circle cx="30" cy="430" r="14" />
+        <circle cx="75" cy="430" r="14" />
+        <circle cx="260" cy="430" r="20" />
+      </ContentLoader>
+    ));
+
+    return (
+      <div className="flex flex-col mx-auto w-[90%] p-10 gap-4">
+        <p className="self-start text-2xl font-semibold">Cargando...</p>
+        <div className="flex flex-wrap p-0 gap-8 ">{items}</div>
+      </div>
+    );
+  }
+
+  if (!data || data.length === 0)
+    return (
+      <div className="glassmorphism flex flex-col justify-center items-center gap-5 w-[70%] p-12 mx-auto">
+        <FontAwesomeIcon icon={faFaceSadTear} size="2xl" />
+        <p className="font-semibold text-2xl">
+          Todavia no tienes favoritos añadidos
+        </p>
+        <Link
+          className="bg-black border-0 px-5 py-3 rounded hover:bg-slate-100 hover:text-[#020202]"
+          href="/descubrir"
+        >
+          Explora
+          <FontAwesomeIcon
+            className="ml-3"
+            size="sm"
+            icon={faArrowRight}
+          ></FontAwesomeIcon>
+        </Link>
+      </div>
+    );
 
   return (
     <>
-      <div className="cards p-10">
+      <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
         {Object.entries(data).map((card: any, index: Number) => (
           <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>
         ))}

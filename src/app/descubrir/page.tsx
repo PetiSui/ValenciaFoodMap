@@ -33,7 +33,7 @@ export default async function App() {
   return (
     <>
       <Filters></Filters>
-      <div className="cards p-10">
+      <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
         {Object.entries(data).map((card: any, index: Number) => (
           <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>
         ))}

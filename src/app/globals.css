@@ -128,7 +128,7 @@
   --fw-normal: 400;
   --fw-medium: 600;
   --fw-bold: 800;
-
+  --clr-a: #171717;
   --clr-body: rgba(17, 17, 17, 0.793);
   --clr-bg-texture: rgb(47, 47, 47);
   --clr-file-hover: rgb(97, 95, 95);
@@ -171,14 +171,6 @@ body {
 }
 .pac-item:hover {
   background: #cbcbcb66;
-}
-
-.cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  /* justify-content: space-between; */
 }
 
 .logo {
