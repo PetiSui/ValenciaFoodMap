@@ -181,10 +181,10 @@ body {
 .bg-texture {
   background-color: var(--clr-bg-texture);
   background-image: url("../../public/pattern.webp");
-  /* background-repeat: repeat; */
+  background-repeat: repeat;
+  background-repeat: round;
   background-blend-mode: exclusion;
-  /* background-size: 30%; */
-  animation: pan 220s linear infinite;
+  animation: move-background 220s linear infinite;
   will-change: background-position;
 }
 
@@ -219,14 +219,5 @@ body {
   
   100% {
     background-position: -100% 0%;
-  }
-}
-
-@keyframes pan {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 100% 0%;
   }
 }
