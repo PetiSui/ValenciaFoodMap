@@ -6,7 +6,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
+} from "@/components/ui/pagination";
 import Card from "../components/Card";
 import Filters from "../components/Filters";
 import { ToastContainer } from "react-toastify";
@@ -43,43 +43,119 @@ export default async function App({
   const data = await getCards();
   // console.log(data);
 
-  const totalPages = Math.ceil(Object.entries(data).length/3);
-  const pageNumber = parseInt(searchParams["page"] as string) || 1;
+  const totalPages = Math.ceil(Object.entries(data).length / 3);
+  let pageNumber = parseInt(searchParams["page"] as string) || 1;
+
+  if (pageNumber >= totalPages) {
+    pageNumber = totalPages;
+  }
+  if (pageNumber < 1) {
+    pageNumber = 1;
+  }
+  console.log(pageNumber + "/" + totalPages);
+
+  let x = 0;
+  const perPage = 3;
+  const start = (pageNumber-1) * perPage;
+  const end = start + perPage;  
 
   return (
     <>
       <Filters></Filters>
       <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
-        {Object.entries(data).map((card: any, index: Number) => (
+        {Object.entries(data).slice(start, end).map((card: any, index: Number) => (
           <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>
         ))}
       </div>
       <ToastContainer />
       <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
-      <Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious href="#" />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#" isActive>
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationNext href="#" />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+        <Pagination>
+          {/* BOTON ANTERIOR */}
+          <PaginationContent className="gap-3">
+            <PaginationItem>
+              <PaginationPrevious
+                href={`/descubrir?page=${
+                  pageNumber - 1 < 1 ? 1 : pageNumber - 1
+                }`}
+                text="Anterior"
+              ></PaginationPrevious>
+            </PaginationItem>
+
+            {/* Selected pages is greater than max pages? */}
+            {pageNumber >= totalPages ? (
+              <>
+                <PaginationItem>
+                  <PaginationLink href="/descubrir?page=1">1</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationLink href="#" isActive>
+                    {totalPages}
+                  </PaginationLink>
+                </PaginationItem>
+              </>
+            ) : (
+              <PaginationItem>
+                <PaginationLink href="#" isActive>
+                  {pageNumber}
+                </PaginationLink>
+              </PaginationItem>
+            )}
+
+            {/* Render two page buttons when possible */}
+            {Array.from({ length: 2 }).map((_, index) => {
+              x++;
+              if (pageNumber + x < totalPages)
+                return (
+                  <PaginationItem key={crypto.randomUUID()}>
+                    <PaginationLink
+                      href={`/descubrir?page=${
+                        pageNumber + x >= totalPages
+                          ? totalPages
+                          : pageNumber + x
+                      }`}
+                    >
+                      {pageNumber + x >= totalPages
+                        ? totalPages
+                        : pageNumber + x}
+                    </PaginationLink>
+                  </PaginationItem>
+                );
+            })}
+
+            {pageNumber + 1 !== totalPages && totalPages > 3 ? (
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            ) : (
+              <></>
+            )}
+
+            {pageNumber !== totalPages ? (
+              <>
+                <PaginationItem>
+                  <PaginationLink href={`/descubrir?page=${totalPages}`}>
+                    {totalPages}
+                  </PaginationLink>
+                </PaginationItem>
+              </>
+            ) : (
+              <></>
+            )}
+
+            {/* Boton siguiente */}
+            <PaginationItem>
+              <PaginationNext
+                href={`/descubrir?page=${
+                  pageNumber + 1 >= totalPages ? totalPages : pageNumber + 1
+                }`}
+                text="Siguiente"
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </>
   );
