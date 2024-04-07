@@ -1,9 +1,22 @@
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 import Card from "../components/Card";
 import Filters from "../components/Filters";
 import { ToastContainer } from "react-toastify";
 var cache = require("memory-cache");
 
-export default async function App() {
+export default async function App({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   if (!process.env.NEXT_PUBLIC_BASE_API_URL) return null;
 
   const getCards = async () => {
@@ -13,7 +26,7 @@ export default async function App() {
     const value = cache.get("descubrir");
     if (value) {
       console.log("CACHE HIT");
-      
+
       return value;
     } else {
       const res = await fetch(`${apiUrl}/api/cards/`, {
@@ -30,6 +43,9 @@ export default async function App() {
   const data = await getCards();
   // console.log(data);
 
+  const totalPages = Math.ceil(Object.entries(data).length/3);
+  const pageNumber = parseInt(searchParams["page"] as string) || 1;
+
   return (
     <>
       <Filters></Filters>
@@ -39,6 +55,32 @@ export default async function App() {
         ))}
       </div>
       <ToastContainer />
+      <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
+      <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious href="#" />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#">1</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#" isActive>
+            2
+          </PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#">3</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext href="#" />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+      </div>
     </>
   );
 }
