@@ -76,7 +76,7 @@ export default async function App({
       <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
         <Pagination>
           {/* BOTON ANTERIOR */}
-          <PaginationContent className="gap-3">
+          <PaginationContent className="gap-2 px-2">
             <PaginationItem>
               <PaginationPrevious
                 href={`/descubrir?page=${
