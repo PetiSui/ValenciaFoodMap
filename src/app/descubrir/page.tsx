@@ -6,7 +6,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "../../components/ui/pagination";
 import Card from "../components/Card";
 import Filters from "../components/Filters";
 import { ToastContainer } from "react-toastify";
@@ -56,16 +56,21 @@ export default async function App({
 
   let x = 0;
   const perPage = 3;
-  const start = (pageNumber-1) * perPage;
-  const end = start + perPage;  
+  const start = (pageNumber - 1) * perPage;
+  const end = start + perPage;
 
   return (
     <>
       <Filters></Filters>
       <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
-        {Object.entries(data).slice(start, end).map((card: any, index: Number) => (
-          <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>
-        ))}
+        {Object.entries(data)
+          .slice(start, end)
+          .map((card: any, index: Number) => (
+            <Card
+              data={JSON.stringify(card[1])}
+              key={crypto.randomUUID()}
+            ></Card>
+          ))}
       </div>
       <ToastContainer />
       <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
@@ -78,6 +83,7 @@ export default async function App({
                   pageNumber - 1 < 1 ? 1 : pageNumber - 1
                 }`}
                 text="Anterior"
+                className="hover:bg-[#FAFAFA] hover:text-lightblack"
               ></PaginationPrevious>
             </PaginationItem>
 
@@ -85,20 +91,28 @@ export default async function App({
             {pageNumber >= totalPages ? (
               <>
                 <PaginationItem>
-                  <PaginationLink href="/descubrir?page=1">1</PaginationLink>
+                  <PaginationLink className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold" href="/descubrir?page=1">1</PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
                   <PaginationEllipsis />
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" isActive>
+                  <PaginationLink
+                    href="#"
+                    isActive
+                    className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                  >
                     {totalPages}
                   </PaginationLink>
                 </PaginationItem>
               </>
             ) : (
               <PaginationItem>
-                <PaginationLink href="#" isActive>
+                <PaginationLink
+                  href="#"
+                  isActive
+                  className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                >
                   {pageNumber}
                 </PaginationLink>
               </PaginationItem>
@@ -111,6 +125,7 @@ export default async function App({
                 return (
                   <PaginationItem key={crypto.randomUUID()}>
                     <PaginationLink
+                      className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
                       href={`/descubrir?page=${
                         pageNumber + x >= totalPages
                           ? totalPages
@@ -136,7 +151,10 @@ export default async function App({
             {pageNumber !== totalPages ? (
               <>
                 <PaginationItem>
-                  <PaginationLink href={`/descubrir?page=${totalPages}`}>
+                  <PaginationLink
+                    className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                    href={`/descubrir?page=${totalPages}`}
+                  >
                     {totalPages}
                   </PaginationLink>
                 </PaginationItem>
@@ -148,6 +166,7 @@ export default async function App({
             {/* Boton siguiente */}
             <PaginationItem>
               <PaginationNext
+                className="hover:bg-[#FAFAFA] hover:text-lightblack"
                 href={`/descubrir?page=${
                   pageNumber + 1 >= totalPages ? totalPages : pageNumber + 1
                 }`}
