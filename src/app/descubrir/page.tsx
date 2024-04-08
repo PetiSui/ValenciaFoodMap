@@ -43,7 +43,10 @@ export default async function App({
   const data = await getCards();
   // console.log(data);
 
-  const totalPages = Math.ceil(Object.entries(data).length / 3);
+  // Controls how many cards per page are displayed
+  const perPage = 2;
+
+  const totalPages = Math.ceil(Object.entries(data).length / perPage);
   let pageNumber = parseInt(searchParams["page"] as string) || 1;
 
   if (pageNumber >= totalPages) {
@@ -55,7 +58,6 @@ export default async function App({
   console.log(pageNumber + "/" + totalPages);
 
   let x = 0;
-  const perPage = 3;
   const start = (pageNumber - 1) * perPage;
   const end = start + perPage;
 
@@ -88,10 +90,15 @@ export default async function App({
             </PaginationItem>
 
             {/* Selected pages is greater than max pages? */}
-            {pageNumber >= totalPages ? (
+            {pageNumber >= totalPages && totalPages > 2 ? (
               <>
                 <PaginationItem>
-                  <PaginationLink className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold" href="/descubrir?page=1">1</PaginationLink>
+                  <PaginationLink
+                    className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                    href="/descubrir?page=1"
+                  >
+                    1
+                  </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
                   <PaginationEllipsis />
@@ -140,7 +147,7 @@ export default async function App({
                 );
             })}
 
-            {pageNumber + 1 !== totalPages && totalPages > 3 ? (
+            {pageNumber + 4 <= totalPages && totalPages > 3 ? (
               <PaginationItem>
                 <PaginationEllipsis />
               </PaginationItem>
