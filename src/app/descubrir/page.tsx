@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import {
   Pagination,
   PaginationContent,
@@ -49,12 +50,22 @@ export default async function App({
   const totalPages = Math.ceil(Object.entries(data).length / perPage);
   let pageNumber = parseInt(searchParams["page"] as string) || 1;
 
-  if (pageNumber >= totalPages) {
-    pageNumber = totalPages;
+  console.log("PAGINA " + parseInt(searchParams["page"] as string));
+
+  if(searchParams["page"] as string !== undefined && isNaN(parseInt(searchParams["page"] as string))) {
+    redirect("/descubrir?page=1");
   }
+  
+  if (pageNumber > totalPages) {
+    pageNumber = totalPages;
+    redirect("/descubrir?page=" + totalPages);
+  }
+
   if (pageNumber < 1) {
     pageNumber = 1;
+    redirect("/descubrir?page=1");
   }
+
   console.log(pageNumber + "/" + totalPages);
 
   let x = 0;
@@ -75,17 +86,17 @@ export default async function App({
           ))}
       </div>
       <ToastContainer />
-      <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
+      <div className="flex flex-wrap justify-center gap-4 p-10 mx-auto">
         <Pagination>
           {/* BOTON ANTERIOR */}
-          <PaginationContent className="gap-2 px-2">
+          <PaginationContent className="gap-1 px-2">
             <PaginationItem>
               <PaginationPrevious
                 href={`/descubrir?page=${
                   pageNumber - 1 < 1 ? 1 : pageNumber - 1
                 }`}
                 text="Anterior"
-                className="hover:bg-[#FAFAFA] hover:text-lightblack"
+                className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack"
               ></PaginationPrevious>
             </PaginationItem>
 
@@ -94,7 +105,7 @@ export default async function App({
               <>
                 <PaginationItem>
                   <PaginationLink
-                    className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                    className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
                     href="/descubrir?page=1"
                   >
                     1
@@ -107,7 +118,7 @@ export default async function App({
                   <PaginationLink
                     href="#"
                     isActive
-                    className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                    className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold bg-neutral-800"
                   >
                     {totalPages}
                   </PaginationLink>
@@ -118,21 +129,21 @@ export default async function App({
                 <PaginationLink
                   href="#"
                   isActive
-                  className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                  className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold bg-neutral-800"
                 >
                   {pageNumber}
                 </PaginationLink>
               </PaginationItem>
             )}
 
-            {/* Render two page buttons when possible */}
-            {Array.from({ length: 2 }).map((_, index) => {
+            {/* Render one page button when possible, modifieble! */}
+            {Array.from({ length: 1 }).map((_, index) => {
               x++;
               if (pageNumber + x < totalPages)
                 return (
                   <PaginationItem key={crypto.randomUUID()}>
                     <PaginationLink
-                      className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                      className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
                       href={`/descubrir?page=${
                         pageNumber + x >= totalPages
                           ? totalPages
@@ -147,7 +158,7 @@ export default async function App({
                 );
             })}
 
-            {pageNumber + 4 <= totalPages && totalPages > 3 ? (
+            {pageNumber + 3 <= totalPages && totalPages > 3 ? (
               <PaginationItem>
                 <PaginationEllipsis />
               </PaginationItem>
@@ -159,7 +170,7 @@ export default async function App({
               <>
                 <PaginationItem>
                   <PaginationLink
-                    className="hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                    className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
                     href={`/descubrir?page=${totalPages}`}
                   >
                     {totalPages}
@@ -173,7 +184,7 @@ export default async function App({
             {/* Boton siguiente */}
             <PaginationItem>
               <PaginationNext
-                className="hover:bg-[#FAFAFA] hover:text-lightblack"
+                className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack"
                 href={`/descubrir?page=${
                   pageNumber + 1 >= totalPages ? totalPages : pageNumber + 1
                 }`}
