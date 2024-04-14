@@ -49,7 +49,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning={true} className="flex flex-col relative">
         <Navbar></Navbar>
-        <main className="w-full h-full grow bg-texture py-16">{children}</main>
+        <main className="w-full h-full grow bg-texture py-8">{children}</main>
         <Footer></Footer>
       </body>
     </html>

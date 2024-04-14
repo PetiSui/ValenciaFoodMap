@@ -18,21 +18,6 @@ export default function Navbar() {
     setOpen((prevOpen) => !prevOpen);
   };
 
-//   const [width, setWidth] = useState(0);
-
-//   if(open && width >= 960){console.log("AAAa");    setOpen(false)}
-
-//   const updateWidth = () => {
-//     const newWidth = window.innerWidth;
-//     setWidth(newWidth);
-//   };
-//   useEffect(() => {
-//     window.addEventListener("resize", updateWidth);
-//     updateWidth();
-
-//     return () => {window.removeEventListener("resize", updateWidth);}
-//   }, []);
-
   const navLinks = [
     { title: "Descubrir", href: "/descubrir" },
     { title: "Favoritos", href: "/favoritos" },
@@ -98,7 +83,7 @@ export default function Navbar() {
       <h1>{path.split('/')[1]}</h1>
        <h1>{width}</h1> */}
 
-      <nav className="flex min-h-4 self-start justify-between items-center bg-lightblack w-full sticky top-0 z-[9999] lg:px-20 lg:py-6 max-sm:py-4 max-sm:px-2 sm:py-4 sm:px-6 backdrop-blur">
+      <nav className="flex min-h-4 self-start justify-between items-center bg-lightblack w-full sticky top-0 z-[9999] lg:px-20 lg:py-6 max-sm:py-4 max-sm:px-2 sm:py-4 sm:px-6 backdrop-blur shadow-md shadow-zinc-800">
         <div className="flex justify-center items-center">
           <Link
             href="/" onClick={() => setOpen(false)}
