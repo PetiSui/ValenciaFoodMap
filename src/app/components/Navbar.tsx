@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../../public/favicons/android-chrome-384x384.png";
+import logoDark from "../../../public/LogoBG.png";
+import logoLight from "../../../public/LOGO_INVERTEDBG.png";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -83,21 +84,21 @@ export default function Navbar() {
       <h1>{path.split('/')[1]}</h1>
        <h1>{width}</h1> */}
 
-      <nav className="flex min-h-4 self-start justify-between items-center bg-lightblack w-full sticky top-0 z-[9999] lg:px-20 lg:py-6 max-sm:py-4 max-sm:px-2 sm:py-4 sm:px-6 backdrop-blur shadow-md shadow-zinc-800">
+      <nav className="flex min-h-4 self-start justify-between items-center bg-lightwhite dark:bg-lightblack w-full sticky top-0 z-[9999] lg:px-20 lg:py-5 max-sm:py-3 max-sm:px-2 sm:py-3 sm:px-6 backdrop-blur shadow-md dark:shadow-zinc-800 shadow-neutral-400">
         <div className="flex justify-center items-center">
           <Link
             href="/" onClick={() => setOpen(false)}
-            className="logo text-[#FAFAFA] text-2xl flex justify-center gap-1 items-center"
+            className="logo text-lightwhite text-2xl flex justify-center gap-1 items-center"
           >
-            <Image src={logo} alt="Logo" className="" width={64}></Image>
-            {!open && <p className="text-balance leading-tight ">VALENCIA FOOD MAP</p>}
+            <Image src={logoLight} alt="Logo" className="mix-blend-difference scale-100 max-sm:scale-75" width={98}></Image>
+            {!open && <p className="lg:text-3xl sm:text-2xl text-balance leading-tight dark:text-lightwhite font-bold text-lightblack">VALENCIA FOOD MAP</p>}
           </Link>
         </div>
 
         <FontAwesomeIcon
           icon={open ? faXmark : faBars}
           size="2xl"
-          className="md:hidden md:opacity-0 basis-12 cursor-pointer"
+          className="md:hidden md:opacity-0 basis-12 cursor-pointer max-md:mix-blend-difference"
           onClick={() => toggleMenu()}
         ></FontAwesomeIcon>
 
@@ -107,12 +108,13 @@ export default function Navbar() {
               <li key={crypto.randomUUID()}>
                 <Link href={link.href} className="grid">
                   <p
-                    className={`lg:text-xl md:text-l font-semibold text-[#f0f0f0] hover:text-gray-500 ${
+                    className={`lg:text-2xl md:text-xl font-bold dark:text-lightwhite text-lightblack relative text-xl w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-black dark:after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center ${
                       path.split("/")[1].toLowerCase() ===
                       link.title.toLowerCase()
-                        ? "underline underline-offset-8"
+                        ? "after:scale-x-100"
                         : ""
                     }`}
+                    // underline underline-offset-8underline underline-offset-8 
                   >
                     {link.title}
                   </p>
@@ -145,7 +147,7 @@ export default function Navbar() {
                       <motion.li key={crypto.randomUUID()} variants={mobileLinkVars}>
                         <Link href={link.href} onClick={() => setOpen(false)}>
                           <p
-                            className={`max-md:text-4xl lg:text-xl md:text-l font-bold text-[#f0f0f0] hover:text-gray-500 ${
+                            className={`max-md:text-4xl lg:text-xl md:text-xl font-bold text-[#f0f0f0] hover:text-gray-500 ${
                               path.split("/")[1].toLowerCase() ===
                               link.title.toLowerCase()
                                 ? "underline underline-offset-8"

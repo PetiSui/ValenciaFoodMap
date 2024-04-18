@@ -15,8 +15,9 @@ const OPTIONS: Option[] = [
 
 export default function Filters() {
   return (
-    <div className=" px-2">
+    <div className="self-center mt-2">
       <MultipleSelect
+      className="self-center"
         defaultOptions={OPTIONS}
         placeholder="Seleccione coste"
         emptyIndicator={

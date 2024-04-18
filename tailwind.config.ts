@@ -1,7 +1,8 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: ["class"],
+  darkMode: 'media',
+  // darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -37,6 +38,7 @@ const config: Config = {
       },
       colors: {
         lightblack: "var(--clr-black)",
+        lightwhite: "var(--clr-white)"
       },
       screens: {
         sm: "640px",

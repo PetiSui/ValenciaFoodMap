@@ -473,7 +473,7 @@ const MultipleSelector = React.forwardRef<
             />
             <FontAwesomeIcon
               icon={!open ? faChevronDown : faChevronUp}
-              className="self-center"
+              className="self-center max-sm:!hidden"
               onBlur={(event) => {
                 setOpen(false);
               }}

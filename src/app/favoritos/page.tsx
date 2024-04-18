@@ -36,8 +36,8 @@ export default function App() {
   if (lsLength === 0 || data.length === 0) {
     return (
       <div className="glassmorphism flex flex-col justify-center items-center gap-5 w-[70%] p-12 mx-auto">
-        <FontAwesomeIcon icon={faFaceSadTear} className="text-4xl" />
-        <p className="font-semibold text-2xl">
+        <FontAwesomeIcon icon={faFaceSadTear} className="text-6xl drop-shadow-md" />
+        <p className="font-semibold mt-4 text-2xl text-balkance text-center text-lightblack dark:text-lightwhite">
           Todavia no tienes favoritos añadidos
         </p>
         <Link
