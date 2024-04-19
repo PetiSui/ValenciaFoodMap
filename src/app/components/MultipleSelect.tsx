@@ -14,7 +14,12 @@ import { useEffect, forwardRef } from "react";
 import { Badge } from "../../components/ui/badge";
 import { cn } from "../../lib/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown, faChevronDown, faChevronUp, faEuroSign } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronDown,
+  faChevronUp,
+  faEuroSign,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 const costMap: { [index: string]: JSX.Element } = {
   low: <FontAwesomeIcon className="mr-2" icon={faEuroSign}></FontAwesomeIcon>,
@@ -23,10 +28,12 @@ const costMap: { [index: string]: JSX.Element } = {
       <FontAwesomeIcon
         icon={faEuroSign}
         key={crypto.randomUUID()}
+        className="mr-1"
       ></FontAwesomeIcon>
       <FontAwesomeIcon
         icon={faEuroSign}
         key={crypto.randomUUID()}
+        className="mr-1"
       ></FontAwesomeIcon>
     </div>
   ),
@@ -35,15 +42,52 @@ const costMap: { [index: string]: JSX.Element } = {
       <FontAwesomeIcon
         icon={faEuroSign}
         key={crypto.randomUUID()}
+        className="mr-1"
       ></FontAwesomeIcon>
       <FontAwesomeIcon
         icon={faEuroSign}
         key={crypto.randomUUID()}
+        className="mr-1"
       ></FontAwesomeIcon>
       <FontAwesomeIcon
         icon={faEuroSign}
         key={crypto.randomUUID()}
+        className="mr-1"
       ></FontAwesomeIcon>
+    </div>
+  ),
+};
+const star = <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>;
+const rating_Map: { [index: number]: JSX.Element } = {
+  1: <div className="mr-2">{star}</div>,
+  2: (
+    <div className="mr-2">
+      {star}
+      {star}
+    </div>
+  ),
+  3: (
+    <div className="mr-2">
+      {star}
+      {star}
+      {star}
+    </div>
+  ),
+  4: (
+    <div className="mr-2">
+      {star}
+      {star}
+      {star}
+      {star}
+    </div>
+  ),
+  5: (
+    <div className="mr-2">
+      {star}
+      {star}
+      {star}
+      {star}
+      {star}
     </div>
   ),
 };
@@ -51,12 +95,13 @@ const costMap: { [index: string]: JSX.Element } = {
 export interface Option {
   value: string;
   label: string;
-  cost: string | undefined;
+  cost?: string | undefined;
+  rating?: number | undefined;
   disable?: boolean;
   /** fixed option that can't be removed. */
   fixed?: boolean;
   /** Group the options by providing key. */
-  [key: string]: string | boolean | undefined;
+  [key: string]: string | boolean | number | undefined;
 }
 interface GroupOption {
   [key: string]: Option[];
@@ -325,7 +370,7 @@ const MultipleSelector = React.forwardRef<
             setInputValue("");
             const newOptions = [
               ...selected,
-              { value, label: value, cost: undefined },
+              { value, label: value, cost: undefined, rating: undefined },
             ];
             setSelected(newOptions);
             onChange?.(newOptions);
@@ -419,6 +464,11 @@ const MultipleSelector = React.forwardRef<
                   data-disabled={disabled}
                 >
                   {option.cost !== undefined ? costMap[option.cost] : <></>}
+                  {option.rating !== undefined ? (
+                    rating_Map[option.rating]
+                  ) : (
+                    <></>
+                  )}
                   {option.label}
                   <button
                     className={cn(
@@ -474,12 +524,15 @@ const MultipleSelector = React.forwardRef<
             <FontAwesomeIcon
               icon={!open ? faChevronDown : faChevronUp}
               className="self-center max-sm:!hidden"
-              onBlur={(event) => {
-                setOpen(false);
-              }}
               onClick={(event) => {
-                setOpen(prev => !prev);
-                triggerSearchOnFocus && onSearch?.(debouncedSearchTerm);
+                if (open) {
+                  setOpen((prev) => !prev);
+                  // inputRef.current?.blur();
+                } else {
+                  setOpen((prev) => !prev);
+                  inputRef.current?.focus();
+                  // triggerSearchOnFocus && onSearch?.(debouncedSearchTerm);
+                }
                 event.stopPropagation();
               }}
             ></FontAwesomeIcon>
@@ -532,6 +585,11 @@ const MultipleSelector = React.forwardRef<
                             >
                               {option.cost !== undefined ? (
                                 costMap[option.cost]
+                              ) : (
+                                <></>
+                              )}
+                              {option.rating !== undefined ? (
+                                rating_Map[option.rating]
                               ) : (
                                 <></>
                               )}

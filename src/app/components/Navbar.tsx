@@ -84,14 +84,14 @@ export default function Navbar() {
       <h1>{path.split('/')[1]}</h1>
        <h1>{width}</h1> */}
 
-      <nav className="flex min-h-4 self-start justify-between items-center bg-lightwhite dark:bg-lightblack w-full sticky top-0 z-[9999] lg:px-20 lg:py-5 max-sm:py-3 max-sm:px-2 sm:py-3 sm:px-6 backdrop-blur shadow-md dark:shadow-zinc-800 shadow-neutral-400">
+      <nav className="flex min-h-4 self-start justify-between items-center bg-lightwhite dark:bg-lightblack w-full sticky top-0 z-[9999] lg:px-20 lg:py-2 max-sm:py-4 max-sm:px-4 sm:py-2 sm:px-6 backdrop-blur shadow-md dark:shadow-zinc-800 shadow-neutral-400">
         <div className="flex justify-center items-center">
           <Link
             href="/" onClick={() => setOpen(false)}
             className="logo text-lightwhite text-2xl flex justify-center gap-1 items-center"
           >
-            <Image src={logoLight} alt="Logo" className="mix-blend-difference scale-100 max-sm:scale-75" width={98}></Image>
-            {!open && <p className="lg:text-3xl sm:text-2xl text-balance leading-tight dark:text-lightwhite font-bold text-lightblack">VALENCIA FOOD MAP</p>}
+            <Image src={logoLight} alt="Logo" className="mix-blend-difference" width={80}></Image>
+            {!open && <p className="md:text-2xl max-sm:text-xl text-balance leading-tight dark:text-lightwhite font-bold text-lightblack">VALENCIA FOOD MAP</p>}
           </Link>
         </div>
 
@@ -108,7 +108,7 @@ export default function Navbar() {
               <li key={crypto.randomUUID()}>
                 <Link href={link.href} className="grid">
                   <p
-                    className={`lg:text-2xl md:text-xl font-bold dark:text-lightwhite text-lightblack relative text-xl w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-black dark:after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center ${
+                    className={`lg:text-xl md:text-l font-bold dark:text-lightwhite text-lightblack relative text-xl w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-black dark:after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center ${
                       path.split("/")[1].toLowerCase() ===
                       link.title.toLowerCase()
                         ? "after:scale-x-100"
