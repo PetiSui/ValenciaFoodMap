@@ -74,7 +74,7 @@ export default async function App({
 
   return (
     <>
-    <div className="flex flex-wrap justify-center items-center gap-8 p-6 mx-auto  w-[70%] bg-neutral-600 bg-opacity-75 rounded">
+    <div className="flex flex-wrap justify-center items-center gap-8 p-4 mx-auto  w-[90%] bg-neutral-600 bg-opacity-80 rounded">
       {/* <p className="mr-auto">Filtros:</p> */}
       <Filters></Filters>
     </div>

@@ -2,6 +2,7 @@
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MultipleSelect, { Option } from "./MultipleSelect";
 
@@ -23,11 +24,12 @@ const RATING_OPTIONS: Option[] = [
 
 export default function Filters() {
   return (
-    <div className="flex gap-4 self-center mt-2">
+    <div className="filter_navbar flex gap-4 mt-2 w-full">
       <MultipleSelect
-        className="self-center"
+        className="self-center inline-block"
         defaultOptions={COST_OPTIONS}
         placeholder="Seleccione coste"
+        placeholderIcon={faEuroSign}
         emptyIndicator={
           <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
             No se encontraron resultados
@@ -36,9 +38,10 @@ export default function Filters() {
       />
 
       <MultipleSelect
-        className="self-center"
+        className="self-center inline-block"
         defaultOptions={RATING_OPTIONS}
         placeholder="Seleccione valoración"
+        placeholderIcon={faStar}
         emptyIndicator={
           <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
             No se encontraron resultados

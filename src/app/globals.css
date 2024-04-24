@@ -214,6 +214,10 @@ body {
   -webkit-backdrop-filter: blur(3px);
 }
 
+.filter_navbar {
+  scrollbar-width: none;
+}
+
 @media (prefers-reduced-motion) {
   /* styles to apply if a user's device settings are set to reduced motion */
   .bg-texture {

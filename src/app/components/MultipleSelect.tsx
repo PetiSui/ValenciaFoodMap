@@ -13,13 +13,17 @@ import { Command as CommandPrimitive, useCommandState } from "cmdk";
 import { useEffect, forwardRef } from "react";
 import { Badge } from "../../components/ui/badge";
 import { cn } from "../../lib/utils";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconProps,
+} from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
   faChevronUp,
   faEuroSign,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const costMap: { [index: string]: JSX.Element } = {
   low: <FontAwesomeIcon className="mr-2" icon={faEuroSign}></FontAwesomeIcon>,
@@ -113,6 +117,7 @@ interface MultipleSelectorProps {
   /** manually controlled options */
   options?: Option[];
   placeholder?: string;
+  placeholderIcon?: IconProp;
   /** Loading component. */
   loadingIndicator?: React.ReactNode;
   /** Empty component. */
@@ -243,6 +248,7 @@ const MultipleSelector = React.forwardRef<
       value,
       onChange,
       placeholder,
+      placeholderIcon,
       defaultOptions: arrayDefaultOptions = [],
       options: arrayOptions,
       delay,
@@ -258,7 +264,7 @@ const MultipleSelector = React.forwardRef<
       badgeClassName,
       selectFirstItem = true,
       creatable = false,
-      triggerSearchOnFocus = false,
+      triggerSearchOnFocus = true,
       commandProps,
       inputProps,
     }: MultipleSelectorProps,
@@ -349,7 +355,7 @@ const MultipleSelector = React.forwardRef<
       };
 
       void exec();
-    }, [debouncedSearchTerm, groupBy, open, triggerSearchOnFocus]);
+    }, [debouncedSearchTerm, groupBy, open, triggerSearchOnFocus, onSearch]);
 
     const CreatableItem = () => {
       if (!creatable) return undefined;
@@ -491,6 +497,13 @@ const MultipleSelector = React.forwardRef<
                 </Badge>
               );
             })}
+            {placeholderIcon && (
+              <FontAwesomeIcon
+                icon={placeholderIcon}
+                size="xl"
+                className="sm:!hidden max-sm:!visible mr-2"
+              ></FontAwesomeIcon>
+            )}
             {/* Avoid having the "Search" Icon */}
             <CommandPrimitive.Input
               {...inputProps}
@@ -502,8 +515,9 @@ const MultipleSelector = React.forwardRef<
                 inputProps?.onValueChange?.(value);
               }}
               onBlur={(event) => {
-                setOpen(false);
+                setOpen((prev) => false);
                 inputProps?.onBlur?.(event);
+                event.stopPropagation();
               }}
               onFocus={(event) => {
                 setOpen(true);
@@ -516,31 +530,32 @@ const MultipleSelector = React.forwardRef<
                   ? ""
                   : placeholder
               }
+              // max-sm:!hidden
               className={cn(
-                "ml-2 flex-1 bg-transparent outline-none placeholder:text-white",
+                "ml-2 flex-1 bg-transparent outline-none placeholder:text-white max-sm:!hidden",
                 inputProps?.className
               )}
             />
             <FontAwesomeIcon
-              icon={!open ? faChevronDown : faChevronUp}
-              className="self-center max-sm:!hidden"
+              icon={faChevronUp}
+              className={`self-center ${!open ? "rotate-180" : ""}`}
+              focusable
               onClick={(event) => {
                 if (open) {
-                  setOpen((prev) => !prev);
-                  // inputRef.current?.blur();
+                  setOpen((prev) => false);
+                  //inputRef.current?.blur();
                 } else {
-                  setOpen((prev) => !prev);
-                  inputRef.current?.focus();
-                  // triggerSearchOnFocus && onSearch?.(debouncedSearchTerm);
+                  setOpen((prev) => true);
+                  //inputRef.current?.focus();
                 }
                 event.stopPropagation();
               }}
             ></FontAwesomeIcon>
           </div>
         </div>
-        <div className="relative mt-2">
+        <div className="relative mt-2 min-w-44">
           {open && (
-            <CommandList className="absolute top-0 z-[1000] w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in bg-neutral-400">
+            <CommandList className="absolute top-0 z-[2000] w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in bg-neutral-400">
               {isLoading ? (
                 <>{loadingIndicator}</>
               ) : (
