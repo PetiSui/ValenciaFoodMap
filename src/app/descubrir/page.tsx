@@ -23,18 +23,21 @@ export default async function App({
   const getCards = async () => {
     // const apiUrl = "http://localhost:3000";
     const apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
+
     // console.log(process.env.API_URL);
-    const value = cache.get("descubrir");
+
+    // const value = cache.get("descubrir");
+    let value = false;
     if (value) {
       console.log("CACHE HIT");
 
       return value;
     } else {
-      const res = await fetch(`${apiUrl}/api/cards/`, {
+      const res = await fetch(`${apiUrl}/api/cards`, {
         headers: { "Content-Type": "application/json" },
       });
       const jsonData = await res.json();
-      const hours = 2; //2 hour cache
+      const hours = 1; //2 hour cache
       cache.put("descubrir", jsonData, hours * 1000 * 60 * 60);
 
       return jsonData;
@@ -42,7 +45,7 @@ export default async function App({
   };
 
   const data = await getCards();
-  // console.log(data);
+  console.log(data);
 
   // Controls how many cards per page are displayed
   const perPage = 2;
