@@ -553,7 +553,8 @@ const MultipleSelector = React.forwardRef<
             ></FontAwesomeIcon>
           </div>
         </div>
-        <div className="relative mt-2 min-w-44">
+        {/*  */}
+        <div className="relative mt-2 min-w-48 ">
           {open && (
             <CommandList className="absolute top-0 z-[2000] w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in bg-neutral-400">
               {isLoading ? (

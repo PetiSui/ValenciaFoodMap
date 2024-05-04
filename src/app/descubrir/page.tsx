@@ -11,6 +11,7 @@ import {
 import Card from "../components/Card";
 import Filters from "../components/Filters";
 import { ToastContainer } from "react-toastify";
+
 var cache = require("memory-cache");
 
 export default async function App({
@@ -44,21 +45,28 @@ export default async function App({
     }
   };
 
-  const data = await getCards();
+  const datax = await getCards();
+  const data = datax.sort((a: any, b: any) => {
+    if (a.name === b.name) return 0;
+    return a.name > b.name ? 1 : -1;
+  });
   console.log(data);
 
   // Controls how many cards per page are displayed
-  const perPage = 2;
+  const perPage = 9;
 
   const totalPages = Math.ceil(Object.entries(data).length / perPage);
   let pageNumber = parseInt(searchParams["page"] as string) || 1;
 
   console.log("PAGINA " + parseInt(searchParams["page"] as string));
 
-  if(searchParams["page"] as string !== undefined && isNaN(parseInt(searchParams["page"] as string))) {
+  if (
+    (searchParams["page"] as string) !== undefined &&
+    isNaN(parseInt(searchParams["page"] as string))
+  ) {
     redirect("/descubrir?page=1");
   }
-  
+
   if (pageNumber > totalPages) {
     pageNumber = totalPages;
     redirect("/descubrir?page=" + totalPages);
@@ -77,10 +85,12 @@ export default async function App({
 
   return (
     <>
-    <div className="flex flex-wrap justify-center items-center gap-8 p-4 mx-auto  w-[90%] bg-neutral-600 bg-opacity-80 rounded">
+      {/* <div className="flex flex-wrap justify-center items-center gap-8 p-4 mx-auto  w-[90%] bg-neutral-600 bg-opacity-80 rounded"> */}
       {/* <p className="mr-auto">Filtros:</p> */}
+
       <Filters></Filters>
-    </div>
+
+      {/* </div> */}
       <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
         {Object.entries(data)
           .slice(start, end)
@@ -92,7 +102,7 @@ export default async function App({
           ))}
       </div>
       <ToastContainer />
-      <div className="flex flex-wrap justify-center gap-4 p-10 mx-auto">
+      <div className="flex flex-wrap justify-center gap-0 p-2 mt-2 mx-auto">
         <Pagination>
           {/* BOTON ANTERIOR */}
           <PaginationContent className="gap-1 px-2">
