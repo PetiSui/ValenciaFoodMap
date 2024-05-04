@@ -8,11 +8,11 @@ export default async function App() {
   return (
     <div className="flex justify-center items-center">
       <div className="glassmorphism w-[75%] max-md:w-[85%] max-sm:w-[90%] h-auto flex items-center justify-evenly max-lg:flex-row max-md:flex-col p-10 gap-6">
-        <Image className="max-lg:scale-60 self-start place-self-start" src={hero} height={400} priority={true} placeholder="empty" alt="Hero Image"></Image>
+        <Image className="max-lg:scale-60 self-start place-self-start" src={hero} height={350} priority={true} placeholder="empty" alt="Hero Image"></Image>
         <div className="flex gap-5 flex-col justify-start items-start h-[100%]">
-          <h1 className="text-3xl text-[#0f0f0f] font-semibold self-start place-self-start tracking-tight leading-[1.1] max-w-[36ch]">
+          <h1 className="text-3xl text-lightblack font-semibold self-start place-self-start tracking-tight leading-[1.1] max-w-[36ch] text-balance">
             Las mejores experiencias gastronómicas de {" "}
-            <span className="text-4xl text-black font-semibold tracking-wider">
+            <span className="text-3xl text-lightblack font-semibold tracking-wide">
                Valencia
             </span>
           </h1>
