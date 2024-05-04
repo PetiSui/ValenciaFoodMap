@@ -7,7 +7,7 @@ import Website from "./Website";
 const ShareBar = ({ url, website, name, address, id }) => {
 
   return (
-    <div className="buttons">
+    <div className="buttons flexible">
       <Website website={website}></Website>
       <Share url={url} name={name} address={address}></Share>
       <LikeButton id={id}></LikeButton>

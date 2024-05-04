@@ -35,7 +35,7 @@ export default async function App({
       return value;
     } else {
       const res = await fetch(`${apiUrl}/api/cards`, {
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Cache-store":"no-store" },
       });
       const jsonData = await res.json();
       const hours = 1; //2 hour cache
@@ -53,7 +53,7 @@ export default async function App({
   console.log(data);
 
   // Controls how many cards per page are displayed
-  const perPage = 9;
+  const perPage = 30;
 
   const totalPages = Math.ceil(Object.entries(data).length / perPage);
   let pageNumber = parseInt(searchParams["page"] as string) || 1;

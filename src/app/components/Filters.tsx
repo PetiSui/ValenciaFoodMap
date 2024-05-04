@@ -13,8 +13,6 @@ import { ScrollArea, ScrollBar } from "../../components/ui/scroll-area";
 import { useState } from "react";
 import { ButtonIcon } from "./ButtonIcon";
 
-
-
 const Euro = <FontAwesomeIcon icon={faEuroSign}></FontAwesomeIcon>;
 
 const COST_OPTIONS: Option[] = [
@@ -33,25 +31,29 @@ const RATING_OPTIONS: Option[] = [
 
 const ORDER_OPTIONS: Option[] = [
   { label: "A-Z", value: "A" },
-  { label: "Z-A", value: "Z" }
+  { label: "Z-A", value: "Z" },
 ];
 
-
-
-
 export default function Filters() {
-  const [AZ, setAz] = useState(true)
+  const [AZ, setAz] = useState(true);
 
   return (
     // <ScrollArea className="whitespace-nowrap rounded-md w-full">
     <div className="glassmorphism filter_navbar flex gap-0 w-full overflow-visible items-center justify-center bg-neutral-600 bg-opacity-80 rounded p-4">
-      <ButtonIcon className="bg-neutral-500 hover:bg-neutral-600 border-solid border-[1px] border-white  border-input px-3 py-2 ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2" handleOnClick={() => setAz((prev) => !prev)}>
-        <FontAwesomeIcon size="xl" icon={AZ ? faArrowDownAZ : faArrowDownZA}></FontAwesomeIcon>
+      <ButtonIcon
+        className="bg-neutral-500 hover:bg-neutral-600 border-solid border-[1px] border-white  border-input px-3 py-2 ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
+        handleOnClick={() => setAz((prev) => !prev)}
+      >
+        <FontAwesomeIcon
+          size="xl"
+          icon={AZ ? faArrowDownAZ : faArrowDownZA}
+        ></FontAwesomeIcon>
       </ButtonIcon>
       <MultipleSelect
         className="self-center inline-block"
         defaultOptions={COST_OPTIONS}
-        onChange={(a)=>{console.log(a);
+        onChange={(a) => {
+          console.log(a);
         }}
         placeholder="Coste"
         placeholderIcon={faEuroSign}
@@ -73,7 +75,7 @@ export default function Filters() {
           </p>
         }
       />
-      <MultipleSelect
+      {/* <MultipleSelect
         className="self-center inline-block"
         defaultOptions={ORDER_OPTIONS}
         placeholder="Orden alfabético"
@@ -83,7 +85,7 @@ export default function Filters() {
             No se encontraron resultados
           </p>
         }
-      />
+      /> */}
     </div>
     //   <ScrollBar orientation="horizontal" />
     // </ScrollArea>

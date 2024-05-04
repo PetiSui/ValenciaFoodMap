@@ -11,6 +11,7 @@
   --clr-links: rgb(44, 138, 193);
   --clr-links-hover: rgb(32, 98, 136);
   --clr-euros: rgb(93, 178, 228);
+  --clr-icon-hover: rgb(54, 54, 54); 
 }
 
 * {
@@ -79,7 +80,7 @@ a.link:hover {
   font-weight: var(--ff-size-l);
 }
 
-.buttonSearch:hover {
+.buttonSearch:over {
   background-color: rgb(36, 156, 226);
   opacity: 0.9;
   transform: scale(1.1);
@@ -91,8 +92,8 @@ a.link:hover {
 }
 
 .card {
-  max-width: min(90vw, 300px); /* Remove when adding to grid template  */
-  min-height: 400px;
+  max-width: max(13vw, 300px);
+  min-height: auto; /* Change to fixed number for Safari */
   background-color: var(--clr-card);
   border-radius: calc(10px + 0.8rem);
   padding: 0.8rem;
@@ -106,12 +107,11 @@ a.link:hover {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 4;
 }
 
 .flexible {
   margin-top: auto;
-  /* margin-bottom: auto; */
 }
 
 .image {
@@ -278,7 +278,8 @@ button {
 .tags_container {
   display: flex;
   flex-direction: row;
-  margin-top: 0.8rem;
+  margin-top: 0.7rem;
+  align-items: center;
 }
 
 .tag {
@@ -287,14 +288,19 @@ button {
   text-transform: uppercase;
   /* opacity: .9; */
   /* vertical-align: middle; */
-  font-size: calc(var(--ff-size-m) * 0.95);
-  line-height: 3ch;
-  padding-inline: 0.6rem;
-  padding-block: 0.2rem;
+  font-size: calc(var(--ff-size-m) * 0.97);
+  /* line-height: 3ch; */
+  padding-inline: .7rem;
+  padding-block: .35rem;
   border-radius: 20px;
+  cursor: pointer;
   -webkit-box-shadow: 0px 0px 21px -7px rgba(18, 18, 18, 0.552);
   -moz-box-shadow: 0px 0px 21px -7px rgba(18, 18, 18, 0.552);
   box-shadow: 0px 0px 21px -7px rgba(18, 18, 18, 0.552);
+}
+
+.tag:hover{
+  filter: brightness(85%);
 }
 
 .tag_expand {
@@ -400,7 +406,7 @@ button {
 
 .globe:hover,
 .share:hover {
-  color: var(--clr-primary);
+  color: var(--clr-icon-hover);
 }
 
 /* .like[data-liked=true]:hover{
@@ -504,6 +510,7 @@ button {
     --clr-light-grey: rgb(162, 162, 162);
     --clr-shadow: rgba(0, 40, 80, 0.2);
     --clr-links: rgb(64, 165, 223);
+    --clr-icon-hover: rgb(227, 225, 225); 
     /* --clr-dark: #141414; */
   }
 

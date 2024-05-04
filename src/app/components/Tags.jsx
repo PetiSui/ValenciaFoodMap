@@ -12,8 +12,9 @@ const Tags = ({ tags }) => {
   // console.log(tags);
 
   let categories = Array.from({ length: tags.length });
+  const defaultNumberOfTags = 2;
 
-  const baselineLength = tags.length > 2 ? 2 : tags.length;
+  const baselineLength = tags.length > defaultNumberOfTags ? defaultNumberOfTags : tags.length;
   let length = expanded === true ? tags.length : baselineLength;
 
   for (let i = 0; i < length; i++) {
@@ -32,7 +33,7 @@ const Tags = ({ tags }) => {
       <div className="tags">
         {categories}
       </div>
-      {tags.length > 2 ? (
+      {tags.length > defaultNumberOfTags ? (
         <FontAwesomeIcon
           icon={faChevronDown}
           size="xl"
