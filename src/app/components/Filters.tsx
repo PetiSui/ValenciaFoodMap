@@ -29,6 +29,7 @@ import { Label } from "../../components/ui/label";
 import { cn } from "../../lib/utils";
 import { Toggle } from "../../components/ui/toggle";
 import { ToggleGroup, ToggleGroupItem } from "../../components/ui/toggle-group";
+import { Separator } from "@/components/ui/separator";
 
 const Euro = <FontAwesomeIcon icon={faEuroSign}></FontAwesomeIcon>;
 const Star = <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>;
@@ -123,7 +124,7 @@ const ORDER_OPTIONS: Option[] = [
 
 export default function Filters() {
   const [AZ, setAz] = useState(true);
-  const [open, setOpen] = useState(false);
+  const [openFilters, setOpenFilters] = useState(false);
   const [costFilters, setCostFilters] = useState([]);
   const [ratingFilters, setRatingFilters] = useState([]);
 
@@ -134,7 +135,7 @@ export default function Filters() {
   function handleFilters(e: FormEvent<HTMLFormElement>){
     e.preventDefault();
     console.log("HANDLE FILTERS");
-    setOpen(prev => !prev);
+    setOpenFilters(prev => !prev);
   }
 
   function FilterForm({ className }: React.ComponentProps<"form">) {
@@ -187,14 +188,15 @@ export default function Filters() {
   }
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
+    <Drawer open={openFilters} onOpenChange={setOpenFilters}>
       <DrawerTrigger asChild>
         <Button variant="outline">Filtros</Button>
       </DrawerTrigger>
-      <DrawerContent className="dark:text-lightwhite">
+      <DrawerContent className="dark:text-lightwhite z-[99999]">
         <DrawerHeader className="text-left mb-2">
           <DrawerTitle>Filtros</DrawerTitle>
-          <DrawerDescription>Añade filtros a la búsqueda.</DrawerDescription>
+          <DrawerDescription className="opacity-95">Añade filtros a la búsqueda.</DrawerDescription>
+          <Separator className="dark:bg-lightwhite bg-lightblack opacity-30 mt-1" />
         </DrawerHeader>
         <FilterForm className="px-4" />
         <DrawerFooter className="pt-2">

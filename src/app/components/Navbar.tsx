@@ -84,7 +84,7 @@ export default function Navbar() {
       <h1>{path.split('/')[1]}</h1>
        <h1>{width}</h1> */}
 
-      <nav className={`flex min-h-4 self-start justify-between items-center bg-lightwhite dark:bg-lightblack w-full sticky top-0 z-[9999] lg:px-20 lg:py-2 max-sm:py-4 max-sm:px-4 sm:py-2 sm:px-6 backdrop-blur ${open ? "" : "shadow-md"} dark:shadow-zinc-800 shadow-neutral-400`}>
+      <nav className={`flex min-h-4 self-start justify-between items-center bg-lightwhite dark:bg-lightblack w-full sticky top-0 z-[9900] lg:px-20 lg:py-2 max-sm:py-4 max-sm:px-4 sm:py-2 sm:px-6 backdrop-blur ${open ? "" : "shadow-md transition delay-500"}  dark:shadow-neutral-800 shadow-neutral-400`}>
         <div className="flex justify-center items-center">
           <Link
             href="/" onClick={() => setOpen(false)}
@@ -98,7 +98,7 @@ export default function Navbar() {
         <FontAwesomeIcon
           icon={open ? faXmark : faBars}
           size="2xl"
-          className="md:hidden md:opacity-0 basis-12 cursor-pointer max-md:mix-blend-difference"
+          className="md:hidden md:opacity-0 basis-12 cursor-pointer  text-lightblack dark:text-lightwhite"
           onClick={() => toggleMenu()}
         ></FontAwesomeIcon>
 
@@ -132,7 +132,7 @@ export default function Navbar() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className={`fixed left-0 top-0 w-full h-screen origin-top bg-lightblack text-white p-10 z-[500] md:hidden ${!open ? 'hidden' : ''}`}
+              className={`fixed left-0 top-0 w-full h-screen origin-top dark:bg-lightblack bg-lightwhite text-white p-10 z-[500] md:hidden ${!open ? 'hidden' : ''}`}
             >
               <div className="flex h-full flex-col">
                 <motion.ul
@@ -147,7 +147,7 @@ export default function Navbar() {
                       <motion.li key={crypto.randomUUID()} variants={mobileLinkVars}>
                         <Link href={link.href} onClick={() => setOpen(false)}>
                           <p
-                            className={`max-md:text-4xl lg:text-xl md:text-xl font-bold text-[#f0f0f0] hover:text-gray-500 ${
+                            className={`max-md:text-4xl lg:text-xl md:text-xl font-bold dark:text-lightwhite text-lightblack hover:text-gray-500 ${
                               path.split("/")[1].toLowerCase() ===
                               link.title.toLowerCase()
                                 ? "underline underline-offset-8"
