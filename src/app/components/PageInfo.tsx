@@ -6,6 +6,6 @@ type PageProps = {
 }
 
 export default function PageInfo({start, end, length} : PageProps) {
-    return  <h2 className="font-extrabold text-lightwhite text-2xl">Mostrando establecimientos {start + " - " + end + " / " + length}</h2>
+    return  <div className="font-semibold dark:text-lightwhite text-xl flex flex-wrap gap-2"><p className="">Mostrando establecimientos </p><p>{start + " - " + end + " / " + length}</p></div>
 
 }

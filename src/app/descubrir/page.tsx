@@ -13,6 +13,17 @@ import Filters from "../components/Filters";
 import { ToastContainer } from "react-toastify";
 import PageInfo from "../components/PageInfo";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../../components/ui/select";
+import { Separator } from "../../components/ui/separator";
+
 var cache = require("memory-cache");
 
 export default async function App({
@@ -36,7 +47,10 @@ export default async function App({
       return value;
     } else {
       const res = await fetch(`${apiUrl}/api/cards`, {
-        headers: { "Content-Type": "application/json", "Cache-store":"no-store" },
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-store": "no-store",
+        },
       });
       const jsonData = await res.json();
       const hours = 1; //2 hour cache
@@ -48,7 +62,7 @@ export default async function App({
 
   const datax = await getCards();
   console.log(searchParams["order"]);
-  
+
   const data = datax.sort((a: any, b: any) => {
     if (a.name === b.name) return 0;
     return a.name > b.name ? 1 : -1;
@@ -86,15 +100,39 @@ export default async function App({
   const start = (pageNumber - 1) * perPage;
   const end = start + perPage;
 
+  const OrderResults = () => {
+    return (
+      <Select>
+        <SelectTrigger className="w-fit bg-neutral-700 bg-opacity-80 outline outline-1 outline-neutral-600 underline-offset-4 dark:text-lightwhite">
+          <SelectValue placeholder="Ordenar por" className=""/>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup className="bg-lightwhite border-white">
+            <SelectLabel className="bg-lightwhite">Alfabético</SelectLabel>
+            <Separator className="bg-lightwhite"></Separator>
+            <SelectItem value="AZ" className="bg-lightwhite">Ascendente A-Z</SelectItem>
+            <SelectItem value="ZA" className="bg-lightwhite">Descendente Z-A</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    );
+  };
+
   return (
     <>
       {/* <div className="flex flex-wrap justify-center items-center gap-8 p-4 mx-auto  w-[90%] bg-neutral-600 bg-opacity-80 rounded"> */}
       {/* <p className="mr-auto">Filtros:</p> */}
+      <div className="w-[90%] mx-auto flex justify-between items-center gap-8 px-12 pt-10 pb-4">
+        <Filters></Filters>
+        <OrderResults></OrderResults>
+      </div>
 
-      <Filters></Filters>
-      <PageInfo start={start} end={end} length={data.length}></PageInfo>
+      {/* <div className="px-14">
+        <PageInfo start={start} end={end} length={data.length}></PageInfo>
+      </div> */}
+
       {/* </div> */}
-      <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
+      <div className="flex flex-wrap max-md:justify-center md:justify-around gap-8 p-10 mx-auto sm:w-[90%]">
         {Object.entries(data)
           .slice(start, end)
           .map((card: any, index: Number) => (

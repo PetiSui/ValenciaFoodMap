@@ -1,7 +1,7 @@
 "use client";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
+import { faEuroSign, faFilter } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import {
   faArrowDownAZ,
@@ -180,7 +180,7 @@ export default function Filters() {
             </ToggleGroup>
           </div>
         </div>
-        <Button type="submit" variant="outline" className="dark:bg-lightwhite dark:hover:bg-neutral-500 text-lightwhite bg-lightblack hover:bg-neutral-800 hover:text-lightwhite dark:text-lightblack">
+        <Button type="submit" variant="outline" className="dark:bg-lightwhite dark:hover:bg-neutral-300 dark:hover:text-lightblack text-lightwhite bg-lightblack hover:bg-neutral-800 hover:text-lightwhite dark:text-lightblack">
           Aplicar
         </Button>
       </form>
@@ -190,9 +190,11 @@ export default function Filters() {
   return (
     <Drawer open={openFilters} onOpenChange={setOpenFilters}>
       <DrawerTrigger asChild>
-        <Button variant="outline">Filtros</Button>
+        <Button variant="outline">
+          <FontAwesomeIcon icon={faFilter} className="mr-2"></FontAwesomeIcon>
+          Filtros</Button>
       </DrawerTrigger>
-      <DrawerContent className="dark:text-lightwhite z-[99999]">
+      <DrawerContent className="dark:text-lightwhite z-[99999] outline dark:outline-neutral-400 dark:bg-lightblack bg-lightwhite opacity-95 backdrop-blur">
         <DrawerHeader className="text-left mb-2">
           <DrawerTitle>Filtros</DrawerTitle>
           <DrawerDescription className="opacity-95">Añade filtros a la búsqueda.</DrawerDescription>
@@ -201,7 +203,7 @@ export default function Filters() {
         <FilterForm className="px-4" />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
-            <Button className="dark:bg-neutral-900 dark:text-lightwhite dark:hover:bg-neutral-800 bg-neutral-200 hover:bg-neutral-300 hover:text-lightwhite text-lightblack">Cancelar</Button>
+            <Button className="dark:bg-neutral-800 dark:text-lightwhite dark:hover:bg-neutral-700 bg-neutral-200 hover:bg-neutral-300 hover:text-lightwhite text-lightblack">Cancelar</Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
