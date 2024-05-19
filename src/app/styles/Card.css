@@ -126,7 +126,6 @@ a.link:hover {
   -webkit-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
-
   vertical-align: bottom;
 }
 
@@ -155,6 +154,7 @@ a.link:hover {
     hsla(0, 0%, 0%, 0.905),
     transparent
   );
+  z-index: 80;
 }
 
 .rating {
@@ -163,7 +163,7 @@ a.link:hover {
   left: 0;
   margin-bottom: 0.2rem;
   margin-left: 0.4rem;
-  z-index: 50;
+  z-index: 90;
 }
 
 .pricing {
@@ -172,7 +172,7 @@ a.link:hover {
   right: 0;
   margin-bottom: 0.3rem;
   margin-right: 0.4rem;
-  z-index: 100;
+  z-index: 90;
   display: flex;
   gap: 0.2rem;
 }
@@ -502,6 +502,18 @@ button {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes zIndexHack {
+  0%, 100% {
+    z-index: 80;
+  }
+}
+
+@keyframes zIndexHack2 {
+  0%, 100% {
+    z-index: 8000;
   }
 }
 

@@ -6,7 +6,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export default async function App() {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center mt-12">
       <div className="glassmorphism w-[75%] max-md:w-[85%] max-sm:w-[90%] h-auto flex items-center justify-evenly max-lg:flex-row max-md:flex-col p-10 gap-6">
         <Image className="max-lg:scale-60 self-start place-self-start" src={hero} height={350} priority={true} placeholder="empty" alt="Hero Image"></Image>
         <div className="flex gap-5 flex-col justify-start items-start h-[100%]">
@@ -20,7 +20,7 @@ export default async function App() {
             Busca y explora los mejores establecimientos
           </p>
           <Link
-            className="mt-auto font-semibold place-self-start self-start bg-black border-0 px-5 py-3 rounded hover:bg-slate-100 hover:text-[#020202]"
+            className="mt-auto font-semibold place-self-start self-start bg-lightblack text-lightwhite border-0 px-5 py-3 rounded hover:bg-slate-100 hover:text-[#020202]"
             href="/descubrir"
           >
             Explora

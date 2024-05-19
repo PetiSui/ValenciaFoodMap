@@ -5,10 +5,11 @@ import ShareBar from "./ShareBar";
 import CardImage from "./CardImage";
 import Rating from "./Rating";
 import Pricing from "./Pricing";
-import Tags from "./Tags";
 import "../styles/Card.css";
+import Link from 'next/link';
+import Tags from './Tags';
 
-function Card({ data }) {
+function Card({ data } : any) {
   //console.log(data?.address);
   let data2 = JSON.parse(data);
   //console.log(data2._id);
@@ -19,7 +20,9 @@ function Card({ data }) {
           <Rating starCount={data2?.rating}></Rating>
           <Pricing priceLevel={data2?.priceLevel}></Pricing>
         </CardImage>
-        <p className="descripcion">{data2?.name}</p>
+        <Link href={`/descubrir/${data2?._id ?? ''}`} target='_blank'>
+          <p className="descripcion hover:underline">{data2?.name}</p>
+        </Link>
         <Tags tags={data2?.categories}></Tags>
         <div className='flexible' key={crypto.randomUUID()}>
           <Street url={data2?.url} address={data2?.address}></Street>

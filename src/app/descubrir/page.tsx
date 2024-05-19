@@ -11,6 +11,7 @@ import {
 import Card from "../components/Card";
 import Filters from "../components/Filters";
 import { ToastContainer } from "react-toastify";
+import PageInfo from "../components/PageInfo";
 
 var cache = require("memory-cache");
 
@@ -46,11 +47,13 @@ export default async function App({
   };
 
   const datax = await getCards();
+  console.log(searchParams["order"]);
+  
   const data = datax.sort((a: any, b: any) => {
     if (a.name === b.name) return 0;
     return a.name > b.name ? 1 : -1;
   });
-  console.log(data);
+  //console.log(data);
 
   // Controls how many cards per page are displayed
   const perPage = 30;
@@ -89,7 +92,7 @@ export default async function App({
       {/* <p className="mr-auto">Filtros:</p> */}
 
       <Filters></Filters>
-
+      <PageInfo start={start} end={end} length={data.length}></PageInfo>
       {/* </div> */}
       <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
         {Object.entries(data)
@@ -102,8 +105,8 @@ export default async function App({
           ))}
       </div>
       <ToastContainer />
-      <div className="flex flex-wrap justify-center gap-0 p-2 mt-2 mx-auto">
-        <Pagination>
+      <div className="flex flex-wrap justify-center p-2 mt-2 mx-auto">
+        <Pagination className="text-lightwhite">
           {/* BOTON ANTERIOR */}
           <PaginationContent className="gap-1 px-2">
             <PaginationItem>
@@ -112,7 +115,7 @@ export default async function App({
                   pageNumber - 1 < 1 ? 1 : pageNumber - 1
                 }`}
                 text="Anterior"
-                className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack"
+                className="active:bg-lightwhite hover:bg-lightwhite hover:text-lightblack"
               ></PaginationPrevious>
             </PaginationItem>
 

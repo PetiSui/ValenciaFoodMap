@@ -4,35 +4,42 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
-const Tags = ({ tags }) => {
+const Tags = ({ tags }: any) => {
   const [expanded, setExpanded] = useState(false);
 
   if (!tags || tags.length === 0) return;
   // console.log(tags);
 
-  let categories = Array.from({ length: tags.length });
-  const defaultNumberOfTags = 2;
+  let categories: Array<JSX.Element> = Array.from({ length: tags.length });
+  const defaultNumberOfTags = 5;
 
-  const baselineLength = tags.length > defaultNumberOfTags ? defaultNumberOfTags : tags.length;
+  const baselineLength =
+    tags.length > defaultNumberOfTags ? defaultNumberOfTags : tags.length;
   let length = expanded === true ? tags.length : baselineLength;
 
   for (let i = 0; i < length; i++) {
-    categories[i] = (
-      <span
-        key={crypto.randomUUID()}
-        className={["tag", tags[i].toLowerCase()].join(" ")}
-      >
-        {tags[i]}
-      </span>
-    );
+    if (tags[i]?.toLowerCase()?.length > 0) {
+      categories[i] = (
+        <span
+          key={crypto.randomUUID()}
+          className={["tag", tags[i].toLowerCase()].join(" ")}
+        >
+          <Link
+            href={"/descubrir/categoria/" + tags[i].toLowerCase()}
+            target="_blank"
+          >
+            {tags[i]}
+          </Link>
+        </span>
+      );
+    }
   }
 
   return (
     <div className="tags_container">
-      <div className="tags">
-        {categories}
-      </div>
+      <div className="tags">{categories}</div>
       {tags.length > defaultNumberOfTags ? (
         <FontAwesomeIcon
           icon={faChevronDown}
