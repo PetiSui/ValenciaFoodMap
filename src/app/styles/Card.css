@@ -92,8 +92,8 @@ a.link:hover {
 }
 
 .card {
-  max-width: max(13vw, 300px);
-  min-height: auto; /* Change to fixed number for Safari */
+  max-width: max(13vw, 350px);
+  min-height: auto;  /*Change to fixed number for Safari */
   background-color: var(--clr-card);
   border-radius: calc(10px + 0.8rem);
   padding: 0.8rem;

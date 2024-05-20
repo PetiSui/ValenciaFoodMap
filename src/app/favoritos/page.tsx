@@ -35,13 +35,13 @@ export default function App() {
 
   if (lsLength === 0 || data.length === 0) {
     return (
-      <div className="glassmorphism flex flex-col justify-center items-center gap-5 w-[70%] p-12 mx-auto">
-        <FontAwesomeIcon icon={faFaceSadTear} className="text-6xl drop-shadow-md" />
+      <div className="glassmorphism flex flex-col justify-center items-center gap-5 w-[70%] p-12 mt-12 mx-auto outline outline-1 outline-[#40404030]">
+        <FontAwesomeIcon icon={faFaceSadTear} className="text-6xl drop-shadow-md dark:text-lightwhite text-lightblack" />
         <p className="font-semibold mt-4 text-2xl text-balance text-center text-lightblack dark:text-lightwhite">
           Todavia no tienes favoritos añadidos
         </p>
         <Link
-          className="bg-black border-0 px-5 py-3 rounded hover:bg-slate-100 hover:text-[#020202]"
+          className="bg-black border-0 px-5 py-3 rounded hover:bg-slate-100 hover:text-lightblack text-lightwhite"
           href="/descubrir"
         >
           Explora
@@ -86,7 +86,7 @@ export default function App() {
 
     return (
       <div className="flex items-center flex-col mx-auto w-[90%] p-10 gap-4">
-        <p className=" text-2xl font-semibold">Cargando...</p>
+        <p className=" text-2xl font-semibold text-lightblack dark:text-lightwhite">Cargando...</p>
         <div className="flex flex-wrap p-0 gap-8">{items}</div>
       </div>
     );
