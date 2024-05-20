@@ -132,7 +132,7 @@ export default async function App({
       </div> */}
 
       {/* </div> */}
-      <div className="flex flex-wrap max-md:justify-center md:justify-around gap-8 p-10 mx-auto sm:w-[90%]">
+      <div className="flex flex-wrap max-md:justify-center md:justify-around gap-8 p-10 mx-auto sm:w-[95%]">
         {Object.entries(data)
           .slice(start, end)
           .map((card: any, index: Number) => (
