@@ -122,7 +122,7 @@ export default async function App({
     <>
       {/* <div className="flex flex-wrap justify-center items-center gap-8 p-4 mx-auto  w-[90%] bg-neutral-600 bg-opacity-80 rounded"> */}
       {/* <p className="mr-auto">Filtros:</p> */}
-      <div className="w-[90%] mx-auto flex justify-between items-center gap-8 px-12 pt-10 pb-4">
+      <div className="w-[90%] mx-auto flex justify-between items-center gap-8 px-8 pt-10 pb-4">
         <Filters></Filters>
         <OrderResults></OrderResults>
       </div>
