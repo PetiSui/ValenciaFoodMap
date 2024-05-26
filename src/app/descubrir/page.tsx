@@ -12,7 +12,7 @@ import Card from "../components/Card";
 import Filters from "../components/Filters";
 import { ToastContainer } from "react-toastify";
 import PageInfo from "../components/PageInfo";
-import hero from '../../public/hero.jpeg';
+import hero from '../../../public/hero.jpeg';
 import Image from "next/image";
 
 import {
