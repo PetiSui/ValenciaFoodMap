@@ -12,7 +12,6 @@ import Card from "../components/Card";
 import Filters from "../components/Filters";
 import { ToastContainer } from "react-toastify";
 import PageInfo from "../components/PageInfo";
-import hero from '../../../public/hero.jpeg';
 import Image from "next/image";
 
 import {
@@ -122,8 +121,6 @@ export default async function App({
 
   return (
     <>
-      <Image src={hero} height={350} alt="Test"></Image>
-
       {/* <div className="flex flex-wrap justify-center items-center gap-8 p-4 mx-auto  w-[90%] bg-neutral-600 bg-opacity-80 rounded"> */}
       {/* <p className="mr-auto">Filtros:</p> */}
       <div className="w-[95%] mx-auto flex justify-between items-center gap-8 px-10 mt-10 pb-4">

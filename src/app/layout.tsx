@@ -11,10 +11,10 @@ config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: "Valencia Food Map",
-  description: "Encuentra los sitios para comer",
+  description: "Encuentra los mejores sitios para comer en Valencia",
   keywords: ["Valencia", "food", "eat in valencia", "comer en Valencia"],
   openGraph: {
-    images: 'https://valencia-food-map.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhero.1aed48be.png&w=828&q=75'
+    images: 'https://valencia-food-map.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhero.5f05c792.jpeg&w=384&q=75'
   }
 };
 
