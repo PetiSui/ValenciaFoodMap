@@ -13,6 +13,7 @@ import Filters from "../components/Filters";
 import { ToastContainer } from "react-toastify";
 import PageInfo from "../components/PageInfo";
 import Image from "next/image";
+import hero from '../../../public/hero.jpeg';
 
 import {
   Select,
@@ -121,6 +122,7 @@ export default async function App({
 
   return (
     <>
+    <Image src={hero} alt="test" className="hidden" width={500}></Image>
       {/* <div className="flex flex-wrap justify-center items-center gap-8 p-4 mx-auto  w-[90%] bg-neutral-600 bg-opacity-80 rounded"> */}
       {/* <p className="mr-auto">Filtros:</p> */}
       <div className="w-[95%] mx-auto flex justify-between items-center gap-8 px-10 mt-10 pb-4">
