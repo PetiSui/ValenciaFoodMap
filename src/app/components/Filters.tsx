@@ -1,7 +1,7 @@
 "use client";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { faEuroSign, faFilter } from "@fortawesome/free-solid-svg-icons";
+import { faEuroSign, faFilter, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import {
   faArrowDownAZ,
@@ -190,7 +190,7 @@ export default function Filters() {
   return (
     <Drawer open={openFilters} onOpenChange={setOpenFilters}>
       <DrawerTrigger asChild>
-        <Button variant="outline">
+        <Button variant="outline" className="shadow-md">
           <FontAwesomeIcon icon={faFilter} className="mr-2"></FontAwesomeIcon>
           Filtros</Button>
       </DrawerTrigger>
