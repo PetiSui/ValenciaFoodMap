@@ -25,8 +25,8 @@ export default async function Categorias({
   if (!process.env.NEXT_PUBLIC_BASE_API_URL) return null;
 
   const getCards = async () => {
-    //const apiUrl = "http://localhost:3000";
-    const apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
+    const apiUrl = "http://localhost:3000";
+    //const apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
 
     // console.log(process.env.API_URL);
     const categoria = params.categoria

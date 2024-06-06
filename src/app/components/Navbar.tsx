@@ -84,14 +84,14 @@ export default function Navbar() {
       <h1>{path.split('/')[1]}</h1>
        <h1>{width}</h1> */}
 
-      <nav className={`flex min-h-4 self-start justify-between items-center bg-lightwhite dark:bg-lightblack w-full sticky top-0 z-[9900] lg:px-20 lg:py-2 max-sm:py-4 max-sm:px-4 sm:py-2 sm:px-6 backdrop-blur ${open ? "" : "shadow-md transition delay-500"}  dark:shadow-neutral-800 shadow-neutral-400`}>
+      <nav className={`flex min-h-4 self-start justify-between items-center bg-lightwhite dark:bg-lightblack w-full sticky top-0 z-[9900] lg:px-20 lg:py-4 max-sm:py-4 max-sm:px-4 sm:py-2 sm:px-6 backdrop-blur ${open ? "" : "shadow-md transition delay-500"}  dark:shadow-neutral-800 shadow-neutral-400`}>
         <div className="flex justify-center items-center">
           <Link
             href="/" onClick={() => setOpen(false)}
             className="logo text-lightwhite text-2xl flex justify-center gap-1 items-center"
           >
             <Image src={logoLight} alt="Logo" className="mix-blend-difference" width={80}></Image>
-            {!open && <p className="md:text-2xl max-sm:text-xl text-balance leading-tight dark:text-lightwhite font-bold text-lightblack">VALENCIA FOOD MAP</p>}
+            {!open && <p className="md:text-2xl max-md:text-2xl text-wrap leading-tight dark:text-lightwhite font-bold text-lightblack">VALENCIA FOOD MAP</p>}
           </Link>
         </div>
 

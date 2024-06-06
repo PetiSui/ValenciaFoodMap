@@ -101,7 +101,7 @@ export default async function App({
     <Image src={hero} alt="test" className="hidden" width={500}></Image>
       {/* <div className="flex flex-wrap justify-center items-center gap-8 p-4 mx-auto  w-[90%] bg-neutral-600 bg-opacity-80 rounded"> */}
       {/* <p className="mr-auto">Filtros:</p> */}
-      <div className="w-[80%] mx-auto flex justify-between items-center gap-8 px-2 mt-10 pb-4">
+      <div className="w-[85%] mx-auto flex justify-between items-center gap-8 py-2 px-2 mt-10 pb-4">
         <Filters></Filters>
         <OrderResults></OrderResults>
       </div>
@@ -111,7 +111,7 @@ export default async function App({
       </div> */}
 
       {/* </div> */}
-      <div className="flex flex-wrap max-md:justify-center md:justify-between gap-8 p-2 mx-auto sm:w-[80%]">
+      <div className="flex flex-wrap max-sm:justify-center justify-between gap-8 py-2 px-2 mx-auto w-[85%]">
       {/* <div className="grid-card-layout items-stretch justify-items-center gap-8 p-10 mx-auto sm:w-[95%]"> */}
         {Object.entries(data)
           .slice(start, end)
