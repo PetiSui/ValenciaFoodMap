@@ -194,7 +194,7 @@ export default function Filters() {
           <FontAwesomeIcon icon={faFilter} className="mr-2"></FontAwesomeIcon>
           Filtros</Button>
       </DrawerTrigger>
-      <DrawerContent className="dark:text-lightwhite z-[99999] outline dark:outline-neutral-400 dark:bg-lightblack bg-lightwhite opacity-95 backdrop-blur">
+      <DrawerContent className="dark:text-lightwhite z-[99999] dark:bg-lightblack bg-lightwhite opacity-95 backdrop-blur">
         <DrawerHeader className="text-left mb-2">
           <DrawerTitle>Filtros</DrawerTitle>
           <DrawerDescription className="opacity-95">Añade filtros a la búsqueda.</DrawerDescription>

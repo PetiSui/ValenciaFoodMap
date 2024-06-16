@@ -32,7 +32,7 @@ export default async function Categorias({
     const categoria = params.categoria
       ? params.categoria.charAt(0).toUpperCase() + params.categoria.slice(1)
       : redirect("/descubrir");
-    console.log(categoria);    
+    console.log(categoria);
 
     const res = await fetch(
       `${apiUrl}/api/cards/categories/${params.categoria}`,
@@ -42,20 +42,33 @@ export default async function Categorias({
         },
       }
     );
-      
+
     const jsonData = await res.json();
     console.log(jsonData);
-    
+
     return jsonData;
   };
 
   const datax = await getCards();
   console.log("ORDER BY", searchParams["order"]);
 
-  const data = datax.sort((a: any, b: any) => {
-    if (a.name === b.name) return 0;
-    return a.name > b.name ? 1 : -1;
-  });
+  const orderFunction = {
+    AZ: (a: any, b: any) => {
+      if (a.name === b.name) return 0;
+      return a.name > b.name ? 1 : -1;
+    },
+    ZA: (a: any, b: any) => {
+      if (a.name === b.name) return 0;
+      return a.name > b.name ? -1 : 1;
+    },
+  };
+
+  const orderBy = searchParams["order"] as string;
+
+  const data =
+    orderBy == "ZA"
+      ? datax.sort(orderFunction["ZA"])
+      : datax.sort(orderFunction["AZ"]);
 
   // Controls how many cards per page are displayed
   const perPage = 30;
@@ -72,7 +85,10 @@ export default async function Categorias({
     redirect("/descubrir?page=1");
   }
 
-  if ((searchParams["page"] as string) !== undefined && pageNumber > totalPages) {
+  if (
+    (searchParams["page"] as string) !== undefined &&
+    pageNumber > totalPages
+  ) {
     pageNumber = totalPages;
     redirect("/descubrir?page=" + totalPages);
   }
@@ -90,14 +106,15 @@ export default async function Categorias({
 
   return (
     <>
-      <div className="w-[80%] mx-auto flex justify-between items-center gap-8 px-2 mt-10 pb-4">
+      <div className="w-[100%] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 md:px-[9vw] mt-10 pb-4">
         <Filters></Filters>
         <OrderResults></OrderResults>
       </div>
 
       {/* </div> */}
-      <div className="flex flex-wrap max-md:justify-center md:justify-between gap-8 p-2 mx-auto sm:w-[80%]">
-        {/* <div className="grid-card-layout items-stretch justify-items-center gap-8 p-10 mx-auto sm:w-[95%]"> */}
+      {/* <div className="flex flex-wrap max-md:justify-center md:justify-between gap-8 p-2 mx-auto sm:w-[80%]"> */}
+      {/* <div className="grid-card-layout items-stretch justify-items-center gap-8 p-10 mx-auto sm:w-[95%]"> */}
+      <div className="flex flex-wrap max-md:w-[70%] max-md:justify-center justify-between gap-8 py-2 px-[9vw] mx-auto w-[100%]">
         {Object.entries(data)
           .slice(start, end)
           .map((card: any, index: Number) => (

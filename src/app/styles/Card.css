@@ -80,7 +80,7 @@ a.link:hover {
   font-weight: var(--ff-size-l);
 }
 
-.buttonSearch:over {
+.buttonSearch:hover {
   background-color: rgb(36, 156, 226);
   opacity: 0.9;
   transform: scale(1.1);
@@ -92,7 +92,7 @@ a.link:hover {
 }
 
 .card {
-  max-width: max(13vw, 350px);
+  max-width: 350px;
   min-height: auto;  /*Change to fixed number for Safari */
   background-color: var(--clr-card);
   border-radius: calc(10px + 0.8rem);
@@ -117,6 +117,7 @@ a.link:hover {
 .image {
   width: 100%;
   min-height: 100%;
+  min-width: 350px;
   aspect-ratio: 16/9;
   /* border-image: fill 0 linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.113)); */
   border-radius: 10px 10px 0 0;
