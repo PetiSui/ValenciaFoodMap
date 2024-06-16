@@ -71,7 +71,7 @@ export default async function Categorias({
       : datax.sort(orderFunction["AZ"]);
 
   // Controls how many cards per page are displayed
-  const perPage = 30;
+  const perPage = 24;
 
   const totalPages = Math.ceil(Object.entries(data).length / perPage);
   let pageNumber = parseInt(searchParams["page"] as string) || 1;
