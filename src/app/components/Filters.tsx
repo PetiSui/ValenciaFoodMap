@@ -118,9 +118,6 @@ export default function Filters() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  //console.log("PATHNAME", pathname);
-  
-  //console.log("SEARCHPARAMS", searchParams.toString());
 
   const createQueryString = useCallback(
     (name: string, value: string) => {

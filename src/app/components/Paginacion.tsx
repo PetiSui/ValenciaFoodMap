@@ -19,8 +19,6 @@ import { useCallback } from "react";
 
 export default function Paginacion({pageNumber, totalPages}: Props) {
 
-  if (!pageNumber || !totalPages) return null;
-
   let x = 0;
 
   const pathname = usePathname();
@@ -35,6 +33,8 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
     },
     [searchParams]
   );
+
+  if (!pageNumber || !totalPages) return null;
   
   return (
     <div className="flex flex-wrap justify-center p-2 mt-2 mx-auto">
