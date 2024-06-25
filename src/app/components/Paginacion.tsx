@@ -1,3 +1,6 @@
+"use client"
+
+import { usePathname, useSearchParams } from "next/navigation";
 import {
     Pagination,
     PaginationContent,
@@ -7,6 +10,7 @@ import {
     PaginationNext,
     PaginationPrevious,
   } from "../../components/ui/pagination";
+import { useCallback } from "react";
 
   type Props = {
     pageNumber: number,
@@ -18,6 +22,19 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
   if (!pageNumber || !totalPages) return null;
 
   let x = 0;
+
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const createQueryString = useCallback(
+    (name: string, value: string | number) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value.toString());
+
+      return params.toString();
+    },
+    [searchParams]
+  );
   
   return (
     <div className="flex flex-wrap justify-center p-2 mt-2 mx-auto">
@@ -26,11 +43,11 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
         <PaginationContent className="gap-1 px-2">
           <PaginationItem>
             <PaginationPrevious
-              href={`/descubrir?page=${
-                pageNumber - 1 < 1 ? 1 : pageNumber - 1
+              href={`${pathname}?${
+                createQueryString("page", pageNumber - 1 < 1 ? 1 : pageNumber - 1)
               }`}
               text="Anterior"
-              className="active:bg-lightwhite hover:bg-lightwhite hover:text-lightblack"
+              className={`active:bg-lightwhite hover:bg-lightwhite hover:text-lightblack ${totalPages === 0 ? "pointer-events-none" : ""}`}
             ></PaginationPrevious>
           </PaginationItem>
 
@@ -40,7 +57,7 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
               <PaginationItem>
                 <PaginationLink
                   className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
-                  href="/descubrir?page=1"
+                  href={`${pathname}?${createQueryString("page", 1)}`}
                 >
                   1
                 </PaginationLink>
@@ -70,7 +87,7 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
             </PaginationItem>
           )}
 
-          {/* Render one page button when possible, modifieble! */}
+          {/* Render one page button ahead when possible, modifieble! */}
           {Array.from({ length: 1 }).map((_, index) => {
             x++;
             if (pageNumber + x < totalPages)
@@ -78,8 +95,8 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
                 <PaginationItem key={crypto.randomUUID()}>
                   <PaginationLink
                     className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
-                    href={`/descubrir?page=${
-                      pageNumber + x >= totalPages ? totalPages : pageNumber + x
+                    href={`${pathname}?${
+                      createQueryString("page", pageNumber + x >= totalPages ? totalPages : pageNumber + x)
                     }`}
                   >
                     {pageNumber + x >= totalPages ? totalPages : pageNumber + x}
@@ -101,7 +118,7 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
               <PaginationItem>
                 <PaginationLink
                   className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
-                  href={`/descubrir?page=${totalPages}`}
+                  href={`${pathname}?${createQueryString("page", totalPages)}`}
                 >
                   {totalPages}
                 </PaginationLink>
@@ -114,9 +131,9 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
           {/* Boton siguiente */}
           <PaginationItem>
             <PaginationNext
-              className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack"
-              href={`/descubrir?page=${
-                pageNumber + 1 >= totalPages ? totalPages : pageNumber + 1
+              className={`active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack ${totalPages === 0 ? "pointer-events-none" : ""}`}
+                href={`${pathname}?${
+                createQueryString("page", pageNumber + 1 >= totalPages ? totalPages : pageNumber + 1)
               }`}
               text="Siguiente"
             />

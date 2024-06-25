@@ -1,17 +1,14 @@
 "use client";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { faEuroSign, faFilter, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import {
-  faArrowDownAZ,
-  faArrowDownZA,
+  faEuroSign,
+  faFilter
 } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MultipleSelect, { Option } from "./MultipleSelect";
-import { ScrollArea, ScrollBar } from "../../components/ui/scroll-area";
-import { FormEvent, useState } from "react";
-import { ButtonIcon } from "./ButtonIcon";
+import { FormEvent, useCallback, useState } from "react";
+
 
 import {
   Drawer,
@@ -24,12 +21,12 @@ import {
   DrawerTrigger,
 } from "../../components/ui/drawer";
 import { Button } from "../../components/ui/button";
-import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { cn } from "../../lib/utils";
 import { Toggle } from "../../components/ui/toggle";
 import { ToggleGroup, ToggleGroupItem } from "../../components/ui/toggle-group";
 import { Separator } from "@/components/ui/separator";
+import { redirect, usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const Euro = <FontAwesomeIcon icon={faEuroSign}></FontAwesomeIcon>;
 const Star = <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>;
@@ -62,11 +59,11 @@ const COST_OPTIONS: any = [
 ];
 
 const RATING_OPTIONS: any = [
-  { label: "o más", value: "1", rating: 1, icon: <>{Star}</> },
+  //{ label: "o más", value: "1", rating: 0.6, icon: <>{Star}</> },
   {
     label: "o más",
     value: "2",
-    rating: 2,
+    rating: 1.6,
     icon: (
       <>
         {Star}
@@ -77,7 +74,7 @@ const RATING_OPTIONS: any = [
   {
     label: "o más",
     value: "3",
-    rating: 3,
+    rating: 2.6,
     icon: (
       <>
         {Star}
@@ -89,7 +86,7 @@ const RATING_OPTIONS: any = [
   {
     label: "o más",
     value: "4",
-    rating: 4,
+    rating: 3.6,
     icon: (
       <>
         {Star}
@@ -102,7 +99,7 @@ const RATING_OPTIONS: any = [
   {
     label: "o más",
     value: "5",
-    rating: 5,
+    rating: 4.6,
     icon: (
       <>
         {Star}
@@ -115,32 +112,71 @@ const RATING_OPTIONS: any = [
   },
 ];
 
-const ORDER_OPTIONS: Option[] = [
-  { label: "A-Z", value: "A" },
-  { label: "Z-A", value: "Z" },
-];
-
 
 
 export default function Filters() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  //console.log("PATHNAME", pathname);
+  
+  //console.log("SEARCHPARAMS", searchParams.toString());
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  const urlCostFilter = searchParams.get('cost')?.replace(' ','').split(",") || [];
+  const urlRatingFilter = searchParams.get('rating')?.replace(' ','') || "";
+
   const [AZ, setAz] = useState(true);
   const [openFilters, setOpenFilters] = useState(false);
-  const [costFilters, setCostFilters] = useState([]);
-  const [ratingFilters, setRatingFilters] = useState([]);
+  const [costFilters, setCostFilters] = useState<string[]>(urlCostFilter);
+  const [ratingFilter, setRatingFilter] = useState(urlRatingFilter);
 
-  function addCostFilter(filter:string){
+  function addCostFilter(filter: string) {
+    if (costFilters.includes(filter)) {
+      let newCostFilters = costFilters.filter(
+        (costFilter) => costFilter != filter
+      );
+      setCostFilters((prev) => newCostFilters);
+    } else {
+      setCostFilters([...costFilters, filter]);
+    }
 
+    console.log("FILTROS?", costFilters);
   }
 
-  function handleFilters(e: FormEvent<HTMLFormElement>){
+  function handleFilters(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("HANDLE FILTERS");
-    setOpenFilters(prev => !prev);
+    e.stopPropagation();
+    console.log("Los filtros de coste son: ", costFilters);
+    console.log("El filtro de valoracion es: ", ratingFilter);
+    
+    setOpenFilters((prev) => !prev);
+
+    const params = new URLSearchParams(searchParams.toString());
+    ratingFilter != "" && params.set('rating', ratingFilter);
+    costFilters.length > 0 && params.set('cost', costFilters.toString().replace("[","").replace("]",""));
+    params.set("page", "1");
+    console.log("Redirigimos a: " + pathname + "?" + decodeURIComponent(params.toString()));
+    
+    //redirect(pathname + "?" + params);
+    router.push(pathname + "?" + params);
   }
 
   function FilterForm({ className }: React.ComponentProps<"form">) {
     return (
-      <form className={cn("grid items-start gap-4 z-[999]", className)} onSubmit={(e) => handleFilters(e)}>
+      <form
+        className={cn("grid items-start gap-4 z-[999]", className)}
+        onSubmit={(e) => handleFilters(e)}
+      >
         <div className="grid gap-2">
           <Label htmlFor="email">Coste</Label>
           <div className="flex flex-wrap gap-4">
@@ -149,9 +185,12 @@ export default function Filters() {
                 <Toggle
                   key={crypto.randomUUID()}
                   variant="outline"
-                  className="outline outline-1 outline-neutral-700 hover:bg-neutral-300"
+                  className={`outline outline-1 outline-neutral-700 hover:bg-neutral-300 ${costFilters.includes(item.value) ? " dark:bg-neutral-600" : ""}`}
                   aria-label="Toggle italic"
-                  onClick={()=>{addCostFilter(item.value)}}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addCostFilter(item.value);
+                  }}
                 >
                   {item.icon}
                   <span className="ml-4">{item.label}</span>
@@ -163,14 +202,22 @@ export default function Filters() {
         <div className="grid gap-2">
           <Label htmlFor="username">Valoración</Label>
           <div className="flex flex-wrap mb-2">
-            <ToggleGroup type="single" variant={"outline"} className="gap-4 flex-wrap justify-start">
+            <ToggleGroup
+              type="single"
+              variant={"outline"}
+              className="gap-4 flex-wrap justify-start"
+              onValueChange={(value: string) => {
+                if(!value){return;}
+                setRatingFilter(prev => value);
+              }}
+            >
               {RATING_OPTIONS.map((item: any) => {
                 return (
                   <ToggleGroupItem
                     key={crypto.randomUUID()}
                     value={item.value}
-                    aria-label="Toggle bold"
-                    className="outline outline-1 outline-neutral-700 hover:bg-neutral-300"
+                    aria-label={`${item.value} estrellas o más`}
+                    className={`outline outline-1 outline-neutral-700 hover:bg-neutral-300 ${ratingFilter === item.value ? " dark:bg-neutral-600" : ""}`}
                   >
                     {item.icon}
                     <span className="ml-2">{item.label}</span>
@@ -180,7 +227,11 @@ export default function Filters() {
             </ToggleGroup>
           </div>
         </div>
-        <Button type="submit" variant="outline" className="dark:bg-lightwhite dark:hover:bg-neutral-300 dark:hover:text-lightblack text-lightwhite bg-lightblack hover:bg-neutral-800 hover:text-lightwhite dark:text-lightblack">
+        <Button
+          type="submit"
+          variant="outline"
+          className="dark:bg-lightwhite dark:hover:bg-neutral-300 dark:hover:text-lightblack text-lightwhite bg-lightblack hover:bg-neutral-800 hover:text-lightwhite dark:text-lightblack"
+        >
           Aplicar
         </Button>
       </form>
@@ -192,69 +243,26 @@ export default function Filters() {
       <DrawerTrigger asChild>
         <Button variant="outline" className="shadow-md">
           <FontAwesomeIcon icon={faFilter} className="mr-2"></FontAwesomeIcon>
-          Filtros</Button>
+          Filtros
+        </Button>
       </DrawerTrigger>
       <DrawerContent className="dark:text-lightwhite z-[99999] dark:bg-lightblack bg-lightwhite opacity-95 backdrop-blur">
         <DrawerHeader className="text-left mb-2">
           <DrawerTitle>Filtros</DrawerTitle>
-          <DrawerDescription className="opacity-95">Añade filtros a la búsqueda.</DrawerDescription>
+          <DrawerDescription className="opacity-95">
+            Añade filtros a la búsqueda.
+          </DrawerDescription>
           <Separator className="dark:bg-lightwhite bg-lightblack opacity-30 mt-1" />
         </DrawerHeader>
         <FilterForm className="px-4" />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
-            <Button className="dark:bg-neutral-800 dark:text-lightwhite dark:hover:bg-neutral-700 bg-neutral-200 hover:bg-neutral-300 hover:text-lightwhite text-lightblack">Cancelar</Button>
+            <Button className="dark:bg-neutral-800 dark:text-lightwhite dark:hover:bg-neutral-700 bg-neutral-200 hover:bg-neutral-300 hover:text-lightwhite text-lightblack">
+              Cancelar
+            </Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-    // <div className="glassmorphism filter_navbar flex gap-4 mx-auto w-[90%] h-[8vh] overflow-visible items-center justify-center bg-neutral-600 bg-opacity-80 rounded p-4">
-    //   <ButtonIcon
-    //     className="bg-neutral-500 hover:bg-neutral-600 border-solid border-[1px] border-white  border-input px-3 py-2 ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
-    //     handleOnClick={() => setAz((prev) => !prev)}
-    //   >
-    //     <FontAwesomeIcon
-    //       size="xl"
-    //       icon={AZ ? faArrowDownAZ : faArrowDownZA}
-    //     ></FontAwesomeIcon>
-    //   </ButtonIcon>
-    //   <MultipleSelect
-    //     className="self-center inline-block"
-    //     defaultOptions={COST_OPTIONS}
-    //     onChange={(a) => {
-    //       console.log(a);
-    //     }}
-    //     placeholder="Coste"
-    //     placeholderIcon={faEuroSign}
-    //     emptyIndicator={
-    //       <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
-    //         No se encontraron resultados
-    //       </p>
-    //     }
-    //   />
-
-    //   <MultipleSelect
-    //     className="self-center inline-block"
-    //     defaultOptions={RATING_OPTIONS}
-    //     placeholder="Valoración"
-    //     placeholderIcon={faStar}
-    //     emptyIndicator={
-    //       <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
-    //         No se encontraron resultados
-    //       </p>
-    //     }
-    //   />
-    //   {/* <MultipleSelect
-    //     className="self-center inline-block"
-    //     defaultOptions={ORDER_OPTIONS}
-    //     placeholder="Orden alfabético"
-    //     placeholderIcon={AZ ? faArrowDownAZ : faArrowDownZA}
-    //     emptyIndicator={
-    //       <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
-    //         No se encontraron resultados
-    //       </p>
-    //     }
-    //   /> */}
-    // </div>
   );
 }
