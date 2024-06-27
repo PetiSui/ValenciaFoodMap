@@ -57,7 +57,7 @@ const OrderResults = () => {
       onValueChange={(value) => orderBy(value)}
       defaultValue={searchParams.get("order") || ""}
     >
-      <SelectTrigger className="w-fit !bg-lightwhite shadow-md dark:bg-neutral-700 dark:text-lightwhite !text-lightblack dark:bg-opacity-80 outline outline-1 outline-[rgba(82,82,82,0.4)] underline-offset-4">
+      <SelectTrigger title="Ordenar por" className="w-fit !bg-lightwhite shadow-md dark:bg-neutral-700 dark:text-lightwhite !text-lightblack dark:bg-opacity-80 outline outline-1 outline-[rgba(82,82,82,0.4)] underline-offset-4">
         <FontAwesomeIcon
           icon={faArrowRightArrowLeft}
           rotation={90}

@@ -97,7 +97,7 @@ const RATING_OPTIONS: any = [
     ),
   },
   {
-    label: "o más",
+    label: "",
     value: "5",
     rating: 4.6,
     icon: (
@@ -238,7 +238,7 @@ export default function Filters() {
   return (
     <Drawer open={openFilters} onOpenChange={setOpenFilters}>
       <DrawerTrigger asChild>
-        <Button variant="outline" className="shadow-md">
+        <Button variant="outline" className="shadow-md" title="Filtros">
           <FontAwesomeIcon icon={faFilter} className="mr-2"></FontAwesomeIcon>
           Filtros
         </Button>
