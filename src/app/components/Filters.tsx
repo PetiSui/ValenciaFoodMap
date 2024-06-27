@@ -59,7 +59,7 @@ const COST_OPTIONS: any = [
 ];
 
 const RATING_OPTIONS: any = [
-  //{ label: "o más", value: "1", rating: 0.6, icon: <>{Star}</> },
+  { label: "o más", value: "1", rating: 0.6, icon: <>{Star}</> },
   {
     label: "o más",
     value: "2",
@@ -96,20 +96,20 @@ const RATING_OPTIONS: any = [
       </>
     ),
   },
-  {
-    label: "",
-    value: "5",
-    rating: 4.6,
-    icon: (
-      <>
-        {Star}
-        {Star}
-        {Star}
-        {Star}
-        {Star}
-      </>
-    ),
-  },
+  // {
+  //   label: "",
+  //   value: "5",
+  //   rating: 4.6,
+  //   icon: (
+  //     <>
+  //       {Star}
+  //       {Star}
+  //       {Star}
+  //       {Star}
+  //       {Star}
+  //     </>
+  //   ),
+  // },
 ];
 
 

@@ -38,10 +38,12 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
   //   (searchParams["page"] as string) !== undefined &&
   //   isNaN(parseInt(searchParams["page"] as string))
   // ) {
-  //   redirect("/descubrir?page=1");
-  // }
+  //redirect("/descubrir?page=1");
+  //}
 
-  if (!pageNumber || !totalPages) return null;
+  if(isNaN(pageNumber) || isNaN(totalPages)){
+    redirect(pathname + "?" + createQueryString("page", 1));
+  }
 
   if (pageNumber < 1) {
     //pageNumber = 1;
@@ -52,6 +54,8 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
     //pageNumber = totalPages;
     redirect(pathname + "?" + createQueryString("page", totalPages));
   }
+
+  if (!pageNumber || !totalPages) return null;
   
   return (
     <div className="flex flex-wrap justify-center p-2 mt-2 mx-auto">

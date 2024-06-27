@@ -105,9 +105,9 @@ export default async function App({
   const perPage = 24;
 
   const totalPages = Math.ceil(Object.entries(data).length / perPage);
-  let pageNumber = parseInt(searchParams["page"] as string) || 1;
+  let pageNumber = parseInt(searchParams["page"] as string);
 
-  const start = (pageNumber - 1) * perPage;
+  const start = !isNaN(pageNumber) ? (pageNumber - 1) * perPage : 1;
   const end = start + perPage;
 
   return (
