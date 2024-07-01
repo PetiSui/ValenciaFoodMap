@@ -9,11 +9,13 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import L, { Map } from "leaflet";
 import MarkerIcon from "../../../../node_modules/leaflet/dist/images/marker-icon.png";
 import MarkerShadow from "../../../../node_modules/leaflet/dist/images/marker-shadow.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-export default function Location(props:any) {
+export default function Location(props: any) {
   const coordiantePoint = {
     lat: 39.469468,
-    lng: -0.391900,
+    lng: -0.3919,
   };
 
   const centerMarker = (position: { lat: number; lng: number }, fnMap: Map) => {
@@ -24,14 +26,20 @@ export default function Location(props:any) {
   };
 
   return (
-    <div className="flex flex-col gap-6 items-center justify-center">
-      <h3 className="text-2xl text-lightwhite">Mapa Interativo</h3>
-      <div className="h-full">
+    <div className="flex flex-col gap-2 items-center justify-center w-[80vw] mx-auto">
+      <h3 className="text-3xl font-semibold text-lightwhite self-start">
+        Mapa Interactivo
+      </h3>
+      <p className="text-xl font-light text-lightwhite self-start">
+        <FontAwesomeIcon icon={faMapLocationDot} className="mr-2"/>
+        Explora los establecimientos más destacados
+      </p>
+      <div className="mt-4">
         <MapContainer
           center={coordiantePoint}
           zoom={13}
           scrollWheelZoom={false}
-          style={{ height: "70vh", width: "60vw" }}
+          style={{ height: "70vh", width: "80vw" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -49,7 +57,7 @@ export default function Location(props:any) {
                 shadowSize: [41, 41],
               })
             }
-            position={[39.469468, -0.391900]}
+            position={[39.469468, -0.3919]}
           ></Marker>
         </MapContainer>
       </div>
