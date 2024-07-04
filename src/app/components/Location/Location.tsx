@@ -19,8 +19,7 @@ export default function Location(props: any) {
     lng: -0.3919,
   };
 
-  //console.log("DATA", props?.data);
-  const fnMap = useMap();
+  //const fnMap = useMap();
 
   const centerMarker = (position: { lat: number; lng: number }, fnMap: Map) => {
     fnMap.flyTo({
@@ -64,7 +63,7 @@ export default function Location(props: any) {
             return (
               <Marker
                 key={crypto.randomUUID()}
-                eventHandlers={{click: () => {fnMap.flyTo({lat: details?.lat, lng:details?.lng})}}}
+                //eventHandlers={{click: () => {fnMap.flyTo({lat: details?.lat, lng:details?.lng})}}}
                 icon={
                   new L.Icon({
                     iconUrl: MarkerIcon.src,
