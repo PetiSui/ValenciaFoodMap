@@ -13,12 +13,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import PopUpCard from "../PopUpCard";
 
+type DetailsProps = {
+  _id: string;
+  address: string;
+  name: string;
+  lat: number;
+  lng: number;
+  photos?: string;
+  url: string;
+  categories?: string[];
+};
+
 export default function Location(props: any) {
   const coordiantePoint = {
     lat: 39.469468,
     lng: -0.3919,
   };
-
+  console.log(props.data);
+  
   //const fnMap = useMap();
 
   const centerMarker = (position: { lat: number; lng: number }, fnMap: Map) => {
@@ -59,7 +71,7 @@ export default function Location(props: any) {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
           ></TileLayer>
-          {props?.data?.map((details: DetailsProps, index: number) => {
+           {props.data.map((details: DetailsProps, index: number) => {
             return (
               <Marker
                 key={crypto.randomUUID()}
@@ -84,7 +96,7 @@ export default function Location(props: any) {
                 </Popup>
               </Marker>
             );
-          })}
+          })} 
         </MapContainer>
       </div>
     </div>
