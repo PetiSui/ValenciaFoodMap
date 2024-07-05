@@ -24,13 +24,26 @@ type DetailsProps = {
   categories?: string[];
 };
 
-export default function Location(props: any) {
+type Props = {
+  data : DetailsProps[];
+};
+
+export default function Location(data: Props) {
   const coordiantePoint = {
     lat: 39.469468,
     lng: -0.3919,
   };
-  console.log(props.data);
   
+  //console.log(data);
+  
+  var arr = new Array(data.data);
+
+  // arr[0].map((element: any) => {
+  //   console.log(element);
+    
+  // })
+
+  //console.log(arr);
   //const fnMap = useMap();
 
   const centerMarker = (position: { lat: number; lng: number }, fnMap: Map) => {
@@ -71,7 +84,7 @@ export default function Location(props: any) {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
           ></TileLayer>
-           {props.data.map((details: DetailsProps, index: number) => {
+           {arr[0].map((details: any) => {
             return (
               <Marker
                 key={crypto.randomUUID()}
@@ -96,7 +109,7 @@ export default function Location(props: any) {
                 </Popup>
               </Marker>
             );
-          })} 
+          })}
         </MapContainer>
       </div>
     </div>
