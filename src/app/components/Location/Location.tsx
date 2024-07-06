@@ -12,6 +12,8 @@ import MarkerShadow from "../../../../node_modules/leaflet/dist/images/marker-sh
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import PopUpCard from "../PopUpCard";
+import { useMapEvent } from 'react-leaflet/hooks'
+import Markerwhatever from "../MarkerWhatever";
 
 type DetailsProps = {
   _id: string;
@@ -64,6 +66,23 @@ export default function Location(data: Props) {
     categories?: string[];
   };
 
+  //const map = useMap();
+
+  const handleMapClick = (e : any) => {
+    const { lat, lng } = e.latlng;
+    alert(`Clicked at: ${lat}, ${lng}`);
+    useMapEvent('click', () => {
+      //map.setView([lat, lng], map.getZoom())
+    })
+  };
+
+  const MapEventsHandler = ({ handleMapClick } : any) => {
+    useMapEvents({
+      click: (e) => handleMapClick(e),
+    });
+    return null;
+  };
+
   return (
     <div className="flex flex-col gap-2 items-center justify-center w-[80vw] mx-auto">
       <h3 className="text-3xl font-semibold text-lightwhite self-start">
@@ -85,33 +104,41 @@ export default function Location(data: Props) {
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
           ></TileLayer>
            {arr[0].map((details: any) => {
-            return (
-              <Marker
-                key={crypto.randomUUID()}
-                //eventHandlers={{click: () => {fnMap.flyTo({lat: details?.lat, lng:details?.lng})}}}
-                icon={
-                  new L.Icon({
-                    iconUrl: MarkerIcon.src,
-                    iconRetinaUrl: MarkerIcon.src,
-                    iconSize: [25, 41],
-                    iconAnchor: [12.5, 41],
-                    popupAnchor: [0, -41],
-                    shadowUrl: MarkerShadow.src,
-                    shadowSize: [41, 41],
-                  })
-                }
-                position={[details?.lat, details?.lng]}
-              >
-                <Popup>
-                  <div>
-                    <PopUpCard {...details} />
-                  </div>
-                </Popup>
-              </Marker>
-            );
+            return <Markerwhatever key={crypto.randomUUID()} details={details}></Markerwhatever>;
+            // return (
+            //   <Marker
+            //     key={crypto.randomUUID()}
+            //     eventHandlers={{
+            //       click: (e) => {
+            //         map.flyTo({lat: 56, lng: 13}, 14);
+            //       },
+            //     }}
+            //     icon={
+            //       new L.Icon({
+            //         iconUrl: MarkerIcon.src,
+            //         iconRetinaUrl: MarkerIcon.src,
+            //         iconSize: [25, 41],
+            //         iconAnchor: [12.5, 41],
+            //         popupAnchor: [0, -41],
+            //         shadowUrl: MarkerShadow.src,
+            //         shadowSize: [41, 41],
+            //       })
+            //     }
+            //     position={[details?.lat, details?.lng]}
+            //   >
+            //     <Popup>
+            //       <div>
+            //         <PopUpCard {...details} />
+            //       </div>
+            //     </Popup>
+            //   </Marker>
+            // );
           })}
+          <MapEventsHandler handleMapClick={handleMapClick} />
         </MapContainer>
       </div>
     </div>
   );
+
+  
 }
