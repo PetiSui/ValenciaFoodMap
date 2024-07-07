@@ -66,22 +66,20 @@ export default function Location(data: Props) {
     categories?: string[];
   };
 
-  //const map = useMap();
+  
 
-  const handleMapClick = (e : any) => {
-    const { lat, lng } = e.latlng;
-    alert(`Clicked at: ${lat}, ${lng}`);
-    useMapEvent('click', () => {
-      //map.setView([lat, lng], map.getZoom())
-    })
-  };
+  function MapEventsHandler() {
+    const map = useMap();
 
-  const MapEventsHandler = ({ handleMapClick } : any) => {
     useMapEvents({
-      click: (e) => handleMapClick(e),
+      click: (e) => {
+        const { lat, lng } = e.latlng;
+        alert(`Clicked at: ${lat}, ${lng}`);
+        map.setView([lat, lng - 2], map.getZoom());
+      },
     });
     return null;
-  };
+  }
 
   return (
     <div className="flex flex-col gap-2 items-center justify-center w-[80vw] mx-auto">
@@ -134,7 +132,7 @@ export default function Location(data: Props) {
             //   </Marker>
             // );
           })}
-          <MapEventsHandler handleMapClick={handleMapClick} />
+          <MapEventsHandler/>
         </MapContainer>
       </div>
     </div>
