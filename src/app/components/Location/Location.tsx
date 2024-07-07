@@ -69,15 +69,15 @@ export default function Location(data: Props) {
   
 
   function MapEventsHandler() {
-    const map = useMap();
-
-    useMapEvents({
-      click: (e) => {
-        const { lat, lng } = e.latlng;
-        alert(`Clicked at: ${lat}, ${lng}`);
-        map.setView([lat, lng - 2], map.getZoom());
-      },
-    });
+    //const map = useMap();
+//
+    //useMapEvents({
+    //  click: (e) => {
+    //    const { lat, lng } = e.latlng;
+    //    alert(`Clicked at: ${lat}, ${lng}`);
+    //    map.setView([lat, lng - 2], map.getZoom());
+    //  },
+    //});
     return null;
   }
 

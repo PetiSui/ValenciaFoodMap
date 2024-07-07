@@ -18,7 +18,7 @@ type DetailsProps = {
 export default function PopUpCard(data:DetailsProps) : JSX.Element {
     //console.log(data.name);
     
-    return <div className="flex flex-col gap-2 p-4 max-w-[250px] max-h-fit">
+    return <div className="flex flex-wrap flex-col gap-2 p-2 max-w-[250px] max-h-fit">
         <Image className="!m-0" src={data?.photos || Placeholder} width={250} height={112} alt={data?.name}></Image>
         <p className="text-xl font-semibold !m-0">{data.name}</p>
         <a href={data?.url} target="_blank" className="text-l font-light !m-0 !mt-2">{data.address}</a>
