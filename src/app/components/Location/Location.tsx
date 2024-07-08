@@ -82,9 +82,9 @@ export default function Location(data: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center w-[80vw] mx-auto">
+    <div className="flex flex-col gap-2 items-center justify-center w-[85vw] mx-auto">
       <h3 className="text-3xl font-semibold text-lightwhite self-start">
-        <FontAwesomeIcon icon={faMapLocationDot} className="mr-6" />
+        <FontAwesomeIcon icon={faMapLocationDot} className="mr-4" />
         Mapa Interactivo
       </h3>
       <p className="text-xl font-light text-lightwhite self-start">
@@ -95,7 +95,7 @@ export default function Location(data: Props) {
           center={coordiantePoint}
           zoom={13}
           scrollWheelZoom={false}
-          style={{ height: "70vh", width: "80vw" }}
+          style={{ height: "70vh", width: "85vw" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
