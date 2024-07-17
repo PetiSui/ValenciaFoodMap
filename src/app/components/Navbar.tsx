@@ -10,9 +10,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { AnimatePresence, motion } from "framer-motion";
+import { useHideOnScrollDown } from "../../lib/useHideOnScroll";
 
 export default function Navbar() {
   const path = usePathname();
+
+  const isVisible = useHideOnScrollDown();
 
   const [open, setOpen] = useState(false);
   const toggleMenu = () => {
@@ -80,11 +83,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* <h1>{path}</h1>
-      <h1>{path.split('/')[1]}</h1>
-       <h1>{width}</h1> */}
-
-      <nav className={`flex min-h-4 self-start justify-between items-center bg-lightwhite dark:bg-lightblack w-full sticky top-0 z-[9900] lg:px-20 lg:py-4 max-sm:py-4 max-sm:px-4 sm:py-2 sm:px-6 backdrop-blur ${open ? "" : "shadow-md transition delay-500"}  dark:shadow-neutral-800 shadow-neutral-400`}>
+      <nav className={`flex min-h-4 self-start justify-between items-center bg-lightwhite dark:bg-lightblack w-full sticky ${isVisible ? "top-0" : "top-[-8rem]"} navbar-hide z-[9900] lg:px-20 lg:py-4 max-sm:py-4 max-sm:px-4 sm:py-2 sm:px-6 backdrop-blur ${open ? "" : "shadow-md transition delay-500"}  dark:shadow-neutral-800 shadow-neutral-400`}>
         <div className="flex justify-center items-center">
           <Link
             href="/" onClick={() => setOpen(false)}

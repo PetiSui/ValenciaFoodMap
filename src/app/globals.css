@@ -285,11 +285,11 @@ body {
 
 .glassmorphism {
   /* From https://css.glass */
-  background: rgba(246, 246, 246, 0.199);
+  background: rgba(246, 246, 246, 0.366);
   border-radius: 8px;
   /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .grid-card-layout{
@@ -304,6 +304,10 @@ body {
 
 .bounce-animation-long {
   animation: fade-in 800ms ease-out;
+}
+
+.navbar-hide{
+  transition: top 350ms ease-out;
 }
 
 @media (prefers-reduced-motion) {

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Placeholder from "../../../public/No-Image-Placeholder.webp";
 
 type Props = {
   description: string;

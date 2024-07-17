@@ -41,7 +41,7 @@ export default function PopUpCard(data: DetailsProps): JSX.Element {
       </a>
       <Link
         title="Más información"
-        className="font-semibold flex-1 bg-lightblack bounce-animation-long transition-colors ease-in-out !text-white border-0 rounded mt-2 px-5 py-3 text-center hover:!bg-neutral-300 hover:!text-lightblack"
+        className="font-semibold flex-1 bg-lightblack animate-bounce bounce-animation-long transition-colors ease-in-out !text-white border-0 rounded mt-2 px-5 py-3 text-center hover:!bg-neutral-300 hover:!text-lightblack"
         href={`/descubrir/${data._id}`}
       >
         <FontAwesomeIcon

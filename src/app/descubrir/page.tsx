@@ -114,12 +114,12 @@ export default async function App({
     <>
       <Image src={hero} alt="test" className="hidden" width={500}></Image>
 
-     <Suspense fallback={<Loading/>}>
+      <Suspense fallback={<Loading />}>
         <div className="w-[100%] max-md:w-[300px] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 min-[960px]:px-[9vw] mt-10 pb-4">
           <Filters></Filters>
           <OrderResults></OrderResults>
         </div>
-  
+
         <div className="flex flex-wrap max-md:w-[70%] max-md:justify-center justify-between gap-8 py-2 sm:!px-[9vw] mx-auto w-[100%]">
           {/* <div className="grid-card-layout items-stretch justify-items-center gap-8 p-10 mx-auto sm:w-[95%]"> */}
           {Object.entries(data)
@@ -132,8 +132,11 @@ export default async function App({
             ))}
         </div>
         <ToastContainer />
-        <Paginacion pageNumber={pageNumber} totalPages={totalPages}></Paginacion>
-     </Suspense>
+        <Paginacion
+          pageNumber={pageNumber}
+          totalPages={totalPages}
+        ></Paginacion>
+      </Suspense>
     </>
   );
 }
