@@ -58,10 +58,10 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
   if (!pageNumber || !totalPages) return null;
   
   return (
-    <div className="flex flex-wrap justify-center p-2 mt-2 mx-auto">
+    <div className="flex flex-wrap justify-center p-4 mt-12 mx-auto">
       <Pagination className="text-lightwhite">
         {/* BOTON ANTERIOR */}
-        <PaginationContent className="gap-1 px-2">
+        <PaginationContent className="gap-2">
           <PaginationItem>
             <PaginationPrevious
               href={`${pathname}?${
@@ -70,7 +70,7 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
               text="Anterior"
               title={`${totalPages <= 1 || pageNumber === 1 ? "Volver arriba" : "Anterior"}`}
               aria-disabled={totalPages <= 1 || pageNumber === 1}
-              className={`active:bg-lightwhite hover:bg-lightwhite hover:text-lightblack ${totalPages <= 1 || pageNumber === 1 ? "!cursor-not-allowed" : ""}`}
+              className={`active:bg-lightwhite hover:bg-lightwhite hover:text-lightblack border mr-2 backdrop-blur-sm ${totalPages <= 1 || pageNumber === 1 ? "!cursor-not-allowed" : ""}`}
             ></PaginationPrevious>
           </PaginationItem>
 
@@ -79,7 +79,7 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
             <>
               <PaginationItem>
                 <PaginationLink
-                  className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                  className="active:bg-lightwhite hover:bg-lightwhite hover:text-lightblack font-semibold border backdrop-blur-sm"
                   href={`${pathname}?${createQueryString("page", 1)}`}
                   title="Página 1"
                 >
@@ -93,7 +93,7 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
                 <PaginationLink
                   href="#"
                   isActive
-                  className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold bg-neutral-800"
+                  className="active:bg-lightwhite hover:bg-lightwhite hover:text-lightblack font-semibold bg-neutral-800 border backdrop-blur-sm" 
                   title={"Página " + totalPages}
                 >
                   {totalPages}
@@ -105,7 +105,7 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
               <PaginationLink
                 href="#"
                 isActive
-                className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold bg-neutral-800"
+                className="active:bg-lightwhite dark:hover:bg-neutral-500 dark:hover:text-lightwhite hover:text-lightblack font-semibold bg-neutral-800 dark:bg-lightwhite dark:text-lightblack border backdrop-blur-sm"
                 title={"Página " + pageNumber}
               >
                 {pageNumber}
@@ -120,7 +120,7 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
               return (
                 <PaginationItem key={crypto.randomUUID()}>
                   <PaginationLink
-                    className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                    className="active:bg-lightwhite hover:bg-lightwhite hover:text-lightblack font-semibold border backdrop-blur-sm"
                     href={`${pathname}?${
                       createQueryString("page", pageNumber + x >= totalPages ? totalPages : pageNumber + x)
                     }`}
@@ -144,7 +144,7 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
             <>
               <PaginationItem>
                 <PaginationLink
-                  className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
+                  className="active:bg-lightwhite hover:bg-lightwhite hover:text-lightblack font-semibold border backdrop-blur-sm"
                   href={`${pathname}?${createQueryString("page", totalPages)}`}
                   title={"Página " + totalPages}
                 >
@@ -159,7 +159,7 @@ export default function Paginacion({pageNumber, totalPages}: Props) {
           {/* Boton siguiente */}
           <PaginationItem>
             <PaginationNext
-              className={`active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack ${totalPages <= 1 || pageNumber === totalPages ? "!cursor-not-allowed" : ""}`}
+              className={`active:bg-lightwhite hover:bg-lightwhite hover:text-lightblack border ml-2 backdrop-blur-sm ${totalPages <= 1 || pageNumber === totalPages ? "!cursor-not-allowed" : ""}`}
                 href={`${pathname}?${
                 createQueryString("page", pageNumber + 1 >= totalPages ? totalPages : pageNumber + 1)
               }`}

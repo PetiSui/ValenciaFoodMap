@@ -45,7 +45,7 @@ const landingCardsData = [
 export default async function App() {
   return (
     <div className="flex flex-col justify-center items-center mt-12 gap-24">
-      <div className="glassmorphism w-[80dvw] h-auto flex items-center justify-evenly max-lg:flex-row max-md:flex-col p-10 gap-6">
+      <div className="glassmorphism w-[80dvw] h-auto flex items-center justify-evenly max-lg:flex-row max-md:flex-col p-10 gap-6 shadow-md">
         <Image
           className="max-lg:scale-60 self-start place-self-start"
           src={hero}
