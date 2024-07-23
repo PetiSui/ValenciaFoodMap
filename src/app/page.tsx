@@ -10,6 +10,12 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import LandingCard from "./components/LandingCard";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../components/ui/accordion";
 
 const landingCardsData = [
   {
@@ -38,8 +44,8 @@ const landingCardsData = [
 
 export default async function App() {
   return (
-    <div className="flex flex-col justify-center items-center mt-12 gap-12">
-      <div className="glassmorphism w-[80%] h-auto flex items-center justify-evenly max-lg:flex-row max-md:flex-col p-10 gap-6">
+    <div className="flex flex-col justify-center items-center mt-12 gap-24">
+      <div className="glassmorphism w-[80dvw] h-auto flex items-center justify-evenly max-lg:flex-row max-md:flex-col p-10 gap-6">
         <Image
           className="max-lg:scale-60 self-start place-self-start"
           src={hero}
@@ -72,7 +78,7 @@ export default async function App() {
           </Link>
         </div>
       </div>
-      <div className="mt-8 p-16 bg-opacity-80 flex flex-wrap flex-col md:flex-row gap-24 sm:gap-48 mx-auto w-full justify-center items-center">
+      <div className="mt-8 p-4 sm:px-32 sm:py-16 flex flex-wrap flex-col md:flex-row gap-20 sm:gap-[10dvw] w-full justify-center items-center">
         {landingCardsData.map((data: any) => (
           <LandingCard key={crypto.randomUUID()}>
             <FontAwesomeIcon
@@ -80,14 +86,42 @@ export default async function App() {
               size="lg"
               className={`absolute top-[-30px] aspect-square z-20 self-center ${data?.color} p-5 rounded-full shadow-neutral-400 shadow-md`}
             ></FontAwesomeIcon>
-            <Link href={data?.url} className="text-2xl font-semibold mt-4">{data?.title}</Link>
+            <Link href={data?.url} className="text-2xl font-semibold mt-4">
+              {data?.title}
+            </Link>
             <p className="texl-xl">{data?.description}</p>
-            <Link className={`mt-auto self-center underline text-blue-600`} href={data?.url}>
-              Más info 
+            <Link
+              className={`mt-auto self-center underline text-blue-600`}
+              href={data?.url}
+            >
+              Más info
               <FontAwesomeIcon className="ml-2" icon={faPlus}></FontAwesomeIcon>
             </Link>
           </LandingCard>
         ))}
+      </div>
+      <div className="px-16 pt-10 pb-12 mb-12 w-[80dvw] bg-white/80 dark:bg-white/70 backdrop-blur-sm rounded-lg flex flex-col items-center justify-center gap-6 shadow-lg">
+        <p className="font-semibold text-xl self-start">FAQs</p>
+        <Accordion type="single" collapsible className="w-[70dvw] flex flex-col gap-3">
+          <AccordionItem value="item-1" className="dark:bg-neutral-100 px-8 py-2 rounded">
+            <AccordionTrigger>¿Sólo estan disponibles establecimientos en Valencia?</AccordionTrigger>
+            <AccordionContent>
+              Por el momento nos especializamos en recomendar establecimientos principalmente en la provincia de Valencia, España.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2" className="dark:bg-neutral-100 px-8 py-2 rounded">
+            <AccordionTrigger>¿Cómo se eligen los establecimientos?</AccordionTrigger>
+            <AccordionContent>
+              Los establecimientos se seleccionan en base a la combinación de experiencia y relación calidad/precio.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3" className="dark:bg-neutral-100 px-8 py-2 rounded">
+            <AccordionTrigger>¿Se almacenan cookies de terceros?</AccordionTrigger>
+            <AccordionContent>
+              En <span className="font-semibold">ValenciaFoodMap<sup className="text-[.78rem]">&copy;</sup></span> no almacenamos ningún tipo de información de los usuarios que visitan nuestra web.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </div>
   );
