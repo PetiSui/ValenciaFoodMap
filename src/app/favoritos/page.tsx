@@ -1,18 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Card from "../components/Card";
 import ContentLoader from "react-content-loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faFaceSadTear } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import Loading from "../descubrir/loading";
 
 export default function App() {
   const [data, setData] = useState("");
   const [isLoading, setLoading] = useState(true);
+  const [lsSize, setLsSize] = useState();
 
   useEffect(() => {
-    fetch("/api/cards/", {
+    setLsSize(
+      (prev) =>
+        JSON.parse(global?.localStorage?.getItem("likedEstablishments") || "{}")
+          .length
+    );
+
+    fetch("/api/cards", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -29,19 +37,22 @@ export default function App() {
       });
   }, []);
 
-  let lsLength =
-  JSON.parse(global?.localStorage?.getItem("likedEstablishments") || "{}")
-    .length || 0;
+  // let lsLength = JSON.parse(
+  //   global?.localStorage?.getItem("likedEstablishments") || "{}"
+  // ).length;
 
-  if (lsLength === 0 || data.length === 0) {
+  if (lsSize === 0) {
     return (
       <div className="glassmorphism flex flex-col justify-center items-center gap-5 w-[70%] p-12 mt-12 mx-auto outline outline-1 outline-[#40404030]">
-        <FontAwesomeIcon icon={faFaceSadTear} className="text-6xl drop-shadow-md dark:text-lightwhite text-lightblack" />
+        <FontAwesomeIcon
+          icon={faFaceSadTear}
+          className="text-6xl drop-shadow-md dark:text-lightwhite text-lightblack"
+        />
         <p className="font-semibold mt-4 text-2xl text-balance text-center text-lightblack dark:text-lightwhite">
           Todavia no tienes favoritos añadidos
         </p>
         <Link
-          className="bg-black border-0 px-5 py-3 rounded hover:bg-slate-100 hover:text-lightblack text-lightwhite"
+          className="bg-lightblack border-0 px-5 py-3 rounded hover:bg-slate-100 hover:text-lightblack text-lightwhite"
           href="/descubrir"
         >
           Explora
@@ -53,11 +64,13 @@ export default function App() {
         </Link>
       </div>
     );
-  } else if (isLoading) {
-    let loaderLength =
-      JSON.parse(global?.localStorage?.getItem("likedEstablishments") || "{}")
-        .length || 10;
-    const items = Array.from({ length: loaderLength }).map((_, index) => (
+  }
+
+  if (isLoading) {
+    //let loaderLength =
+    //  JSON.parse(global?.localStorage?.getItem("likedEstablishments") || "{}")
+    //    .length || 12;
+    const items = Array.from({ length: lsSize || 12 }).map((_, index) => (
       <ContentLoader
         speed={3}
         width={300}
@@ -86,19 +99,21 @@ export default function App() {
 
     return (
       <div className="flex items-center flex-col mx-auto w-[90%] p-10 gap-4">
-        <p className=" text-2xl font-semibold text-lightblack dark:text-lightwhite">Cargando...</p>
+        <p className=" text-2xl font-semibold text-lightblack dark:text-lightwhite">
+          Cargando...
+        </p>
         <div className="flex flex-wrap p-0 gap-8">{items}</div>
       </div>
     );
   }
 
   return (
-    <>
-      <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
-        {Object.entries(data).map((card: any, index: Number) => (
-          <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>
-        ))}
-      </div>
-    </>
+    // <Suspense fallback={<Loading />}>
+    <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
+      {Object.entries(data).map((card: any, index: Number) => (
+        <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>
+      ))}
+    </div>
+    // </Suspense>
   );
 }
