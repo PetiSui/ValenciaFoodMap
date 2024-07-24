@@ -14,6 +14,8 @@ import { ToastContainer } from "react-toastify";
 import PageInfo from "../../../components/PageInfo";
 import OrderResults from "../../../components/OrderResults";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default async function Categorias({
   searchParams,
@@ -105,7 +107,15 @@ export default async function Categorias({
   const end = start + perPage;
 
   return (
-    <>
+    <div className="flex flex-col">
+      <h3 className="text-3xl font-semibold text-lightwhite self-start">
+        <FontAwesomeIcon icon={faSearch} className="mr-4" />
+        Categorías
+      </h3>
+      <p className="text-xl font-light text-lightwhite self-start">
+        Explorando la categoría: {params.categoria.charAt(0).toUpperCase() + params.categoria.slice(1)}
+      </p>
+
       <div className="w-[100%] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 md:px-[9vw] mt-10 pb-4">
         <Filters></Filters>
         <OrderResults></OrderResults>
@@ -232,6 +242,6 @@ export default async function Categorias({
           </PaginationContent>
         </Pagination>
       </div>
-    </>
+    </div>
   );
 }

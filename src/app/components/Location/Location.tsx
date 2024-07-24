@@ -5,14 +5,21 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 //import "leaflet-defaulticon-compatibility";
 
-import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMap,
+  useMapEvents,
+} from "react-leaflet";
 import L, { Map } from "leaflet";
 import MarkerIcon from "../../../../node_modules/leaflet/dist/images/marker-icon.png";
 import MarkerShadow from "../../../../node_modules/leaflet/dist/images/marker-shadow.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import PopUpCard from "../PopUpCard";
-import { useMapEvent } from 'react-leaflet/hooks'
+import { useMapEvent } from "react-leaflet/hooks";
 import Markerwhatever from "../MarkerWhatever";
 
 type DetailsProps = {
@@ -27,7 +34,7 @@ type DetailsProps = {
 };
 
 type Props = {
-  data : DetailsProps[];
+  data: DetailsProps[];
 };
 
 export default function Location(data: Props) {
@@ -35,14 +42,14 @@ export default function Location(data: Props) {
     lat: 39.469468,
     lng: -0.3919,
   };
-  
+
   //console.log(data);
-  
+
   var arr = new Array(data.data);
 
   // arr[0].map((element: any) => {
   //   console.log(element);
-    
+
   // })
 
   //console.log(arr);
@@ -66,11 +73,9 @@ export default function Location(data: Props) {
     categories?: string[];
   };
 
-  
-
   function MapEventsHandler() {
     //const map = useMap();
-//
+    //
     //useMapEvents({
     //  click: (e) => {
     //    const { lat, lng } = e.latlng;
@@ -82,61 +87,36 @@ export default function Location(data: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center w-[85vw] mx-auto">
+    <div className="flex flex-col gap-2 items-center justify-center w-[85vw] mx-auto mt-8">
       <h3 className="text-3xl font-semibold text-lightwhite self-start">
         <FontAwesomeIcon icon={faMapLocationDot} className="mr-4" />
         Mapa Interactivo
       </h3>
       <p className="text-xl font-light text-lightwhite self-start">
-        Explora los establecimientos más destacados
+        Explora los mejores establecimientos por zonas
       </p>
-      <div className="mt-4">
+      <div className="mt-8 mb-8">
         <MapContainer
           center={coordiantePoint}
           zoom={13}
           scrollWheelZoom={false}
-          style={{ height: "70vh", width: "85vw" }}
+          style={{ height: "65vh", width: "85vw" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
           ></TileLayer>
-           {arr[0].map((details: any) => {
-            return <Markerwhatever key={crypto.randomUUID()} details={details}></Markerwhatever>;
-            // return (
-            //   <Marker
-            //     key={crypto.randomUUID()}
-            //     eventHandlers={{
-            //       click: (e) => {
-            //         map.flyTo({lat: 56, lng: 13}, 14);
-            //       },
-            //     }}
-            //     icon={
-            //       new L.Icon({
-            //         iconUrl: MarkerIcon.src,
-            //         iconRetinaUrl: MarkerIcon.src,
-            //         iconSize: [25, 41],
-            //         iconAnchor: [12.5, 41],
-            //         popupAnchor: [0, -41],
-            //         shadowUrl: MarkerShadow.src,
-            //         shadowSize: [41, 41],
-            //       })
-            //     }
-            //     position={[details?.lat, details?.lng]}
-            //   >
-            //     <Popup>
-            //       <div>
-            //         <PopUpCard {...details} />
-            //       </div>
-            //     </Popup>
-            //   </Marker>
-            // );
+          {arr[0].map((details: any) => {
+            return (
+              <Markerwhatever
+                key={crypto.randomUUID()}
+                details={details}
+              ></Markerwhatever>
+            );
           })}
-          <MapEventsHandler/>
+          <MapEventsHandler />
         </MapContainer>
       </div>
     </div>
   );
-
-  
 }

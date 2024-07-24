@@ -7,6 +7,8 @@ import hero from "../../../public/hero.jpeg";
 import Paginacion from "../components/Paginacion";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 var cache = require("memory-cache");
 
@@ -115,6 +117,15 @@ export default async function App({
       <Image src={hero} alt="test" className="hidden" width={500}></Image>
 
       <Suspense fallback={<Loading />}>
+        <div className="flex flex-col w-full max-md:w-[70%] mx-auto sm:!px-[9vw] mt-8 mb-4">
+          <h3 className="text-3xl font-semibold text-lightwhite self-start ">
+            <FontAwesomeIcon icon={faSearch} className="mr-4" />
+            Descubre
+          </h3>
+          <p className="text-xl font-light text-lightwhite self-start">
+            Explora los establecimientos más destacados
+          </p>
+        </div>
         <div className="w-[100%] max-md:w-[300px] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 min-[960px]:px-[9vw] mt-10 pb-4">
           <Filters></Filters>
           <OrderResults></OrderResults>

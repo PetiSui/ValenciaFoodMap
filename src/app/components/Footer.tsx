@@ -13,7 +13,7 @@ export default function Footer() {
     //        ValenciaFoodMap.es
     //   </a>
     // </footer>
-    <footer className="w-full bg-lightblack text-lightwhite p-8 flex flex-col flex-wrap items-center justify-center">
+    <footer className="w-full bg-lightblack text-lightwhite p-4 flex flex-col flex-wrap items-center justify-center">
       <div className="w-full flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-lightblack text-center md:justify-between">
         <div className="w-full flex flex-nowrap justify-center items-center">
           <Image src={logo} alt="Logo" className="" width={60}></Image>

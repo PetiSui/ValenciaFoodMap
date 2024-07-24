@@ -4,7 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import Card from "../components/Card";
 import ContentLoader from "react-content-loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faFaceSadTear } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faFaceSadTear, faHeart } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Loading from "../descubrir/loading";
 
@@ -109,11 +109,22 @@ export default function App() {
 
   return (
     // <Suspense fallback={<Loading />}>
-    <div className="flex flex-wrap justify-center gap-8 p-10 mx-auto">
-      {Object.entries(data).map((card: any, index: Number) => (
-        <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>
-      ))}
-    </div>
+    <>
+      <div className="flex flex-col w-full max-md:w-[70%] mx-auto sm:!px-[9vw] mt-8 mb-8">
+        <h3 className="text-3xl font-semibold text-lightwhite self-start ">
+          <FontAwesomeIcon icon={faHeart} className="mr-4" />
+          Favoritos
+        </h3>
+        <p className="text-xl font-light text-lightwhite self-start">
+          Explora los establecimientos que más te gustan
+        </p>
+      </div>
+      <div className="flex flex-wrap max-md:w-[70%] max-md:justify-center justify-between gap-8 py-2 px-[9vw] mx-auto w-[100%] mb-8">
+        {Object.entries(data).map((card: any, index: Number) => (
+          <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>
+        ))}
+      </div>
+    </>
     // </Suspense>
   );
 }
