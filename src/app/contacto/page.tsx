@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 export default function ContactForm() {
   return (
-    <div className="w-full max-w-2xl space-y-8 mx-auto my-8 bg-black/80 text-lightwhite dark:bg-white/90 backdrop-blur-sm dark:text-lightblack px-16 py-12 mt-8 mb-8 rounded-xl shadow-black shadow-sm">
+    <div className="w-[90%] md:w-full max-w-2xl space-y-8 my-8 bg-black/80 text-lightwhite dark:bg-white/90 backdrop-blur-sm dark:text-lightblack px-8 sm:px-16 py-12 mt-8 mb-8 rounded-xl shadow-black shadow-sm mx-auto">
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Contáctanos</h1>
         <p className="text-gray-500 dark:text-gray-400">
@@ -13,7 +13,7 @@ export default function ContactForm() {
         </p>
       </div>
       <form className="space-y-5">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="name">Nombre</Label>
             <Input
