@@ -21,6 +21,9 @@ import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import PopUpCard from "../PopUpCard";
 import { useMapEvent } from "react-leaflet/hooks";
 import Markerwhatever from "../MarkerWhatever";
+import Filters from "../Filters";
+import OrderResults from "../OrderResults";
+import { CategoryFilter } from "../CategoryFilter";
 
 type DetailsProps = {
   _id: string;
@@ -87,15 +90,21 @@ export default function Location(data: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center w-[85vw] mx-auto mt-8">
-      <h3 className="text-3xl font-semibold text-lightwhite self-start">
-        <FontAwesomeIcon icon={faMapLocationDot} className="mr-4" />
-        Mapa Interactivo
-      </h3>
-      <p className="text-xl font-light text-lightwhite self-start">
-        Explora los mejores establecimientos por zonas
-      </p>
-      <div className="mt-8 mb-8">
+    <div className="flex flex-col gap-2 items-center justify-center ">
+      <div className="flex flex-col w-full max-md:w-[70%] mx-auto sm:!px-[9vw] mt-8 mb-8">
+        <h3 className="text-3xl font-semibold text-lightwhite self-start">
+          <FontAwesomeIcon icon={faMapLocationDot} className="mr-4" />
+          Mapa Interactivo
+        </h3>
+        <p className="text-xl font-light text-lightwhite self-start">
+          Explora los mejores establecimientos por zonas
+        </p>
+      </div>
+      <div className="w-[100%] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 md:px-[9vw] pb-4">
+        <Filters></Filters>
+        <CategoryFilter></CategoryFilter>
+      </div>
+      <div className="w-[85vw] mx-auto mt-8 mb-8">
         <MapContainer
           center={coordiantePoint}
           zoom={13}

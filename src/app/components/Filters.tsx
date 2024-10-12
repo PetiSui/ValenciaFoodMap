@@ -238,7 +238,7 @@ export default function Filters() {
   return (
     <Drawer open={openFilters} onOpenChange={setOpenFilters}>
       <DrawerTrigger asChild>
-        <Button variant="outline" className="shadow-md" title="Filtros">
+        <Button variant="outline" className="shadow-md bg-lightwhite hover:bg-neutral-300" title="Filtros">
           <FontAwesomeIcon icon={faFilter} className="mr-2"></FontAwesomeIcon>
           Filtros
         </Button>

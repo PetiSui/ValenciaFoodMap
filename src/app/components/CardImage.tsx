@@ -28,7 +28,7 @@ export default function CardImage({
             alt={description}
             width={400}
             height={300}
-            onErrorCapture={ (event) => {
+            onError={ (event) => {
               console.log("ERROR");
               setImgSrcLoaded(false);
             }}

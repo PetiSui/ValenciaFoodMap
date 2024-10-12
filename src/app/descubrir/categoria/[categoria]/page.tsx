@@ -10,10 +10,7 @@ import {
 } from "../../../../components/ui/pagination";
 import Card from "../../../components/Card";
 import Filters from "../../../components/Filters";
-import { ToastContainer } from "react-toastify";
-import PageInfo from "../../../components/PageInfo";
 import OrderResults from "../../../components/OrderResults";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -52,7 +49,6 @@ export default async function Categorias({
   };
 
   const datax = await getCards();
-  console.log("ORDER BY", searchParams["order"]);
 
   const orderFunction = {
     AZ: (a: any, b: any) => {
@@ -77,8 +73,6 @@ export default async function Categorias({
 
   const totalPages = Math.ceil(Object.entries(data).length / perPage);
   let pageNumber = parseInt(searchParams["page"] as string) || 1;
-
-  console.log("PAGINA " + parseInt(searchParams["page"] as string));
 
   if (
     (searchParams["page"] as string) !== undefined &&
@@ -108,13 +102,15 @@ export default async function Categorias({
 
   return (
     <div className="flex flex-col">
-      <h3 className="text-3xl font-semibold text-lightwhite self-start">
-        <FontAwesomeIcon icon={faSearch} className="mr-4" />
-        Categorías
-      </h3>
-      <p className="text-xl font-light text-lightwhite self-start">
-        Explorando la categoría: {params.categoria.charAt(0).toUpperCase() + params.categoria.slice(1)}
-      </p>
+      <div className="flex flex-col w-full max-md:w-[70%] mx-auto sm:!px-[9vw] mt-8 mb-8">
+        <h3 className="text-3xl font-semibold text-lightwhite self-start">
+          <FontAwesomeIcon icon={faSearch} className="mr-4" />
+          Categorías
+        </h3>
+        <p className="text-xl font-light text-lightwhite self-start">
+          Explorando la categoría: {params.categoria.charAt(0).toUpperCase() + params.categoria.slice(1)}
+        </p>
+      </div>
 
       <div className="w-[100%] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 md:px-[9vw] mt-10 pb-4">
         <Filters></Filters>
@@ -127,7 +123,7 @@ export default async function Categorias({
       <div className="flex flex-wrap max-md:w-[70%] max-md:justify-center justify-between gap-8 py-2 px-[9vw] mx-auto w-[100%]">
         {Object.entries(data)
           .slice(start, end)
-          .map((card: any, index: Number) => (
+          .map((card: any, index: number) => (
             <Card
               data={JSON.stringify(card[1])}
               key={crypto.randomUUID()}
@@ -215,7 +211,7 @@ export default async function Categorias({
             )}
 
             {pageNumber !== totalPages ? (
-              <>
+
                 <PaginationItem>
                   <PaginationLink
                     className="active:bg-[#FAFAFA] hover:bg-[#FAFAFA] hover:text-lightblack font-semibold"
@@ -224,7 +220,7 @@ export default async function Categorias({
                     {totalPages}
                   </PaginationLink>
                 </PaginationItem>
-              </>
+
             ) : (
               <></>
             )}

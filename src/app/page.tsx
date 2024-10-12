@@ -8,6 +8,8 @@ import {
   faHeart,
   faLocationDot,
   faPlus,
+  faQuestionCircle,
+  faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import LandingCard from "./components/LandingCard";
 import {
@@ -45,9 +47,9 @@ const landingCardsData = [
 export default async function App() {
   return (
     <div className="flex flex-col justify-center items-center mt-12 gap-24">
-      <div className="glassmorphism w-[80dvw] h-auto flex items-center justify-evenly max-lg:flex-row max-md:flex-col p-10 gap-6 shadow-md">
+      <div className="glassmorphism w-[80dvw] h-auto flex items-center justify-evenly max-lg:flex-row max-md:flex-col p-10 gap-6 dark:shadow-neutral-700 shadow-neutral-600 shadow">
         <Image
-          className="max-lg:scale-60 self-start place-self-start"
+          className="max-lg:scale-90 self-start place-self-start"
           src={hero}
           height={350}
           priority={true}
@@ -78,7 +80,9 @@ export default async function App() {
           </Link>
         </div>
       </div>
-      <div className="mt-8 p-4 sm:px-32 sm:py-16 flex flex-wrap flex-col md:flex-row gap-20 sm:gap-[10dvw] w-full justify-center items-center">
+      
+      {/* flex flex-wrap flex-col md:flex-row */}
+      <div className="mt-8 p-4 px-16 lg:px-32 sm:py-16 grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] justify-items-center gap-12 w-full justify-around items-center dark:bg-neutral-600/60 bg-neutral-400/60 shadow">
         {landingCardsData.map((data: any) => (
           <LandingCard key={crypto.randomUUID()}>
             <FontAwesomeIcon
@@ -91,7 +95,7 @@ export default async function App() {
             </Link>
             <p className="texl-xl">{data?.description}</p>
             <Link
-              className={`mt-auto self-center underline text-blue-600`}
+              className={`mt-auto p-3 text-center text-blue-600 border border-blue-400 border-solid rounded hover:bg-blue-100`}
               href={data?.url}
             >
               Más info
@@ -100,8 +104,8 @@ export default async function App() {
           </LandingCard>
         ))}
       </div>
-      <div className="px-16 pt-10 pb-12 mb-12 w-[80dvw] bg-white/80 dark:bg-white/70 backdrop-blur-sm rounded-lg flex flex-col items-center justify-center gap-6 shadow-lg">
-        <p className="font-semibold text-xl self-start">FAQs</p>
+      <div className="px-16 pt-10 pb-12 mb-12 w-[80dvw] bg-white/80 dark:bg-white/70 backdrop-blur-sm rounded-lg flex flex-col items-center justify-center gap-6 dark:shadow-neutral-600 shadow-neutral-500 shadow-lg">
+        <p className="font-semibold text-xl self-start"><FontAwesomeIcon icon={faCircleQuestion} size="lg"></FontAwesomeIcon><span className="ml-2">Preguntas frecuentes</span></p>
         <Accordion type="single" collapsible className="w-[70dvw] flex flex-col gap-3">
           <AccordionItem value="item-1" className="dark:bg-neutral-100 px-8 py-2 rounded">
             <AccordionTrigger>¿Sólo estan disponibles establecimientos en Valencia?</AccordionTrigger>

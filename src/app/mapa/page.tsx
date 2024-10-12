@@ -1,8 +1,9 @@
 import { Suspense } from "react";
 import MapCaller from "../components/Location/MapCaller";
 import Loading from "../descubrir/loading";
+import { redirect } from "next/navigation";
 
-export default async function Mapa() {
+export default async function Mapa({searchParams} : {searchParams: { [key: string]: string | string[] | undefined };}) {
   if (!process.env.NEXT_PUBLIC_BASE_API_URL) return null;
 
   const getCards = async () => {
@@ -25,9 +26,17 @@ export default async function Mapa() {
 
   const datax = await getCards();
 
+  if(searchParams["categories"] === ""){
+    redirect("/mapa");
+  }
+
+  const categoriesSelected = (searchParams["categories"] as string) != undefined && searchParams["categories"] !== '' ? (searchParams["categories"] as string).split(",") : [];
+
+  const dataFiltered = categoriesSelected.length > 0 && categoriesSelected[0] !== 'all' ? datax.filter((card : any) => card?.categories?.some((r: any)=> categoriesSelected.indexOf(r) !== -1)) : datax;
+
   return (
     <Suspense fallback={<Loading />}>
-      <MapCaller data={datax}></MapCaller>
+      <MapCaller data={dataFiltered}></MapCaller>
     </Suspense>
   );
 }

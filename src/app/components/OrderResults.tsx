@@ -5,19 +5,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowDownAZ,
   faArrowDownZA,
+  faArrowRightArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "../../components/ui/select";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Separator } from "../../components/ui/separator";
 import {
   redirect,
   usePathname,
@@ -29,9 +27,6 @@ const OrderResults = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  //console.log("PATHNAME", pathname);
-
-  //console.log("SEARCHPARAMS", searchParams.toString());
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -46,16 +41,13 @@ const OrderResults = () => {
   function orderBy(orderFilter: string): void {
     if (orderFilter != "AZ" && orderFilter != "ZA") return redirect(pathname);
 
-    //redirect(pathname + "?" + createQueryString('order', orderFilter));
-    //redirect(pathname + "?order=" + orderFilter);
-
     router.push(pathname + "?" + createQueryString('order', orderFilter));
   }
 
   return (
     <Select
       onValueChange={(value) => orderBy(value)}
-      defaultValue={searchParams.get("order") || ""}
+      defaultValue={searchParams.get("order") ?? ""}
     >
       <SelectTrigger title="Ordenar por" className="w-fit !bg-lightwhite shadow-md dark:bg-neutral-700 dark:text-lightwhite !text-lightblack dark:bg-opacity-80 outline outline-1 outline-[rgba(82,82,82,0.4)] underline-offset-4">
         <FontAwesomeIcon
