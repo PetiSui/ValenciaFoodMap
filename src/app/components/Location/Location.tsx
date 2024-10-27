@@ -7,22 +7,13 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 
 import {
   MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMap,
-  useMapEvents,
+  TileLayer
 } from "react-leaflet";
-import L, { Map } from "leaflet";
-import MarkerIcon from "../../../../node_modules/leaflet/dist/images/marker-icon.png";
-import MarkerShadow from "../../../../node_modules/leaflet/dist/images/marker-shadow.png";
+import { Map } from "leaflet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
-import PopUpCard from "../PopUpCard";
-import { useMapEvent } from "react-leaflet/hooks";
 import Markerwhatever from "../MarkerWhatever";
 import Filters from "../Filters";
-import OrderResults from "../OrderResults";
 import { CategoryFilter } from "../CategoryFilter";
 
 type DetailsProps = {
@@ -90,8 +81,8 @@ export default function Location(data: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center ">
-      <div className="flex flex-col w-full max-md:w-[70%] mx-auto sm:!px-[9vw] mt-8 mb-8">
+    <div className="flex flex-col gap-2 items-center justify-center">
+      <div className="flex flex-col self-start w-[85dvw] max-sm:mx-auto md:w-full sm:!px-[9vw] mt-8 mb-8">
         <h3 className="text-3xl font-semibold text-lightwhite self-start">
           <FontAwesomeIcon icon={faMapLocationDot} className="mr-4" />
           Mapa Interactivo
@@ -100,7 +91,7 @@ export default function Location(data: Props) {
           Explora los mejores establecimientos por zonas
         </p>
       </div>
-      <div className="w-[100%] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 md:px-[9vw] pb-4">
+      <div className="w-[85dvw] max-md:mx-auto md:w-full self-start flex flex-wrap justify-between items-end gap-4 py-2 md:px-[9vw] pb-4">
         <Filters></Filters>
         <CategoryFilter></CategoryFilter>
       </div>
@@ -109,7 +100,7 @@ export default function Location(data: Props) {
           center={coordiantePoint}
           zoom={13}
           scrollWheelZoom={false}
-          style={{ height: "65vh", width: "85vw" }}
+          style={{ height: "60vh", width: "85vw" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

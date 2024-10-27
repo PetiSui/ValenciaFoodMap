@@ -48,7 +48,8 @@ export function CategoryFilter() {
   let categoriesFilterList : any = [];
   categorias.forEach(categoria => categoriesFilterList.push({label: categoria, value: categoria}));
 
-  const [selectedCategoriesToFilter, setSelectedCategoriesToFilter] = useState<string[]>(params.get("categories")?.split(",") || []);
+  // const [selectedCategoriesToFilter, setSelectedCategoriesToFilter] = useState<string[]>(params.get("categories")?.split(",") || []);
+  const [selectedCategoriesToFilter, setSelectedCategoriesToFilter] = useState<string[]>(params.get("categories") != undefined && params.get("categories") != "all" ? params.get("categories")!.split(",") : []);
   const debouncedSelectedFrameworks = useDebounce(selectedCategoriesToFilter, 600);
 
   useEffect( () => {

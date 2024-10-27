@@ -146,8 +146,6 @@ export default function Filters() {
     } else {
       setCostFilters([...costFilters, filter]);
     }
-
-    console.log("FILTROS?", costFilters);
   }
 
   function handleFilters(e: FormEvent<HTMLFormElement>) {
@@ -162,9 +160,7 @@ export default function Filters() {
     ratingFilter != "" && params.set('rating', ratingFilter);
     costFilters.length > 0 && params.set('cost', costFilters.toString().replace("[","").replace("]",""));
     params.set("page", "1");
-    console.log("Redirigimos a: " + pathname + "?" + decodeURIComponent(params.toString()));
     
-    //redirect(pathname + "?" + params);
     router.push(pathname + "?" + params);
   }
 

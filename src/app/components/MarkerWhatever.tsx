@@ -21,7 +21,7 @@ export default function Markerwhatever(props: any) {
         eventHandlers={{
           click: (e) => {
             //map.flyTo(e.latlng, 14);
-            map.flyTo(new L.LatLng(e.latlng.lat + 0.014, e.latlng.lng), 14);
+            map.flyTo(new L.LatLng(e.latlng.lat + 0.015, e.latlng.lng), map.getZoom());
           },
         }}
         icon={
