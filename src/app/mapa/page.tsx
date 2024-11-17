@@ -14,8 +14,6 @@ export default async function Mapa({
     //const apiUrl = "http://localhost:3000";
     const apiUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
 
-    // console.log(process.env.API_URL);
-
     const res = await fetch(`${apiUrl}/api/map`, {
       headers: {
         cacheStore: "no-store",
@@ -58,9 +56,6 @@ export default async function Mapa({
     decodeURIComponent((searchParams["rating"] as string) || "0.0")
   );
 
-  console.log('0', datax);
-  
-
   let dataFiltered =
     filterByPriceLevel.length > 0 || filterByRating > 0.0
       ? datax.filter((card: any) => {
@@ -69,11 +64,7 @@ export default async function Mapa({
             card.rating >= filterByRating
           );
         })
-      : datax;
-
-
-  console.log('1', dataFiltered);
-  
+      : datax;  
 
   const categoriesSelected =
     (searchParams["categories"] as string) != undefined &&
@@ -88,10 +79,7 @@ export default async function Mapa({
             (r: any) => categoriesSelected.indexOf(r) !== -1
           )
         )
-      : dataFiltered;
-
-      console.log('2', dataFilteredWihCategories);
-      
+      : dataFiltered;    
 
   return (
     <Suspense fallback={<Loading />}>

@@ -150,9 +150,9 @@
     --ff-size-lg: clamp(1rem, 0.23vi + 0.94rem, 1.13rem);
     --ff-size-xl: clamp(1.25rem, 0.45vi + 1.14rem, 1.5rem);
     --ff-size-2xl: clamp(1.56rem, 0.79vi + 1.36rem, 2rem);
-    --ff-size-3xl: clamp(1.95rem, 1.29vi + 1.63rem, 2.66rem);
-    --ff-size-4xl: clamp(2.44rem, 2.02vi + 1.94rem, 3.55rem);
-    --ff-size-5xl: clamp(3.05rem, 3.06vi + 2.29rem, 4.73rem);
+    --ff-size-3xl: clamp(1.95rem, 1.29vi + 1.63rem, 2.56rem);
+    --ff-size-4xl: clamp(2.44rem, 2.02vi + 1.94rem, 3.15rem);
+    --ff-size-5xl: clamp(3.05rem, 3.06vi + 2.29rem, 4.43rem);
     --ff-size-6xl: clamp(3.81rem, 4.54vi + 2.68rem, 6.31rem);
   }
 }
@@ -176,9 +176,9 @@
       --ff-size-lg: 1.13rem;
       --ff-size-xl: 1.5rem;
       --ff-size-2xl: 2rem;
-      --ff-size-3xl: 2.66rem;
-      --ff-size-4xl: 3.55rem;
-      --ff-size-5xl: 4.73rem;
+      --ff-size-3xl: 2.56rem;
+      --ff-size-4xl: 3.15rem;
+      --ff-size-5xl: 4.43rem;
       --ff-size-6xl: 6.31rem;
     }
   }
@@ -310,6 +310,10 @@ body {
   transition: top 350ms ease-out;
 }
 
+.animate-spin-gradient {
+  animation: spin-gradient 800ms linear forwards;
+}
+
 @media (prefers-reduced-motion) {
   /* styles to apply if a user's device settings are set to reduced motion */
   .bg-texture {
@@ -354,3 +358,24 @@ body {
     opacity: 1;
   }
 }
+
+@keyframes spin-gradient {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  5%{
+    opacity: 0.4
+  }
+  20%{
+    opacity: 1;
+  }
+  85%{
+    opacity: .4;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0;
+  }
+}
+
