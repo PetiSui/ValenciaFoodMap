@@ -1,5 +1,3 @@
-import Image from "next/image";
-import hero from "../../public/hero.png";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,7 +6,6 @@ import {
   faHeart,
   faLocationDot,
   faPlus,
-  faQuestionCircle,
   faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import LandingCard from "./components/LandingCard";
@@ -18,8 +15,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../components/ui/accordion";
-import { ArrowRight, Utensils } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Utensils } from "lucide-react";
 
 const landingCardsData = [
   {
@@ -48,7 +44,7 @@ const landingCardsData = [
 
 export default async function App() {
   return (
-    <div className="flex flex-col justify-center items-center mt-12 gap-24">
+    <div className="flex flex-col justify-center items-center md:mt-12 mt-8 gap-20 md:gap-24">
       {/* <div className="glassmorphism w-[80dvw] h-auto flex items-center justify-evenly max-lg:flex-row max-md:flex-col p-10 gap-6 dark:shadow-neutral-700 shadow-neutral-600 shadow">
          <Image
            className="max-lg:scale-90 self-start place-self-start saturate-150"
@@ -83,7 +79,7 @@ export default async function App() {
          </div>
        </div> */}
 
-      <div className="mt-6 relative mx-auto max-sm:max-w-[75dvw] max-md:max-w-[max(500px,60dvw)] max-w-[max(700px,65dvw)] p-8 md:p-16 bg-background/80 backdrop-blur-sm border-none swadow shadow-lg rounded-lg">
+      <div className="mt-0 md:mt-6 relative mx-auto max-sm:max-w-[75dvw] max-md:max-w-[max(500px,60dvw)] max-w-[max(700px,65dvw)] p-8 md:p-16 bg-background/80 backdrop-blur-sm border-none swadow shadow-lg rounded-lg">
         <div className="grid md:grid-cols-5 gap-8 items-center">
           <div className="relative group md:col-span-2 max-sm:scale-75 md:scale-100 transition-all duration-300">
             {/* <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/10 rounded-full blur-2xl group-hover:blur-xl transition-all duration-300 " /> */}
@@ -144,7 +140,7 @@ export default async function App() {
           </LandingCard>
         ))}
       </div>
-      <div className="px-16 pt-10 pb-12 mb-16 w-[80dvw] bg-white/80 dark:bg-white/70 backdrop-blur-sm rounded-lg flex flex-col items-center justify-center gap-6 dark:shadow-neutral-600 shadow-neutral-500 shadow-lg">
+      <div className="px-16 pt-8 md:pb-12 pb-8 mb-8 md:mb-16 w-[80dvw] bg-white/80 dark:bg-white/70 backdrop-blur-sm rounded-lg flex flex-col items-center justify-center gap-6 dark:shadow-neutral-600 shadow-neutral-500 shadow-lg">
         <div className="font-semibold text-xl w-full flex gap-6 items-center justify-center">
           <FontAwesomeIcon icon={faCircleQuestion} size="lg" className="max-w-6"/>
           <p>Preguntas frecuentes</p>
