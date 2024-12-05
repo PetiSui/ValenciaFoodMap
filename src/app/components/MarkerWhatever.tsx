@@ -6,13 +6,8 @@ import MarkerIcon from "../../../node_modules/leaflet/dist/images/marker-icon.pn
 import MarkerShadow from "../../../node_modules/leaflet/dist/images/marker-shadow.png";
 import L from "leaflet";
 
-import Almuerzos from '../../../public/markers/tapas.png';
-
-export default function Markerwhatever(props: any) {
+export default function MarkerWhatever(props: any) {
   const map = useMap();
-
-  const markerIconsMap = new Map();
-  markerIconsMap.set("almuerzos", Almuerzos.src);
 
   return (
     <div>
@@ -20,8 +15,16 @@ export default function Markerwhatever(props: any) {
         key={crypto.randomUUID()}
         eventHandlers={{
           click: (e) => {
-            //map.flyTo(e.latlng, 14);
-            map.flyTo(new L.LatLng(e.latlng.lat + 0.015, e.latlng.lng), map.getZoom());
+            //map.flyTo(e.latlng, 14);            
+            props?.smallMap
+              ? map.flyTo(
+                  new L.LatLng(e.latlng.lat, e.latlng.lng),
+                  map.getZoom()
+                )
+              : map.flyTo(
+                  new L.LatLng(e.latlng.lat + 0.015, e.latlng.lng),
+                  map.getZoom()
+                );
           },
         }}
         icon={

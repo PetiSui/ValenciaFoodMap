@@ -12,7 +12,7 @@ import {
 import { Map } from "leaflet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
-import Markerwhatever from "../MarkerWhatever";
+import MarkerWhatever from "../MarkerWhatever";
 import Filters from "../Filters";
 import { CategoryFilter } from "../CategoryFilter";
 
@@ -31,15 +31,15 @@ type Props = {
   data: DetailsProps[];
 };
 
-export default function Location(data: Props) {
+export default function Location(data: any) {
   const coordiantePoint = {
     lat: 39.469468,
     lng: -0.3919,
   };
 
-  //console.log(data);
-
-  var arr = new Array(data.data);
+  
+  let arr = new Array(data.data);
+  
 
   // arr[0].map((element: any) => {
   //   console.log(element);
@@ -106,12 +106,12 @@ export default function Location(data: Props) {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
           ></TileLayer>
-          {arr[0].map((details: any) => {
+           {arr[0]?.map((details: any) => {
             return (
-              <Markerwhatever
+              <MarkerWhatever
                 key={crypto.randomUUID()}
                 details={details}
-              ></Markerwhatever>
+              ></MarkerWhatever>
             );
           })}
           <MapEventsHandler />

@@ -21,7 +21,7 @@ export default function CardImage({
 
   return (
     <div className="image_container">
-        <>
+
           <Image
             className={`image`}
             src={imgSrcLoaded ? imageSourceUrl : Placeholder}
@@ -33,7 +33,7 @@ export default function CardImage({
               setImgSrcLoaded(false);
             }}
           ></Image>
-        </>
+
       {children}
     </div>
   );
