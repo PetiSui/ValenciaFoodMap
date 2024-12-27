@@ -85,17 +85,17 @@ export default async function Categorias({
           </div>
           <div className="relative flex h-full items-end">
             <div className="container pb-8">
-              <h1 className="max-sm:text-2xl max-md:text-3xl text-4xl font-bold text-white md:text-6xl drop-shadow-xl transition-all">
+              <h1 className="max-sm:text-2xl max-md:text-3xl text-4xl font-bold text-white md:text-6xl drop-shadow-xl transition-all text-ellipsis">
                 {datax?.name}
               </h1>
               <div className="mt-4 flex items-center max-sm:gap-8 gap-12">
                 <div className="flex items-center gap-1">
-                  <Star className="max-sm:h-6 max-sm:w-6 h-8 w-8 fill-yellow-400 text-yellow-400 hover:brightness-110" />
+                  <Star className="max-sm:h-6 max-sm:w-6 h-8 w-8 fill-yellow-400 text-yellow-400 transition-all duration-300 ease-in-out hover:scale-110 hover:brightness-110" />
                   <span className="ml-2 text-xl text-lightwhite drop-shadow-lg mt-1">
                     {datax?.rating}
                   </span>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                   {Array.from({ length: datax?.priceLevel }).map((_, index) => {
                     return (
                       // <EuroIcon key={crypto.randomUUID()} className="h-8 w-8 bg-white-400/50 text-lightblack border-lightblack border rounded" />
@@ -103,9 +103,9 @@ export default async function Categorias({
                         key={crypto.randomUUID()}
                         className="flex items-center justify-center"
                       >
-                        <div className="max-sm:h-8 max-sm:w-8 h-10 w-10 max-sm:p-1 rounded-lg border-2 border-black/80 flex items-center justify-center bg-white/85 hover:bg-white/65 text-blue-400 transition-all">
+                        <div className="max-sm:h-7 max-sm:w-7 h-9 w-9 max-sm:p-1 rounded-full flex items-center justify-center bg-[#DBEAFE] text-[#1E40AF] hover:bg-[#bfdbfe] transition-all duration-300 ease-in-out hover:scale-110">
                           <span className="text-xl font-medium text-inherit">
-                            <Euro className="max-sm:h-6 max-sm:w-6 h-8 w-8"></Euro>
+                            <Euro className="max-sm:h-5 max-sm:w-5 h-6 w-6"></Euro>
                           </span>
                         </div>
                       </div>
@@ -122,7 +122,7 @@ export default async function Categorias({
               <Badge
                 key={crypto.randomUUID()}
                 variant="secondary"
-                className="bg-red-500 text-white hover:bg-red-600 px-4 py-2"
+                className="bg-red-500 text-white hover:bg-red-600 px-4 py-2 transition-all duration-300 ease-in-out hover:scale-110"
               >
                 {category}
               </Badge>
@@ -136,10 +136,10 @@ export default async function Categorias({
               Información del establecimiento
             </h2>
             <div className="rounded-lg border border-[hsl(214.3deg_15.61%_83.38%)] p-4">
-              <div className="space-y-4">
+              <div className="space-y-4 ">
                 {datax?.address && (
                   <div className="flex items-center gap-2 hover:underline">
-                    <MapPin className="min-h-5 min-w-5 text-[rgb(90,92,97)] hover:fill-gray-400/80" />
+                    <MapPin className="min-h-5 min-w-5 text-[rgb(90,92,97)] hover:fill-gray-400/40" />
                     <a href={datax?.url ?? ""} target="_blank">
                       {datax?.address}
                     </a>
@@ -147,7 +147,7 @@ export default async function Categorias({
                 )}
                 {datax?.telephone && (
                   <div className="flex items-center gap-2">
-                    <Phone className="min-h-5 min-w-5 text-[rgb(90,92,97)] hover:fill-gray-400/80" />
+                    <Phone className="min-h-5 min-w-5 text-[rgb(90,92,97)] hover:fill-gray-400/40" />
                     <a
                       href={`tel:${datax?.telephone}`}
                       className="hover:!underline"
@@ -158,9 +158,9 @@ export default async function Categorias({
                 )}
                 {datax?.website && (
                   <div className="flex items-center gap-2">
-                    <Globe className="min-h-5 min-w-5 text-[rgb(90,92,97)] hover:fill-gray-400/80" />
+                    <Globe className="min-h-5 min-w-5 text-[rgb(90,92,97)] hover:fill-gray-400/40" />
                     <a href={`${datax?.website}`} className="hover:!underline">
-                      {datax?.website}
+                      {datax?.website?.replace('https://', '').replace('http://', '')}
                     </a>
                   </div>
                 )}

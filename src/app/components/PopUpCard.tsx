@@ -16,20 +16,18 @@ type DetailsProps = {
 };
 
 export default function PopUpCard(data: DetailsProps): JSX.Element {
-  //console.log(data.name);
-
   return (
-    <div className="flex flex-wrap flex-col gap-2 py-4 pr-1 pl-2 max-sm:max-w-[200px] max-w-[250px] max-h-fit">
+    <div className="flex flex-wrap flex-col gap-2 py-4 pr-1 pl-2 max-sm:h-[390px] max-sm:max-w-[170px] max-w-[250px] max-h-fit ">
       <div className="overflow-hidden rounded-md shadow-sm shadow-neutral-700">
         <Image
           title={data?.name}
           className="!m-0 aspect-[4/3] object-cover hover:scale-110 transition "
-          src={data?.photos || Placeholder}
+          src={data?.photos ?? Placeholder}
           width={250}
           height={112}
           alt={data?.name}
         ></Image>
-      </div>{" "}
+      </div>
       <p className="text-xl font-semibold !m-0">{data?.name}</p>
       <a
         href={data?.url}
