@@ -3,9 +3,9 @@
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import {
   faEuroSign,
-  faFilter
+  faFilter,
+  faStar
 } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormEvent, useCallback, useState } from "react";
 
@@ -26,7 +26,7 @@ import { cn } from "../../lib/utils";
 import { Toggle } from "../../components/ui/toggle";
 import { ToggleGroup, ToggleGroupItem } from "../../components/ui/toggle-group";
 import { Separator } from "@/components/ui/separator";
-import { redirect, usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const Euro = <FontAwesomeIcon icon={faEuroSign}></FontAwesomeIcon>;
 const Star = <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>;
@@ -96,20 +96,6 @@ const RATING_OPTIONS: any = [
       </>
     ),
   },
-  // {
-  //   label: "",
-  //   value: "5",
-  //   rating: 4.6,
-  //   icon: (
-  //     <>
-  //       {Star}
-  //       {Star}
-  //       {Star}
-  //       {Star}
-  //       {Star}
-  //     </>
-  //   ),
-  // },
 ];
 
 
@@ -151,8 +137,6 @@ export default function Filters() {
   function handleFilters(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Los filtros de coste son: ", costFilters);
-    console.log("El filtro de valoracion es: ", ratingFilter);
     
     setOpenFilters((prev) => !prev);
 

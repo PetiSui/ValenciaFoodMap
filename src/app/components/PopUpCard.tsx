@@ -2,7 +2,9 @@ import Image from "next/image";
 import Placeholder from "../../../public/No-Image-Placeholder.webp";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from "next/navigation";
+import { Star } from "lucide-react";
 
 type DetailsProps = {
   _id: string;
@@ -12,43 +14,63 @@ type DetailsProps = {
   lng: number;
   photos?: string;
   url: string;
+  rating: number;
   categories?: string[];
 };
 
 export default function PopUpCard(data: DetailsProps): JSX.Element {
+  const pathname = usePathname();
+
   return (
-    <div className="flex flex-wrap flex-col gap-2 py-4 pr-1 pl-2 max-sm:h-[390px] max-sm:max-w-[170px] max-w-[250px] max-h-fit ">
-      <div className="overflow-hidden rounded-md shadow-sm shadow-neutral-700">
+    <div className="flex flex-wrap flex-col gap-2 py-4 pr-1 pl-2 min-w-[220px] max-w-[250px] max-h-fit">
+      <div className="overflow-hidden rounded-md shadow-sm shadow-neutral-700/60">
         <Image
           title={data?.name}
-          className="!m-0 aspect-[4/3] object-cover hover:scale-110 transition "
+          className="!m-0 aspect-[4/3] object-cover hover:scale-110 transition duration-200"
           src={data?.photos ?? Placeholder}
           width={250}
           height={112}
           alt={data?.name}
         ></Image>
       </div>
-      <p className="text-xl font-semibold !m-0">{data?.name}</p>
-      <a
-        href={data?.url}
-        target="_blank"
-        title="Cómo llegar"
-        className="text-l underline font-light !m-0 !mt-2"
-      >
-        {data?.address}
-      </a>
-      <Link
-        title="Más información"
-        className="font-semibold flex-1 bg-lightblack animate-bounce bounce-animation-long transition-colors ease-in-out !text-white border-0 rounded mt-2 px-5 py-3 text-center hover:!bg-neutral-300 hover:!text-lightblack"
-        href={`/descubrir/${data._id}`}
-      >
-        <FontAwesomeIcon
-          className="mr-2"
-          size="sm"
-          icon={faPlus}
-        ></FontAwesomeIcon>
-        Más info
-      </Link>
+      {pathname.includes("/descubrir/") ? (
+        <p className="text-xl font-semibold !text-lightblack !m-0 max-w-[30ch] overflow-hidden overflow-ellipsis line-clamp-2">
+          {data?.name}
+        </p>
+      ) : (
+        <Link
+          title="Ver más info del establecimiento"
+          className="text-xl font-semibold !text-lightblack max-w-[30ch] overflow-hidden overflow-ellipsis line-clamp-2 hover:underline"
+          href={`/descubrir/${data._id}`}
+        >
+          {data?.name}
+        </Link>
+      )}
+      {!pathname.includes("/descubrir/") && (
+        <div className="flex items-center gap-2 mt-2">
+          <Star className="max-sm:h-4 max-sm:w-4 h-5 w-5 fill-yellow-400 text-yellow-400 transition-all duration-300 ease-in-out hover:scale-110 hover:brightness-110" />
+          <span className="text-semibold text-md text-neutral-400 mt-1">
+            {data?.rating}
+          </span>
+        </div>
+      )}
+      {data?.url && (
+        <div className="grid grid-cols-1 gap-4 w-full">
+          <Link
+            title="Cómo llegar"
+            target="_blank"
+            className="font-semibold bg-neutral-200/70 transition-colors ease-in-out !text-lightblack border-0 rounded mt-2 px-5 py-3 text-center hover:!bg-neutral-300 hover:!text-lightblack"
+            href={data?.url}
+          >
+            Cómo llegar
+            <FontAwesomeIcon
+              className="ml-2"
+              size="lg"
+              icon={faLocationArrow}
+            ></FontAwesomeIcon>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

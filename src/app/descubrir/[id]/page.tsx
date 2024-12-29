@@ -23,7 +23,6 @@ export default async function Categorias({
 
     // console.log(process.env.API_URL);
     const id = params.id ? params.id : redirect("/descubrir");
-    console.log(id);
 
     const res = await fetch(`${apiUrl}/api/cards/${params.id}`, {
       headers: {
@@ -32,8 +31,6 @@ export default async function Categorias({
     });
 
     const jsonData = await res.json();
-    console.log(jsonData);
-
     return jsonData;
   };
 

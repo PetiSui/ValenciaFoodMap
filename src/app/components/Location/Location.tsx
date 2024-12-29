@@ -100,7 +100,7 @@ export default function Location(data: any) {
           center={coordiantePoint}
           zoom={13}
           scrollWheelZoom={false}
-          style={{ height: "60vh", width: "85vw" }}
+          style={{ height: "65vh", width: "85vw" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
