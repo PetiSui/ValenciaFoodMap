@@ -85,7 +85,7 @@ a.link:hover {
 }
 
 .star {
-  color: yellow;
+  color: rgb(250, 229, 42);
 }
 
 .card {
@@ -159,7 +159,7 @@ a.link:hover {
   position: absolute;
   bottom: 0;
   left: 0;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
   margin-left: 0.4rem;
   z-index: 90;
 }
@@ -168,7 +168,7 @@ a.link:hover {
   position: absolute;
   bottom: 0;
   right: 0;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
   margin-right: 0.4rem;
   z-index: 90;
   display: flex;
