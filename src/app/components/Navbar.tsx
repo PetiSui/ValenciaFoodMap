@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logoDark from "../../../public/LogoBG.png";
 import logoLight from "../../../public/LOGO_INVERTEDBG.png";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { AnimatePresence, motion } from "framer-motion";
 import { useHideOnScrollDown } from "../../lib/useHideOnScroll";
 
@@ -24,6 +22,7 @@ export default function Navbar() {
 
   const navLinks = [
     { title: "Descubrir", href: "/descubrir" },
+    { title: "Categorias", href: "/categorias"},
     { title: "Favoritos", href: "/favoritos" },
     { title: "Mapa", href: "/mapa" },
   ];
@@ -113,7 +112,6 @@ export default function Navbar() {
                         ? "after:scale-x-100"
                         : ""
                     }`}
-                    // underline underline-offset-8underline underline-offset-8 
                   >
                     {link.title}
                   </p>
@@ -125,7 +123,6 @@ export default function Navbar() {
       </nav>
       <AnimatePresence>
         {open && (
-          <>
             <motion.div
               variants={menuVars}
               initial="initial"
@@ -162,7 +159,6 @@ export default function Navbar() {
                 </motion.ul>
               </div>
             </motion.div>
-          </>
         )}
       </AnimatePresence>
     </>

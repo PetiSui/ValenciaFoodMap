@@ -1,5 +1,6 @@
 "use client"
 import { MultiSelect } from "@/components/multi-select";
+import { Constants } from "@/lib/constants";
 import { useDebounce } from "@/lib/useDebounce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -21,32 +22,11 @@ export function CategoryFilter() {
     [searchParams]
   );
 
-  const categorias = [
-    "Almuerzos",
-    "Argentino",
-    "Asiatico",
-    "Bocadillos",
-    "Buffet",
-    "Croquetas",
-    "Desayunos",
-    "Hamburguesas",
-    "Horchateria",
-    "Hotpot",
-    "Mexicano",
-    "Paella",
-    "Parrilla",
-    "Pasta",
-    "Pizza",
-    "Ramen",
-    "Sushi",
-    "Tacos",
-    "Tapas",
-    "Tortilla",
-  ];
+
 
 
   let categoriesFilterList : any = [];
-  categorias.forEach(categoria => categoriesFilterList.push({label: categoria, value: categoria}));
+  Constants.CATEGORIES.forEach(categoria => categoriesFilterList.push({label: categoria, value: categoria}));
 
   // const [selectedCategoriesToFilter, setSelectedCategoriesToFilter] = useState<string[]>(params.get("categories")?.split(",") || []);
   const [selectedCategoriesToFilter, setSelectedCategoriesToFilter] = useState<string[]>(params.get("categories") != undefined && params.get("categories") != "all" ? params.get("categories")!.split(",") : []);

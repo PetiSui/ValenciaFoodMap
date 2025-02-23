@@ -369,7 +369,7 @@ button {
 
 .tortilla {
   --clr-tortilla: rgb(248, 229, 17);
-  background-color: var(--clr-tortilla);
+  background-color: var(--clr-tortilla) !important;
 }
 
 .tacos {
