@@ -1,3 +1,21 @@
+import {
+  IceCreamBowlIcon as Bowl,
+  Beef,
+  Coffee,
+  Croissant,
+  Drumstick,
+  SandwichIcon as Hamburger,
+  Pizza,
+  Sandwich,
+  Soup,
+  Utensils,
+  UtensilsCrossed,
+  Milk,
+  Fish,
+  Egg,
+  Martini
+} from "lucide-react";
+
 export abstract class Constants {
     static readonly CATEGORIES : string[] = [
         "Almuerzos",
@@ -20,5 +38,28 @@ export abstract class Constants {
         "Tacos",
         "Tapas",
         "Tortilla",
+      ];
+
+      static readonly CATEGORIAS = [
+        { name: "Almuerzos", color: "bg-lime-200", icon: Sandwich },
+        { name: "Argentino", color: "bg-sky-200", icon: UtensilsCrossed },
+        { name: "Asiatico", color: "bg-emerald-200", icon: Bowl },
+        { name: "Bocadillos", color: "bg-amber-200", icon: Croissant },
+        { name: "Buffet", color: "bg-teal-200", icon: Utensils },
+        { name: "Croquetas", color: "bg-orange-200", icon: Drumstick },
+        { name: "Desayunos", color: "bg-blue-200", icon: Coffee },
+        { name: "Hamburguesas", color: "bg-rose-200", icon: Hamburger },
+        { name: "Horchateria", color: "bg-rose-100", icon: Milk },
+        { name: "Hotpot", color: "bg-orange-400", icon: Soup },
+        { name: "Mexicano", color: "bg-green-300", icon: Bowl },
+        { name: "Paella", color: "bg-yellow-300", icon: Utensils },
+        { name: "Parrilla", color: "bg-cyan-700", icon: Beef },
+        { name: "Pasta", color: "bg-yellow-200", icon: Bowl },
+        { name: "Pizza", color: "bg-red-400", icon: Pizza },
+        { name: "Ramen", color: "bg-sky-400", icon: Soup },
+        { name: "Sushi", color: "bg-teal-300", icon: Fish },
+        { name: "Tacos", color: "bg-emerald-500", icon: UtensilsCrossed },
+        { name: "Tapas", color: "bg-amber-200", icon: Martini },
+        { name: "Tortilla", color: "bg-yellow-500", icon: Egg },
       ];
 }
