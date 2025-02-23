@@ -20,7 +20,7 @@ export default function Categorias({
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col w-full px-14 max-sm:px-6 mx-auto mt-8 mb-8">
+      <div className="flex flex-col w-full px-[9dvw] max-sm:px-6 mx-auto mt-8 mb-8">
         <h3 className="text-3xl font-semibold dark:text-lightwhite text-lightblack self-start">
           <FontAwesomeIcon icon={faSearch} className="mr-4" />
           Categorías
