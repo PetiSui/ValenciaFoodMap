@@ -28,7 +28,7 @@ export default function Categorias({
         <p className="text-xl font-light dark:text-neutral-300/95 text-neutral-700/95 self-start">
           Busca tu categoria preferida
         </p>
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] max-md:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-5 mt-6 max-sm:mt-4">
+        <div className="grid grid-cols-[repeat(auto-fit,_minmax(230px,_1fr))] max-md:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-5 mt-6 max-sm:mt-4">
           {Constants.CATEGORIAS.map((category, index) => {
             const Icon = category.icon;
             return (
