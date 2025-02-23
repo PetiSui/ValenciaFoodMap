@@ -68,7 +68,7 @@ export default function Categorias({
         <p className="text-xl font-light dark:text-neutral-300/95 text-neutral-700/95 self-start">
           Busca tu categoria preferida
         </p>
-        <div className="grid md:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-5 md:mt-8 mt-4">
+        <div className="grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] max-sm:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-5 mt-8 max-sm:mt-4">
           {categories.map((category, index) => {
             const Icon = category.icon;
             return (
@@ -116,18 +116,6 @@ export default function Categorias({
                 </Link>
               </motion.div>
             );
-
-            // return (
-            //   <Link
-            //     key={crypto.randomUUID()}
-            //     href={"/descubrir/categoria/" + category.toLowerCase()}
-            //     className={`${category
-            //       .toLowerCase()
-            //       .trim()} brightness-90 w-full aspect-square rounded-xl shadow-md transition-transform hover:scale-105 text-lightblack font-semibold flex items-center justify-center relative`}
-            //   >
-            //     {category}
-            //   </Link>
-            // );
           })}
         </div>
       </div>
