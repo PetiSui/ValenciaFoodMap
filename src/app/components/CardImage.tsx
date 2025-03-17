@@ -17,7 +17,6 @@ export default function CardImage({
 }: Props) {
 
   const [imgSrcLoaded, setImgSrcLoaded] = useState(true);
-  let errorUrlImg = "../../../public/No-Image-Placeholder.webp";
 
   return (
     <div className="image_container">

@@ -15,10 +15,10 @@ export default function MarkerWhatever(props: any) {
         eventHandlers={{
           click: (e) => {
             props?.smallMap
-              ? map.flyTo(new L.LatLng(e.latlng.lat + 0.015, e.latlng.lng), 14)
+              ? map.flyTo(new L.LatLng(e.latlng.lat, e.latlng.lng), map.getZoom())
               : map.flyTo(
-                  new L.LatLng(e.latlng.lat + 0.03, e.latlng.lng),
-                  13
+                  new L.LatLng(e.latlng.lat + 0.003, e.latlng.lng),
+                  map.getZoom()
                 );
           },
         }}

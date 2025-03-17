@@ -65,7 +65,7 @@ export default function Categorias({
                   </svg>
                 </div>
                 <Link
-                  href={"/descubrir/categoria/" + category.name.toLowerCase()}
+                  href={"/categorias/" + category.name.toLowerCase()}
                   className="relative aspect-square p-6 flex flex-col items-center justify-center transition-transform duration-300 group-hover:scale-125"
                 >
                   <Icon

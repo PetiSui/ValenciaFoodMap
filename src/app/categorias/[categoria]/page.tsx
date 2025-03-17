@@ -7,12 +7,13 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "../../../../components/ui/pagination";
-import Card from "../../../components/Card";
-import Filters from "../../../components/Filters";
-import OrderResults from "../../../components/OrderResults";
+} from "../../../components/ui/pagination";
+import Card from "../../components/Card";
+import Filters from "../../components/Filters";
+import OrderResults from "../../components/OrderResults";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export default async function Categorias({
   searchParams,
@@ -102,17 +103,18 @@ export default async function Categorias({
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col w-full max-md:w-[70%] mx-auto sm:!px-[9vw] mt-8 mb-8">
+      <div className="flex flex-col w-full max-md:w-[85%] mx-auto sm:!px-[9vw] mt-8 mb-8">
         <h3 className="text-3xl font-semibold text-lightwhite self-start">
           <FontAwesomeIcon icon={faSearch} className="mr-4" />
-          Categorías
+          <Link className="hover:underline hover:underline-offset-4" href="/categorias">Categorías</Link>
+          <span className="max-sm:hidden text-xl font-normal opacity-85 ml-1"> &gt; {params.categoria.charAt(0).toUpperCase() + params.categoria.slice(1)}</span>
         </h3>
-        <p className="text-xl font-light text-lightwhite self-start">
+        <p className="text-xl font-light text-lightwhite self-start sm:hidden">
           Explorando la categoría: {params.categoria.charAt(0).toUpperCase() + params.categoria.slice(1)}
         </p>
       </div>
 
-      <div className="w-[100%] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 md:px-[9vw] mt-10 pb-4">
+      <div className="w-[100%] max-md:w-[300px] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 min-[960px]:px-[9vw] mt-4 pb-4">
         <Filters></Filters>
         <OrderResults></OrderResults>
       </div>

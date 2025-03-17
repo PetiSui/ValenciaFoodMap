@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import Placeholder from "../../../public/No-Image-Placeholder.webp";
 import Link from "next/link";
@@ -5,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
 import { Star } from "lucide-react";
+import { useState } from "react";
 
 type DetailsProps = {
   _id: string;
@@ -20,6 +22,8 @@ type DetailsProps = {
 
 export default function PopUpCard(data: DetailsProps): JSX.Element {
   const pathname = usePathname();
+  const [imgSrcLoaded, setImgSrcLoaded] = useState(true);
+
 
   return (
     <div className="flex flex-wrap flex-col gap-2 py-4 pr-1 pl-2 min-w-[220px] max-w-[250px] max-h-fit">
@@ -27,10 +31,13 @@ export default function PopUpCard(data: DetailsProps): JSX.Element {
         <Image
           title={data?.name}
           className="!m-0 aspect-[4/3] object-cover hover:scale-110 transition duration-200"
-          src={data?.photos ?? Placeholder}
+          src={imgSrcLoaded && data?.photos ? data?.photos : Placeholder}
           width={250}
           height={112}
           alt={data?.name}
+          onError={ (event) => {
+            setImgSrcLoaded(false);
+          }}
         ></Image>
       </div>
       {pathname.includes("/descubrir/") ? (

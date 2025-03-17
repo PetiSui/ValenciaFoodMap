@@ -27,7 +27,7 @@ const Tags = ({ tags }: any) => {
           className={["tag", tags[i].toLowerCase()].join(" ")}
         >
           <Link
-            href={"/descubrir/categoria/" + tags[i].toLowerCase()}
+            href={"/categorias/" + tags[i].toLowerCase()}
             target="_blank"
           >
             {tags[i]}
