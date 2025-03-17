@@ -117,21 +117,21 @@ export default async function App({
       <Image src={hero} alt="test" className="hidden" width={500}></Image>
 
       <Suspense fallback={<Loading />}>
-        <div className="flex flex-col w-full max-md:w-[70%] mx-auto sm:!px-[9vw] mt-8 mb-4">
+        <div className="flex flex-col w-full max-md:w-[70%] mx-auto sm:!px-[7vw] mt-6 mb-4">
           <h3 className="text-3xl font-semibold text-lightwhite self-start ">
             <FontAwesomeIcon icon={faSearch} className="mr-4" />
             Descubre
           </h3>
-          <p className="text-xl font-light text-lightwhite self-start">
+          <p className="self-start text-xl font-light dark:text-neutral-300/95 text-neutral-700/95">
             Explora los establecimientos más destacados
           </p>
         </div>
-        <div className="w-[100%] max-md:w-[300px] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 min-[960px]:px-[9vw] mt-10 pb-4">
+        <div className="w-[100%] max-md:w-[300px] max-md:max-w-[350px] mx-auto flex justify-between items-center gap-4 py-2 min-[960px]:px-[7vw] mt-10 pb-4">
           <Filters></Filters>
           <OrderResults></OrderResults>
         </div>
 
-        <div className="flex flex-wrap max-md:w-[70%] max-md:justify-center justify-between gap-8 py-2 sm:!px-[9vw] mx-auto w-[100%]">
+        <div className="flex flex-wrap max-md:w-[70%] max-md:justify-center justify-between gap-8 py-2 sm:!px-[7vw] mx-auto w-[100%]">
           {/* <div className="grid-card-layout items-stretch justify-items-center gap-8 p-10 mx-auto sm:w-[95%]"> */}
           {Object.entries(data)
             .slice(start, end)

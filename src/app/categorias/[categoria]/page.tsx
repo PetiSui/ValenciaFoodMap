@@ -109,7 +109,7 @@ export default async function Categorias({
           <Link className="hover:underline hover:underline-offset-4" href="/categorias">Categorías</Link>
           <span className="max-sm:hidden text-xl font-normal opacity-85 ml-1"> &gt; {params.categoria.charAt(0).toUpperCase() + params.categoria.slice(1)}</span>
         </h3>
-        <p className="text-xl font-light text-lightwhite self-start sm:hidden">
+        <p className="text-xl font-light dark:text-neutral-300/95 text-neutral-700/95 sm:hidden">
           Explorando la categoría: {params.categoria.charAt(0).toUpperCase() + params.categoria.slice(1)}
         </p>
       </div>

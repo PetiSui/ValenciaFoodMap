@@ -110,16 +110,16 @@ export default function App() {
   return (
     // <Suspense fallback={<Loading />}>
     <>
-      <div className="flex flex-col w-full max-md:w-[70%] mx-auto sm:!px-[9vw] mt-8 mb-8">
+      <div className="flex flex-col w-full max-md:w-[70%] mx-auto sm:!px-[7vw] mt-6 mb-8">
         <h3 className="text-3xl font-semibold text-lightwhite self-start ">
           <FontAwesomeIcon icon={faHeart} className="mr-4" />
           Favoritos
         </h3>
-        <p className="text-xl font-light text-lightwhite self-start">
+        <p className="text-xl font-light dark:text-neutral-300/95 text-neutral-700/95 self-start">
           Explora los establecimientos que más te gustan
         </p>
       </div>
-      <div className="flex flex-wrap max-md:w-[70%] max-md:justify-center justify-between gap-8 py-2 px-[9vw] mx-auto w-[100%] mb-8">
+      <div className="flex flex-wrap max-md:w-[70%] max-md:justify-center justify-between gap-8 py-2 px-[7vw] mx-auto w-[100%] mb-8">
         {Object.entries(data).map((card: any, index: Number) => (
           <Card data={JSON.stringify(card[1])} key={crypto.randomUUID()}></Card>
         ))}

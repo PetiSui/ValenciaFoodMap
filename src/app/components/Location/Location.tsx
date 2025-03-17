@@ -69,20 +69,20 @@ export default function Location(data: any) {
 
   return (
     <div className="flex flex-col gap-2 items-center justify-center">
-      <div className="flex flex-col self-start w-[85dvw] max-sm:mx-auto md:w-full sm:!px-[7vw] mt-8 mb-4">
+      <div className="flex flex-col self-start w-[85dvw] max-sm:mx-auto md:w-full sm:!px-[7vw] mt-6 mb-2">
         <h3 className="text-3xl font-semibold text-lightwhite self-start">
           <FontAwesomeIcon icon={faMapLocationDot} className="mr-4" />
           Mapa Interactivo
         </h3>
-        <p className="text-xl font-light text-lightwhite self-start">
+        <p className="text-xl font-light dark:text-neutral-300/95 text-neutral-700/95 self-start">
           Explora los mejores establecimientos por zonas
         </p>
       </div>
-      <div className="w-[85dvw] max-md:mx-auto md:w-full self-start flex flex-wrap justify-between items-end gap-4 py-2 md:px-[7vw] pb-4">
+      <div className="w-[85dvw] max-md:mx-auto md:w-full self-start flex flex-wrap justify-between items-end gap-4 py-2 md:px-[7vw]">
         <Filters></Filters>
         <CategoryFilter></CategoryFilter>
       </div>
-      <div className="w-[85vw] mx-auto mt-8 mb-8">
+      <div className="w-[85vw] mx-auto mt-4 mb-8">
         <MapContainer
           center={DEFAULT_LOCATION}
           zoom={13}
