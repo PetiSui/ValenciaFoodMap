@@ -17,7 +17,7 @@ export default function MarkerWhatever(props: any) {
             props?.smallMap
               ? map.flyTo(new L.LatLng(e.latlng.lat, e.latlng.lng), map.getZoom())
               : map.flyTo(
-                  new L.LatLng(e.latlng.lat + 0.003, e.latlng.lng),
+                  new L.LatLng(e.latlng.lat + Math.max(0.0115, (0.0018 * (map.getZoom() - 4))), e.latlng.lng),
                   map.getZoom()
                 );
           },

@@ -19,7 +19,7 @@ const SingleLocation = ({ datax }: any) => {
       center={coordiantePoint}
       zoom={16}
       scrollWheelZoom={false}
-      style={{ height: "50vh", width: "100%", borderRadius: '10px' }}
+      style={{ height: "55vh", width: "100%", borderRadius: '10px' }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

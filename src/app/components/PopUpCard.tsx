@@ -26,7 +26,7 @@ export default function PopUpCard(data: DetailsProps): JSX.Element {
 
 
   return (
-    <div className="flex flex-wrap flex-col gap-2 py-4 pr-1 pl-2 min-w-[220px] max-w-[250px] max-h-fit">
+    <div className="flex flex-wrap flex-col gap-2 py-4 pr-1 pl-2 sm:min-w-[210px] max-sm:max-w-[190px] sm:max-w-[240px] max-h-fit">
       <div className="overflow-hidden rounded-md shadow-sm shadow-neutral-700/60">
         <Image
           title={data?.name}

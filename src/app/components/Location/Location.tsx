@@ -12,8 +12,8 @@ import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import MarkerWhatever from "../MarkerWhatever";
 import Filters from "../Filters";
 import { CategoryFilter } from "../CategoryFilter";
-import { useEffect, useState } from "react";  
-import MarkerIconUser from '../../../../public/marker-icon-2x-red.png';
+import { useEffect, useState } from "react";
+import MarkerIconUser from "../../../../public/marker-icon-2x-red.png";
 
 type DetailsProps = {
   _id: string;
@@ -41,18 +41,19 @@ export default function Location(data: any) {
     lng: -0.3919,
   };
 
-  const [userLocation, setUserLocation] = useState<Coordinates>(DEFAULT_LOCATION);
+  const [userLocation, setUserLocation] = useState<Coordinates | null>(null);
 
   useEffect(() => {
     navigator?.geolocation?.getCurrentPosition?.(
-    (position) =>
-      setUserLocation({
-        lat: position?.coords?.latitude,
-        lng: position?.coords?.longitude,
-      }),
-    (err) => console.log(err)
-  );}, []);
-  
+      (position) =>
+        setUserLocation({
+          lat: position?.coords?.latitude,
+          lng: position?.coords?.longitude,
+        }),
+      (err) => console.log(err)
+    );
+  }, []);
+
   const userMarker = new L.Icon({
     iconUrl: MarkerIconUser.src,
     iconRetinaUrl: MarkerIconUser.src,
@@ -87,17 +88,22 @@ export default function Location(data: any) {
           center={DEFAULT_LOCATION}
           zoom={13}
           scrollWheelZoom={false}
-          style={{ height: "65vh", width: "85vw" }}
+          style={{ height: "70vh", width: "85vw" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
           ></TileLayer>
-          <Marker icon={userMarker} position={[userLocation?.lat, userLocation?.lng]}>
-            <Popup autoPan={true}>
-              <div>Estás aquí</div>
-            </Popup>
-          </Marker>
+          {userLocation !== null && (
+            <Marker
+              icon={userMarker}
+              position={[userLocation?.lat, userLocation?.lng]}
+            >
+              <Popup autoPan={true}>
+                <div>Estás aquí</div>
+              </Popup>
+            </Marker>
+          )}
           {arr[0]?.map((details: any) => {
             return (
               <MarkerWhatever
