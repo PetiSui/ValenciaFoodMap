@@ -95,8 +95,6 @@ export default async function Categorias({
     redirect("/descubrir?page=1");
   }
 
-  console.log(pageNumber + "/" + totalPages);
-
   let x = 0;
   const start = (pageNumber - 1) * perPage;
   const end = start + perPage;

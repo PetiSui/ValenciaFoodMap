@@ -37,13 +37,13 @@ export default async function App({
         {
           headers: {
             "Content-Type": "application/json",
-            //"Cache-store": "no-store",
+            "Cache-store": "no-store",
           },
         }
       );
       const jsonData = await res.json();
-      const hours = 1; //1 hour cache
-      cache.put("descubrir", jsonData, hours * 1000 * 60 * 60);
+      const minutes = 5; //5 minutes
+      cache.put("descubrir", jsonData, minutes * 60 * 1000);
 
       return jsonData;
     }
