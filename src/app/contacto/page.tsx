@@ -15,6 +15,7 @@ export default function ContactForm() {
         </p>
       </div>
       <form className="space-y-5" onSubmit={async ()=> {
+        "use client"
         if((document.getElementById("IGNORE") as HTMLInputElement).checked) return;
         await fetch('/api/send', {
           method: 'POST',
