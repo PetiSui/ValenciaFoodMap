@@ -5,7 +5,7 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST({ request }: { request: NextRequest }) {
+export async function POST( request : NextRequest ) {
     console.log('Request received', request);
     
   try {
