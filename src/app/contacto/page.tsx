@@ -14,21 +14,23 @@ export default function ContactForm() {
           Rellena el formulario para enviar tu mensaje.
         </p>
       </div>
-      <form className="space-y-5" onSubmit={async ()=> {
-        "use client"
-        if((document.getElementById("IGNORE") as HTMLInputElement).checked) return;
-        await fetch('/api/send', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            nombre: (document.getElementById('name') as HTMLInputElement).value,
-            email: (document.getElementById('email') as HTMLInputElement).value,
-            asunto: (document.getElementById('subject') as HTMLInputElement).value,
-            mensaje: (document.getElementById('message') as HTMLInputElement).value,
-          }),
-        });
+      <form className="space-y-5" onSubmit={async (e)=> {
+        e.preventDefault();
+        if((document.getElementById("IGNORE") as HTMLInputElement)?.checked) return;
+        try {
+          await fetch("/api/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              nombre: (document.getElementById("name") as HTMLInputElement).value,
+              email: (document.getElementById("email") as HTMLInputElement).value,
+              asunto: (document.getElementById("subject") as HTMLInputElement).value,
+              mensaje: (document.getElementById("message") as HTMLTextAreaElement).value,
+            }),
+          });
+        } catch (err) {
+          console.error(err);
+        }
       }}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-2">
