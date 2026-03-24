@@ -10,9 +10,7 @@ import Link from 'next/link';
 import Tags from './Tags';
 
 function Card({ data } : any) {
-  //console.log(data?.address);
   let data2 = JSON.parse(data);
-  //console.log(data2._id);
   return (
 
       <div className="card" key={crypto.randomUUID()}>

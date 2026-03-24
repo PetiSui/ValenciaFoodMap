@@ -7,6 +7,7 @@ import {
   faLocationDot,
   faPlus,
   faCircleQuestion,
+  faTableList
 } from "@fortawesome/free-solid-svg-icons";
 import LandingCard from "./components/LandingCard";
 import {
@@ -20,15 +21,23 @@ import { Utensils } from "lucide-react";
 const landingCardsData = [
   {
     icon: faSearch,
-    color: "bg-[#e39e83]",
+    color: "bg-[#ff5d8f]",
     title: "Descubre",
     description:
       "Encuentra el establecimiento que más se ajuste a tu preferencia",
     url: "/descubrir",
   },
   {
-    icon: faHeart,
+    icon: faTableList,
     color: "bg-[#51bbbd]",
+    title: "Categorias",
+    description:
+      "Echa un vistazo a tu categoria preferida",
+    url: "/categorias",
+  },
+  {
+    icon: faHeart,
+    color: "bg-[#ff6039]",
     title: "Favoritos",
     description: "Guarda establecimientos para verlos más tarde",
     url: "/favoritos",
@@ -118,13 +127,13 @@ export default async function App() {
       </div>
 
       {/* flex flex-wrap flex-col md:flex-row */}
-      <div className="p-16 lg:px-32 sm:py-16 grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] justify-items-center gap-12 w-full max-sm:justify-center justify-around items-center dark:bg-neutral-600/60 bg-neutral-400/60 shadow">
+      <div className="p-16 lg:px-32 sm:py-16 grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] backdrop-blur-[] justify-items-center gap-12 w-full max-sm:justify-center justify-around items-center dark:bg-neutral-600/60 bg-neutral-400/60 shadow">
         {landingCardsData.map((data: any) => (
           <LandingCard key={crypto.randomUUID()}>
             <FontAwesomeIcon
               icon={data?.icon}
               size="lg"
-              className={`absolute top-[-30px] aspect-square z-20 self-center ${data?.color} p-5 rounded-full shadow-neutral-400 shadow-md`}
+              className={`absolute top-[-30px] aspect-square z-20 self-center ${data?.color} p-5 rounded-full shadow-neutral-400 shadow-md group-hover:scale-[1.2] transition-all`}
             ></FontAwesomeIcon>
             <Link href={data?.url} className="text-2xl font-semibold mt-4">
               {data?.title}
@@ -140,15 +149,15 @@ export default async function App() {
           </LandingCard>
         ))}
       </div>
-      <div className="px-16 pt-8 md:pb-12 pb-8 mb-8 md:mb-16 w-[80dvw] bg-white/80 dark:bg-white/70 backdrop-blur-sm rounded-lg flex flex-col items-center justify-center gap-6 dark:shadow-neutral-600 shadow-neutral-500 shadow-lg">
-        <div className="font-semibold text-xl w-full flex gap-6 items-center justify-center">
+      <div className="px-16 pt-8 md:pb-12 pb-8 mb-8 md:mb-16 w-[min(70dvw,150%)] bg-white/30 dark:bg-white/20 backdrop-blur-sm rounded-lg flex flex-col items-center justify-center gap-6 dark:shadow-neutral-600 shadow-neutral-500 shadow-lg">
+        <div className="font-semibold text-xl w-full flex gap-6 items-center justify-start ml-6 dark:text-lightwhite text-lightblack drop-shadow-md">
           <FontAwesomeIcon icon={faCircleQuestion} size="lg" className="max-w-6"/>
           <p>Preguntas frecuentes</p>
         </div>
         <Accordion
           type="single"
           collapsible
-          className="w-[70dvw] flex flex-col gap-3"
+          className="flex flex-col w-full gap-3"
         >
           <AccordionItem
             value="item-1"

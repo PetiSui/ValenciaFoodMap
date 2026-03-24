@@ -42,7 +42,7 @@ export default async function App({
         }
       );
       const jsonData = await res.json();
-      const minutes = 5; //5 minutes
+      const minutes = 1; //1 minutes
       cache.put("descubrir", jsonData, minutes * 60 * 1000);
 
       return jsonData;
