@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { set } from "mongoose";
 
 export default function ContactForm() {
+  let isMensajeEnviado = false;
   return (
-    <div className="w-[90%] md:w-full max-w-2xl space-y-8 my-8 bg-black/80 text-lightwhite dark:bg-white/90 backdrop-blur-sm dark:text-lightblack px-8 sm:px-16 py-12 mt-8 mb-8 rounded-xl shadow-black shadow-sm mx-auto">
+    <div className="w-[90%] md:w-full max-w-2xl space-y-8 my-4 pb-8 pt-4 bg-black/80 text-lightwhite dark:bg-white/90 backdrop-blur-sm dark:text-lightblack px-8 sm:px-16 rounded-xl shadow-black shadow-sm mx-auto">
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Contáctanos</h1>
         <p className="text-gray-500 dark:text-gray-600">
@@ -28,6 +30,10 @@ export default function ContactForm() {
               mensaje: (document.getElementById("message") as HTMLTextAreaElement).value,
             }),
           });
+          isMensajeEnviado = true;
+          setTimeout(() => {
+            isMensajeEnviado = false;
+          }, 5000);
         } catch (err) {
           console.error(err);
         }
@@ -79,6 +85,7 @@ export default function ContactForm() {
         >
           Enviar mensaje
         </Button>
+         {isMensajeEnviado && <span className="text-green-500 ml-2">Mensaje enviado!</span>}
         <p className="text-sm absolute right-4 bottom-4 "><span className="text-red-600 mr-1">*</span>Campos obligatorios</p>
       </form>
     </div>

@@ -10,9 +10,8 @@ import Link from 'next/link';
 import Tags from './Tags';
 
 function Card({ data } : any) {
-  let data2 = JSON.parse(data);
+  const data2 = JSON.parse(data);
   return (
-
       <div className="card" key={crypto.randomUUID()}>
         <CardImage description={data2?.name} imageSourceUrl={data2?.photos}>
           <Rating starCount={data2?.rating}></Rating>
@@ -28,7 +27,6 @@ function Card({ data } : any) {
         </div>
         <ShareBar url={data2?.url} website={data2?.website} name={data2?.name} address={data2?.address} id={data2?._id}></ShareBar>
       </div>
-
   );
 }
 
