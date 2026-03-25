@@ -4,15 +4,6 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    // <footer
-    //   className="text-center p-3 flex justify-center align-middle w-full gap-1 bg-lightblack"
-    //   style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
-    // >
-    //   <p>© 2024 Copyright:</p>
-    //   <a className="text-white" href="https://youtube.com/">
-    //        ValenciaFoodMap.es
-    //   </a>
-    // </footer>
     <footer className="w-full bg-lightblack text-lightwhite p-4 flex flex-col flex-wrap items-center justify-center">
       <div className="w-full flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-lightblack text-center md:justify-between">
         <div className="w-full flex flex-nowrap justify-center items-center">
@@ -64,7 +55,7 @@ export default function Footer() {
         href="/"
         className="text-center font-normal align-middle content-center"
       >
-        &copy; 2024 ValenciaFoodMap
+        &copy; {new Date().getFullYear()} ValenciaFoodMap
       </Link>
     </footer>
   );
